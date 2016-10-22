@@ -1,5 +1,7 @@
+dj==0.1
 dj-database-url==0.4.1
 Django==1.10.2
+gunicorn==19.6.0
 Pillow==3.4.2
 psycopg2==2.6.2
 requests==2.11.1

@@ -1,1 +1,1 @@
-web: gunicorn carte.wsgi --log-file -
+web: gunicorn carte.wsgi --pythonpath ../carte --log-file -
