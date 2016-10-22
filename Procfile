@@ -1,0 +1,1 @@
+web: gunicorn carte.wsgi --log-file -

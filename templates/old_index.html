@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load staticfiles %}
+  <title>Carte</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static "index.css" %}">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "bootstrap-social-gh-pages/bootstrap-social.css" %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
+</head>
+<body id="bgv">
+
+	<nav class="navbar navbar-inverse">
+	  	<div class="container-fluid">
+			<div class="navbar-header">
+		  		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+		  		</button>
+		  		<a class="navbar-brand" href="#">Carte</a>
+			</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  
+		  <ul class="nav navbar-nav navbar-right">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		 
+		  	<form id="signin" class="navbar-form navbar-right" role="form" method="POST" action="/login/">{% csrf_token %}
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address">                                        
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">   
+				</div>
+				<button type="submit" class="btn btn-primary">Login</button>{% csrf_token %}
+			</form>
+		 
+		</div>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+
+
+	  
+	<div>
+	<div class="container" >
+		<div class="col-md-6" >
+			<div id="logbox"  >
+				<form id="signup" method="post" action="/signup/">{% csrf_token %}
+					<h1>Create an Account</h1>
+					<input name="first_name_signup" id="first_name_signup" type="text" placeholder="First Name" class="input pass"/>
+					<input name="last_name_signup" id="last_name_signup" type="text" placeholder="Last Name" class="input pass"/>
+					<input name="email_signup" id="email_signup" type="email" placeholder="Email address" class="input pass"/>
+					<input name="username_signup" id="username_signup" type="text" placeholder="Username" class="input pass"/>
+					<input name="password_signup" id="password_signup" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+					<input name="confirm_password_signup" id="confirm_password_signup" type="password" placeholder="Confirm password" required="required" class="input pass"/>
+					<button type="submit" class="inputButton">Sign me up!</button>{% csrf_token %}
+					<div class="form-group">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="text-center">
+									<a href="#" tabindex="5" class="forgot-password">Forgot Password?</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- <div class="social-box"> -->
+					<a class="btn btn-block btn-social btn-facebook">
+						<span class="fa fa-facebook"></span> Sign in with Facebook
+					</a>
+					<a class="btn btn-block btn-social btn-google">
+						<span class="fa fa-google"></span> Sign in with Google
+					</a>
+					<!-- </div> -->
+				</form>
+			</div>
+		</div>
+		<!--col-md-6-->
+
+
+	</div>
+	</div>
+
+</body>
+</html>

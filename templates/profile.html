@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load staticfiles %}
+  <title>Carte</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "bootstrap-social-gh-pages/bootstrap-social.css" %}">
+
+  <style type="text/css">
+  .dropdown-menu > li > a {
+	white-space: normal;
+}
+</style>
+
+  <script src="{% static "dashboard.js" %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+<li>
+<div class="container">
+<div class="row">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
+			</button>
+		 
+			<a class="navbar-brand" href="/dashboard/">Carte</a>      
+		</div>
+
+		<div class="collapse navbar-collapse" id="myNavbar">   
+
+			<ul class="nav navbar-nav navbar-right">
+
+				<li>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</li>
+
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<span class="glyphicon glyphicon-user"></span>
+						<strong>{{first_name}}</strong>
+						<span class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right ">
+						<li>
+							<div class="navbar-login">
+								<div class="row">
+									<div class="col-lg-4 col-sm-4">
+										<p class="text-center">
+											<span class="glyphicon glyphicon-user icon-size"></span>
+										</p>
+									</div>
+									<div class="col-lg-8 col-sm-8">
+										<p class="text-left"><strong>{{first_name}} {{last_name}}</strong></p>
+										<p class="text-left small">{{email}}</p>
+										<p class="text-left">
+											<a href="/profile/" class="btn btn-primary btn-block btn-sm">Profile</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</li>
+						<!-- <li class="divider navbar-login-session-bg"></li>
+						<li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+						<li class="divider"></li>
+						<li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+						<li class="divider"></li>
+						<li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+						<li class="divider"></li>
+						<li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a>
+						</li> -->
+						<li class="divider"></li>
+						<li><a href="/logout/">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a> </li>
+					</ul>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</nav>
+</div>
+</div>
+</li>
+
+<li>
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+  <div class="row">
+	<!-- left column -->
+	<!-- <div class="col-md-4 col-sm-6 col-xs-12">
+	  <div class="text-center">
+		<img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+		<h6>Upload a different photo...</h6>
+		<input type="file" class="text-center center-block well well-sm">
+	  </div>
+	</div> -->
+	<!-- edit form column -->
+	<div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+	  <h3>Personal info</h3>
+	  <form class="form-horizontal" role="form" action="/update_profile/" method="POST">{% csrf_token %}
+			<div class="form-group">
+				<label class="col-lg-3 control-label">First name:</label>
+				<div class="col-lg-8">
+					<input class="form-control" value="{{first_name}}" type="text" id="first_name" name="first_name">
+			  	</div>
+			</div>
+			<div class="form-group">
+			  	<label class="col-lg-3 control-label">Last name:</label>
+			  	<div class="col-lg-8">
+					<input class="form-control" value="{{last_name}}" type="text" id="last_name" name="last_name">
+		  		</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Email:</label>
+			  	<div class="col-lg-8">
+					<input class="form-control" value="{{email}}" type="text" id="email" name="email">
+			  	</div>
+			</div>
+			<div class="form-group">
+			  	<label class="col-md-3 control-label">Username:</label>
+			  	<div class="col-md-8">
+					<input class="form-control" value="{{username}}" type="text" id="username" name="username">
+			  	</div>
+			</div>
+			<!-- <div class="form-group">
+			  	<label class="col-md-3 control-label">Phone Number:</label>
+			  	<div class="col-md-8">
+					<input class="form-control" value="{{phone_no}}" type="text" id="phone_no" name="phone_no">
+			  	</div>
+			</div> -->
+			<div class="form-group">
+				<label class="col-md-3 control-label">Password:</label>
+				<div class="col-md-8">
+					<input class="form-control" value="" type="password" id="passwrod" name="password">
+				</div>
+			</div>
+			<div class="form-group">
+			  	<label class="col-md-3 control-label">Confirm password:</label>
+			  	<div class="col-md-8">
+					<input class="form-control" value="" type="password" id="confirm_password" name="confirm_password">
+			  	</div>
+			</div>
+			<div class="form-group">
+			  	<label class="col-md-3 control-label"></label>
+			  	<div class="col-md-8">
+					<button type="submit" onclick="javasript:window.location='/update_profile/';" value="Save Changes" >Save Changes</button>
+					<button type="cancel" onclick="javasript:window.location='/dashboard/';">Cancel</button>
+			  	</div>
+			</div>
+	  </form>
+	</div>
+  </div>
+</div>
+</li>
+</body>
+</html>

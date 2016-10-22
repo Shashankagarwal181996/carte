@@ -1,0 +1,44 @@
+from __future__ import unicode_literals
+from django.db import models
+from django.utils import timezone
+from datetime import *
+from django.contrib.auth.models import User
+
+from carte.choices import *
+
+# class Profile(models.Model):
+# 	user = models.OnetoOneField('User',on_delete=models.CASCADE)
+# 	phone_no = models.CharField(max_length=11)
+# # 	prefered_hotel = models.IntegerField(choices=HOTEL_CHOICES,default=1)
+# # 	prefered_restaurant = models.IntegerField(choices=RESTAURANT_CHOICES,default=1)
+
+class Rate_Review(models.Model):
+	review = models.TextField()
+	rating = models.FloatField()
+	user = models.ManyToManyField(User,blank=True)
+	item_name = models.CharField(max_length=100)
+
+class Restaurant(models.Model):
+	name = models.CharField(max_length=100)
+	email = models.EmailField(max_length=100,null=True)
+	location = models.CharField(max_length=200)
+	city = models.CharField(max_length=100)
+	rating = models.FloatField()
+	review = models.TextField()
+	image = models.ImageField()
+	rate_review = models.ManyToManyField(Rate_Review,blank=True)
+
+	def __str__(self):
+		return self.name
+
+class Hotel(models.Model):
+	name = models.CharField(max_length=100)
+	email = models.EmailField(max_length=100,null=True)
+	location = models.CharField(max_length=200)
+	city = models.CharField(max_length=100)
+	rating = models.FloatField()
+	review = models.TextField()
+	image = models.ImageField()
+
+	def __str__(self):
+		return self.name

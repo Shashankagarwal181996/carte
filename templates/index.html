@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load staticfiles %}
+		<meta charset="utf-8">
+		<title>Login|Register</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->  
+		<link href="{% static "css/bootstrap.min.css" %}"rel="stylesheet">      
+		<link href="{% static "css/bootstrap-responsive.min.css" %}" rel="stylesheet">		
+		<link href="{% static "css/bootstrappage.css" %}"rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="{% static "css/flexslider.css" %}"rel="stylesheet"/>
+		<link href="{% static "css/main.css" %}" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+		<script src="{% static "js/bootstrap.min.js" %}"></script>				
+		<script src="{% static "js/superfish.js" %}"></script>	
+		<script src="{% static "js/jquery.scrolltotop.js" %}" ></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="/index/">Home</a></li>			
+							<li><a href="/profile/">My Account</a></li>
+							<li><a href="/contact/">Contact Us</a></li>					
+							<li><a href="/dashboard/">Dashboard</a></li>			
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<a href="/index/" class="logo pull-left"><img src="{% static "images/logo.jpg" %}" class="site_logo" alt="" height="40" width="40"></a>
+				</div>
+			</section>
+			<section class="header_text sub">
+			<img id="logo" class="pageBanner" src="{% static "images/pageBanner.png" %}" alt="New products" >
+			</section>						
+			<section class="main-content">				
+				<div class="row">
+					<div class="span5">					
+						<h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
+						<form action="/signin/" method="POST">{% csrf_token %}
+							<input type="hidden" name="next" value="/">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">Email</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your email" id="email"         name="email" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Password</label>
+									<div class="controls">
+										<input type="password" placeholder="Enter your password" name="password"  id="password" class="input-xlarge">
+									</div>
+								</div>
+								<button type="submit" class="inputButton">Login</button>{% csrf_token %}
+							</fieldset>
+						</form>				
+					</div>
+					<div class="span7">					
+						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+						<form action="#" method="post" class="form-stacked">{% csrf_token %}
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">First Name</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your first name" name="first_name_signup" id="first_name_signup" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Last Name</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your last name" name="last_name_signup" id="last_name_signup" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Username</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your username" name="username_signup" id="username_signup" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Email address:</label>
+									<div class="controls">
+										<input type="password" placeholder="Enter your email" name="email_signup" id="email_signup" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Password:</label>
+									<div class="controls">
+										<input type="password" placeholder="Enter your password" name="password_signup" id="password_signup" class="input-xlarge">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Confirm Password</label>
+									<div class="controls">
+										<input type="text" placeholder="Confirm Password" name="confirm_password_signup" id="confirm_password_signup" class="input-xlarge">
+									</div>
+								</div>		
+								<button type="submit" class="inputButton">Sign me up!</button>{% csrf_token %}
+								<div class="control-group">
+									<p>Now that we know who you are. I'm not a mistake! In a comic, you know how you can tell who the arch-villain's going to be?</p>
+								</div>
+								<hr>
+								<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account"></div>
+							</fieldset>
+						</form>					
+					</div>				
+				</div>
+			</section>			
+			<section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navigation</h4>
+						<ul class="nav">
+							<li><a href="/index/">Homepage</a></li>  
+							<!-- <li><a href="./about.html">About Us</a></li> -->
+							<li><a href="/contact/">Contac Us</a></li>
+							<li><a href="/register/">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="/profile/">My Account</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="{% static "images/logo.png" %}" class="site_logo" alt=""></p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<br/>
+						<span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+					</div>					
+				</div>	
+			</section>
+		</div>
+		<script src="{% static "js/common.js" %}" ></script>
+		<script>
+			$(document).ready(function() {
+				$('#checkout').click(function (e) {
+					document.location.href = "checkout.html";
+				})
+			});
+		</script>		
+    </body>
+</html>
