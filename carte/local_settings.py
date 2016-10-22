@@ -78,15 +78,33 @@ WSGI_APPLICATION = 'carte.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # 'NAME': os.path.join(BASE_DIR, 'mysql'),
+#         'NAME': 'carte_db',
+#         'USER': 'myprojectuser',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+
+#         # 'NAME': get_env_variable('DATABASE_NAME'),
+#         # 'USER': get_env_variable('DATABASE_USER'),
+#         # 'PASSWORD': get_env_variable('DATABASE_PASSWORD'),
+#         # 'HOST': '',
+#         # 'PORT': '',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         # 'NAME': os.path.join(BASE_DIR, 'mysql'),
-        'NAME': 'carte_db',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'dea2fprtjcu1ea',
+        'USER': 'bplhukgsenkrwj',
+        'PASSWORD': ':SJpOWTlV0S4h7s4gY6iFuoACxa',
+        'HOST': 'ec2-54-225-100-236.compute-1.amazonaws.com',
+        'PORT': '5432',
 
         # 'NAME': get_env_variable('DATABASE_NAME'),
         # 'USER': get_env_variable('DATABASE_USER'),
@@ -95,7 +113,6 @@ DATABASES = {
         # 'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
