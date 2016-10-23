@@ -8,8 +8,11 @@ from django.shortcuts import render_to_response
 from django.shortcuts import render
 from django.template import RequestContext
 
+from django.views.decorators.csrf import ensure_csrf_cookie
+
 from .models import *
 
+@ensure_csrf_cookie
 def index(request):
 	# user = User.objects.create_user(username="sh",email="shashankagarwal@gmail.com",password="shashank")
 	# user.save()
@@ -18,7 +21,7 @@ def index(request):
 		'a':a,
 	}
 	print "hello"
-	return render_to_response('login.html',context_list,RequestContext(request) )
+	return render_to_response('index.html',context_list,RequestContext(request) )
 
 def signin(request):
 	print "before"
