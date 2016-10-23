@@ -13,8 +13,12 @@ from .models import *
 def index(request):
 	# user = User.objects.create_user(username="sh",email="shashankagarwal@gmail.com",password="shashank")
 	# user.save()
-	context_list={}
-	return render_to_response('index.html',context_list,RequestContext(request))
+	a = "shashnk"
+	context_list={
+		'a':a,
+	}
+	print "hello"
+	return render_to_response('index.html',context_list,RequestContext(request) )
 
 def signin(request):
 	print "before"

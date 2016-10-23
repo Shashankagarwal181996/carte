@@ -56,13 +56,13 @@
 				<div class="row">
 					<div class="span5">					
 						<h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
-						<form action="/signin/" method="POST">{% csrf_token %}
+						<form id="login" action="/login/" method="POST">{% csrf_token %}
 							<input type="hidden" name="next" value="/">
 							<fieldset>
 								<div class="control-group">
 									<label class="control-label">Email</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your email" id="email"         name="email" class="input-xlarge">
+										<input type="text" placeholder="Enter your email" id="email"            name="email" class="input-xlarge">
 									</div>
 								</div>
 								<div class="control-group">
@@ -71,11 +71,12 @@
 										<input type="password" placeholder="Enter your password" name="password"  id="password" class="input-xlarge">
 									</div>
 								</div>
-								<button type="submit" class="inputButton">Login</button>{% csrf_token %}
+								<!-- <button type="submit" class="inputButton">Login</button>{% csrf_token %} -->
+								<button type="submit">login</button>
 							</fieldset>
 						</form>				
 					</div>
-					<div class="span7">					
+					<!-- <div class="span7">					
 						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
 						<form action="#" method="post" class="form-stacked">{% csrf_token %}
 							<fieldset>
@@ -122,7 +123,7 @@
 								<hr>
 								<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account"></div>
 							</fieldset>
-						</form>					
+						</form>	 -->				
 					</div>				
 				</div>
 			</section>			
