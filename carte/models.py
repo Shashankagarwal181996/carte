@@ -24,9 +24,12 @@ class Restaurant(models.Model):
 	location = models.CharField(max_length=200)
 	city = models.CharField(max_length=100)
 	rating = models.FloatField()
-	review = models.TextField()
+	# review = models.TextField()
 	image = models.ImageField()
 	rate_review = models.ManyToManyField(Rate_Review,blank=True)
+	description = models.TextField()
+	cuisines = models.TextField()
+	url = models.TextField()
 
 	def __str__(self):
 		return self.name
@@ -37,8 +40,14 @@ class Hotel(models.Model):
 	location = models.CharField(max_length=200)
 	city = models.CharField(max_length=100)
 	rating = models.FloatField()
-	review = models.TextField()
+	# review = models.TextField()
 	image = models.ImageField()
+	rate_review = models.ManyToManyField(Rate_Review,blank=True)
+	description = models.TextField()
+	hotel_tags = models.TextField()
+	url = models.TextField()
+	
 
 	def __str__(self):
 		return self.name
+

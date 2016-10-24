@@ -1,235 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
 <head>
-	{% load staticfiles %}	
-  <title>Carte</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{% static "dashboard.css" %}">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{% static "bootstrap-social-gh-pages/bootstrap-social.css" %}">
-
-  <script src="{% static "dashboard.js" %}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- 
+<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- css -->
+<link href="{% static "themes/css/flexslider.css" %}" rel="stylesheet"/>
+<link href="{% static "themes/css/main.css" %}" rel="stylesheet"/>
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" type="text/css" media="all" />
+<!--// css -->
+<!-- font -->
+<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- //font -->
+<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
 </head>
-<style type="text/css">
-	.navbar-nav>li>.dropdown-menu {
-		margin : 15px;
-	}
-</style>
+
 <body>
-<!-- <a href="#"><img src="{% static "image/ramada2.jpg" %}" alt="Image" class="img-responsive"></a> -->
-
-<li>
-<div class="container">
-<div class="row">
-<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>                        
-			</button>
-		 
-			<a class="navbar-brand" href="/dashboard/">Carte</a>      
+<div class="header-top-w3layouts">
+	<div class="container">
+		<div class="col-md-3 logo-w3">
+			<a href="index.html"><h1>CARTE </h1></a>
 		</div>
-
-		<div class="collapse navbar-collapse" id="myNavbar">   
-
-			<ul class="nav navbar-nav navbar-right">
-
-				<li>
-					<form class="navbar-form navbar-left" role="search" method="POST" action="/search/">{% csrf_token %}
-						<div class="form-group">
-							<input type="text" id="search" name="search" class="form-control" placeholder="Search">
-						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</li>
-
-
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="glyphicon glyphicon-user"></span>
-						<strong>{{user.first_name}}</strong>
-						<span class="glyphicon glyphicon-chevron-down"></span>
-					</a>
-					<ul class="dropdown-menu dropdown-menu-right ">
-						<li>
-							<div class="navbar-login">
-								<div class="row" style="margin-right: 6px;">
-									<div class="col-lg-4 col-sm-4">
-										<p class="text-center">
-											<span class="glyphicon glyphicon-user icon-size"></span>
-										</p>
-									</div>
-									<div class="col-lg-8 col-sm-8" style="padding:0px;">
-										<p class="text-left"><strong>{{user.first_name}} {{user.last_name}}</strong></p>
-										<p class="text-left small">{{user.email}}</p>
-										
-									</div>
-									<div class="clearfix"></div>
-									<div class="col-lg-3"></div>
-									<div class="col-lg-8">
-									<p class="text-left">
-											<a href="/profile/" class="btn btn-primary btn-block btn-sm">Profile</a>
-										</p>
-									</div>	
-								</div>
-							</div>
-						</li>
-						<li class="divider" style="margin: 0px 0px;"></li>
-						<li><a href="/logout/">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-					</ul>
-				</li>
+		<div class="col-md-6 phone-w3l">
+			<ul>
+				<li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
+				<li><a href="myaccount.html">My Account  </a></li>
+				<li style="padding-left: 10px"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></li>
+				<li><a href="login.html">Logout</a></li>
 			</ul>
-
 		</div>
-	</div>
-</nav>
+		<div class="clearfix"></div>
+	</div>	
 </div>
-</div>
-</li>
 
-<br>
-
-<li>
+<div class="header-bottom-w3ls">
 	<div class="container">
-	<div class="col-md-12">
-		 <h1>Some Trending Restaurants </h1>
-
-		<div class="well">
-			<div id="myCarousel" class="carousel slide">
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>
-				
-				<div class="carousel-inner">
-					<div class="item active">
-						<div class="row">
-							{% for restaurant in rest_one %}
-							<div class="col-sm-3"><a href="/item-detail/{{restaurant.name}}" class="thumbnail"><img src="/static/image{{restaurant.image.url}}" alt="Image" class="img-responsive"></a>
-							</div>
-							{% endfor %}
-
-							<!-- <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="/static/image/bistro.jpg" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="/static/image/chokhi dhani.jpg" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div> -->
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							{% for restaurant in rest_two %}
-							<div class="col-sm-3"><a href="/item-detail/{{restaurant.name}}" class="thumbnail"><img src="/static/image{{restaurant.image.url}}" alt="Image" class="img-responsive"></a>
-							</div>
-							{% endfor %}
-							<!-- <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div> -->
-						</div>
-					</div>
-					<!-- <div class="item">
-						<div class="row">
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div>
-							<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-							</div>
-						</div>
-					</div> -->
+		<div class="col-md-7 navigation-agileits">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header nav_2">
+					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div> 
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav ">
+						<li class=" active"><a href="index.html" class="hyper "><span>Home</span></a></li>
+						<li><a href="about.html" class="hyper"><span>About</span></a></li>
+						<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
+					</ul>
 				</div>
-				
-				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-
-				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-			</div>
-			
+			</nav>
 		</div>
+								<script>
+				$(document).ready(function(){
+					$(".dropdown").hover(            
+						function() {
+							$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+							$(this).toggleClass('open');        
+						},
+						function() {
+							$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+							$(this).toggleClass('open');       
+						}
+					);
+				});
+				</script>
+
 		
+		<div class="col-md-4 search-agileinfo" >
+			<form action="/search/" method="POST" >{% csrf_token %}
+				<input type="search" name="search" id="search" placeholder="Enter Search Query" required="">
+				<a href="#abc">
+				<button type="submit" class="btn btn-default search" aria-label="Left Align">
+						<i class="fa fa-search" aria-hidden="true"> </i> 
+				</button>
+				</a>
+			</form>
+		</div>
+		<div class="clearfix"></div>
 	</div>
-	</div>
-
+</div>
+<div class="banner-agile">
 	<div class="container">
-		<div class="col-md-12">
-			 <h1>Some Trending Hotels</h1>
-
-			<div class="well">
-				<div id="myCarousel1" class="carousel slide">
-					<ol class="carousel-indicators">
-						<li data-target="#myCarousel1" data-slide-to="3" class="active"></li>
-						<li data-target="#myCarousel1" data-slide-to="4"></li>
-						<li data-target="#myCarousel1" data-slide-to="5"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div class="item active">
-							<div class="row">
-								{% for hotel in hotel_one %}
-									<div class="col-sm-3"><a href="/item-detail/{{hotel.name}}" class="thumbnail"><img src="/static/image/{{hotel.image.url}}" alt="Image" class="img-responsive"></a>
-									</div>
-								{% endfor %}
-								<!-- <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="/static/image/Marriot.jpg" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="/static/image/ramada2.jpg" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>  -->
+		<h2>WELCOME TO</h2>
+		<h3>FASHION <span>CLUB</span></h3>
+		<p>Suspendisse sed tellus id libero pretium interdum. Suspendisse potenti. Quisque consectetur elit sit amet vehicula tristique. </p>
+		<a href="about.html">Read More</a>
+	</div>
+</div>
+<br> <br>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">													
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="title">
+						<span class="pull-left"><span class="text"><span class="line">Feature <strong>Hotels</strong></span></span></span>
+						<span class="pull-right">
+							<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+						</span>
+					</h4>
+					<div id="myCarousel" class="myCarousel carousel slide">
+						<div class="carousel-inner">
+							<div class="active item">
+								<ul class="thumbnails">											
+									<li class="col-md-3">
+										<div class="product-box">
+											<span class="sale_tag"></span>
+											<p><a href="product_detail.html"><img src="/static/themes/images/ladies/1.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+											<a href="products.html" class="category">Commodo consequat</a>
+											<p class="price">$17.25</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<span class="sale_tag"></span>
+											<p><a href="product_detail.html"><img src="themes/images/ladies/2.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$32.50</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/ladies/3.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Know exactly turned</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$14.20</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/ladies/4.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">You think fast</a><br/>
+											<a href="products.html" class="category">World once</a>
+											<p class="price">$31.45</p>
+										</div>
+									</li>
+								</ul>
 							</div>
-							
-						</div>
-						<div class="item">
-							<div class="row">
-								{% for hotel in hotel_two %}
-									<div class="col-sm-3"><a href="/item-detail/{{hotel.name}}" class="thumbnail"><img src="/static/image/{{hotel.image.url}}" alt="Image" class="img-responsive"></a>
-									</div>
-								{% endfor %}
-								<!-- <div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div> -->
+							<div class="item">
+								<ul class="thumbnails">
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/ladies/5.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Know exactly</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$22.30</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/ladies/6.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+											<a href="products.html" class="category">Commodo consequat</a>
+											<p class="price">$40.25</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/ladies/7.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">You think water</a><br/>
+											<a href="products.html" class="category">World once</a>
+											<p class="price">$10.45</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/ladies/8.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$35.50</p>
+										</div>
+									</li>															
+								</ul>
 							</div>
-						</div>
-						<!-- <div class="item">
-							<div class="row">
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-								<div class="col-sm-3"><a href="#x" class="thumbnail"><img src="http://www.mariowiki.com/images/thumb/2/21/FortuneStMario.png/250px-FortuneStMario.png" alt="Image" class="img-responsive"></a>
-								</div>
-							</div>
-						</div> -->
+						</div>							
 					</div>
-					<a class="left carousel-control" href="#myCarousel1" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
-
-					<a class="right carousel-control" href="#myCarousel1" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
-				</div>
-				
+				</div>						
 			</div>
+			<br/>
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="title">
+						<span class="pull-left"><span class="text"><span class="line">Featured <strong>Restaurents</strong></span></span></span>
+						<span class="pull-right">
+							<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+						</span>
+					</h4>
+					<div id="myCarousel-2" class="myCarousel carousel slide">
+						<div class="carousel-inner">
+							<div class="active item">
+								<ul class="thumbnails">	
+									{% for restaurant in rest_one %}											
+										<li class="col-md-3">
+											<div class="product-box">
+												<span class="sale_tag"></span>
+        										<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
+												<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt="" /></a></p>
+												<a href="/detail/{{restaurant.url}}" class="title">{{restaurant.name}}</a><br/>
+												<!-- <a href="products.html" class="category">Commodo consequat</a>
+												<p class="price">$25.50</p> -->
+											</div>
+										</li>
+									{% endfor %}
+									<!-- <li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$17.55</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware6.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Know exactly turned</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$25.30</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware5.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">You think fast</a><br/>
+											<a href="products.html" class="category">World once</a>
+											<p class="price">$25.60</p>
+										</div>
+									</li> -->
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware4.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Know exactly</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$45.50</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware3.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
+											<a href="products.html" class="category">Commodo consequat</a>
+											<p class="price">$33.50</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">You think water</a><br/>
+											<a href="products.html" class="category">World once</a>
+											<p class="price">$45.30</p>
+										</div>
+									</li>
+									<li class="col-md-3">
+										<div class="product-box">
+											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
+											<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
+											<a href="products.html" class="category">Quis nostrud</a>
+											<p class="price">$25.20</p>
+										</div>
+									</li>				
+								</ul>
+							</div>
+						</div>							
+					</div>
+				</div>						
+			</div>
+		</div>				
+	</div>
+</div>
+
+<br><br>
+<div class="footer">
+	<div class="container">
+	<div class="jumbotron">
+		<div class="col-md-3 footer-grids fgd1">
+		<h4>Information</h4> 
+			<ul>
+				<li><a href="contact.html">Contact Us</a></li>
+				<li><a href="faq.html">FAQ's</a></li>
+			</ul>
+		</div>
+		<div class="col-md-3 footer-grids fgd2">
 			
 		</div>
+		<div class="col-md-3 footer-grids fgd3">
+			
+		</div>
+		<div class="col-md-3 footer-grids fgd4">
+			<h4>My Account</h4> 
+			<ul>
+				<li><a href="login.html">Login</a></li>
+				<li><a href="register.html">Register</a></li>
+			</ul>
+		</div>
 	</div>
-</li>
+	</div>	
+</div>
+	<script src="js/minicart.js"></script>
+	<script type="text/javascript">
+		$(".product-box").click(function(){
+			var name = $("#name").val();
+			var name1 = name.replace(/\ /g,'');
+			console.log(name1);
+			var temp = "/detail/";
+			var url = temp + name1;
+			console.log(url);
+			$.ajax({
+				type:"GET",
+				url:url,
+				data: {
+					'name':name,
+				},
+			})
+		})
+	</script>
+	<script>
+        w3ls1.render();
+
+        w3ls1.cart.on('w3sb1_checkout', function (evt) {
+        	var items, len, i;
+
+        	if (this.subtotal() > 0) {
+        		items = this.items();
+
+        		for (i = 0, len = items.length; i < len; i++) {
+        			items[i].set('shipping', 0);
+        			items[i].set('shipping2', 0);
+        		}
+        	}
+        });
+    </script> 
 
 </body>
 </html>
-

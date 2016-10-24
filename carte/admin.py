@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Restaurant)
 admin.site.register(Hotel)
+admin.site.register(Rate_Review)

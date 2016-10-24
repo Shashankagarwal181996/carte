@@ -24,10 +24,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/',views.signin,name="signin"),
     url(r'^index/',views.index,name="index"),
+    url(r'^register/',views.register,name="register"),
     url(r'^signup/',views.signup,name="signup"),
     url(r'^profile/',views.profile,name="profile"),
     url(r'^update_profile/',views.update_profile,name="update_profile"),
     url(r'^dashboard/',views.dashboard,name="dashboard"),
+    url(r'^detail/(?P<name>[a-z,A-Z,0-9-]+)/',views.product_detail,name="detail"),
+    url(r'^add-review/',views.add_review,name="add_review"),
     url(r'^search/',views.search,name="search"),
     url(r'^logout/',views.logout_user,name="logout"),
 
