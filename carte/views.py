@@ -174,8 +174,8 @@ def dashboard(request):
 		hotel_two = []
 		
 		rest_one = restaurant_list[:4]
-		rest_two = restaurant_list[5:9]
-		rest_three = restaurant_list[10:]
+		rest_two = restaurant_list[4:8]
+		rest_three = restaurant_list[8:12]
 		# rest_two = restaurant_list[4:]
 		hotel_one = hotel_list[:4]
 		# hotel_two = hotel_list[]
@@ -196,17 +196,19 @@ def dashboard(request):
 def product_detail(request,name):
 	# name = request.GET.get('name')
 	name = name
-	print name
+	# print name
 	flag=0
 	tags = []
 	tags_all = []
 	hotel_features = []
 	related_places = []
+	restaurant_list = []
 	restaurants = Restaurant.objects.order_by('rating')
-	print restaurants
+	# print restaurants
 	for restaurant in restaurants:
 		names = str(restaurant.name)
 		names = names.replace(" ","")
+		restaurant_list.append(restaurant)
 		if name in names:
 			cuisine = None
 		else:
@@ -231,10 +233,15 @@ def product_detail(request,name):
 			tags = cuisines.split(',')
 			break
 
-	for tag in tags_all:
-		for restaurant_tag in tags:
-			if tag in restaurant_tag:
-				related_places.append(restaurant)
+	# for tag in tags_all:
+	# 	tag = tag.lstrip()
+	# 	for restaurant_tag in tags:
+	# 		restaurant_tag = restaurant_tag.lstrip()
+	# 		if tag in restaurant_tag:
+	# 			related_places.append(restaurant)
+
+	# print "related places"
+	# print related_places
 
 
 	if flag == 0:
@@ -266,10 +273,12 @@ def product_detail(request,name):
 				tags = hotel_features.split(',')
 				break
 
-		for tag in tags_all:
-			for hotel_tag in tags:
-				if hotel_tag in tag:
-					related_places.append(hotel)
+		# for tag in tags_all:
+		# 	for hotel_tag in tags:
+		# 		if hotel_tag in tag:
+		# 			related_places.append(hotel)
+	print restaurant_list
+	related_places = restaurant_list[:3]
 
 	detail = Rate_Review.objects.all()
 	rate_review_object = []
@@ -278,9 +287,12 @@ def product_detail(request,name):
 		names= names.replace(" ","")
 		if names in name:
 			rate_review_object.append(rate_review)
+	
 	print "hello"
+	
 	for rate_review in rate_review_object:
 		print rate_review.review
+	
 	if rate_review_object:
 		context_list={
 			'place' : place,
@@ -301,6 +313,7 @@ def product_detail(request,name):
 
 def add_review(request):
 	review = request.POST.get('add_review')
+	rating = request.POST.get('add_rating')
 	name = request.POST.get('product_name')
 	# rating = request.POST.get('add_rating')
 	place = Restaurant.objects.filter(name=name)
@@ -308,7 +321,7 @@ def add_review(request):
 		place = Hotel.objects.filter(name=name)
 	userid = request.session['userid']
 	users = User.objects.filter(id=request.session['userid'])
-	new_review = Rate_Review.objects.create(review=review,rating=2,item_name=name)
+	new_review = Rate_Review.objects.create(review=review,rating=rating,item_name=name)
 	new_review.save()
 	new_review.user = users
 	print place,new_review.review,name

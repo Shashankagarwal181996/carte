@@ -3,7 +3,7 @@
 <html lang="en">
 {% load staticfiles %}
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+<title>CARTE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-3 logo-w3">
-			<a href="index.html"><h1>CARTE </h1></a>
+			<a href="/dashboard/"><h1>CARTE </h1></a>
 		</div>
 
 		<!-- <div class="col-md-6 phone-w3l">
@@ -79,9 +79,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
-						<li class=" active"><a href="index.html" class="hyper "><span>Home</span></a></li>	
-						<li><a href="about.html" class="hyper"><span>About</span></a></li>
-						<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
+						<li class=" active"><a href="/dashboard/" class="hyper "><span>Home</span></a></li>	
+<!-- 						<li><a href="about.html" class="hyper"><span>About</span></a></li>
+						<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li> -->
 					</ul>
 				</div>
 			</nav>
@@ -116,9 +116,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner-agile">
 	<div class="container">
 		<h2>WELCOME TO</h2>
-		<h3>FASHION <span>CLUB</span></h3>
-		<p>Suspendisse sed tellus id libero pretium interdum. Suspendisse potenti. Quisque consectetur elit sit amet vehicula tristique. </p>
-		<a href="about.html">Read More</a>
+		<h3>CARTE</h3>
+		<p>Find out thebest cafes hotels and restaurants nearby.</p>
+		<!-- <a href="about.html">Read More</a> -->
 	</div>
 </div>
 
@@ -324,16 +324,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					                    <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
 					                        <input id="ratings-hidden" name="rating" type="hidden"> 
 					                        
+					                        <textarea class="form-control animated" cols="10" id="new-review" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
+
+					                        <br>
+					                        <br>
+
 					                        <textarea class="form-control animated" cols="50" id="new-review" name="add_review" id="add_review" placeholder="Enter your review here..." rows="5"></textarea>
 					        				
 					        				<input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
 					                        
-					                        <div class="text-right">
+
+					                        <!-- <div class="text-right">
 					                            <div class="stars starrr" data-rating="0"></div>
 					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
 					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
 					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
-					                        </div>
+					                        </div> -->
 					                    </form>
 					                </div>
 					            </div>
@@ -430,7 +436,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li class="col-md-3">
 										<div class="product-box">
 											<span class="sale_tag"></span>
-											<a href="/detail/{{place.url}}"><img alt="" src="/static/media/{{place.image}}">
+											<a href="/detail/{{place.url}}"><img alt="" height="230px" src="/static/media/{{place.image}}">
 												<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-5">
         										3.8
       										</div>
