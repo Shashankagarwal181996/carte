@@ -389,7 +389,7 @@ def search(request):
 		name = restaurant.name
 		name = str(name)
 		description = restaurant.description
-		description = str(description)
+		# description = str(description)
 		cuisine = restaurant.cuisines
 		cuisine = str(cuisine)
 		cuisine = cuisine.split(',')
@@ -411,6 +411,7 @@ def search(request):
 			item_list.append(restaurant)
 			flag = 1
 		for cuisine in cuisine:
+			cuisine = cuisine.lstrip()
 			if search_query in cuisine.lower():
 				item_list.append(restaurant)
 				flag = 1
@@ -419,7 +420,7 @@ def search(request):
 			name = hotel.name
 			name = str(name)
 			description = hotel.description
-			description = str(description)
+			# description = str(description)
 			hotel_tags = hotel.hotel_tags
 			hotel_tags = str(hotel_tags)
 			hotel_tags = hotel_tags.split(',')
@@ -440,9 +441,9 @@ def search(request):
 			elif search_query in description.lower():
 				item_list.append(hotel)
 				flag = 2
-			elif search_query in hotel_tags.lower():
-				item_list.append(hotel)
-				flag = 2
+			# elif search_query in hotel_tags.lower():
+			# 	item_list.append(hotel)
+			# 	flag = 2
 	print item_list
 	context_list = {
 		'places':item_list,		
