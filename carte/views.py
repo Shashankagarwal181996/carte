@@ -127,22 +127,11 @@ def dashboard(request):
 	hotels = Hotel.objects.order_by('rating')
 	restaurants = Restaurant.objects.order_by('rating')
 
+	# print hotels
+	# print restaurants
+
 	hotel_list = []
 	restaurant_list = []
-	# print hotels[0].image,restaurants[0].image
-
-	# for hotel in hotels:
-	# 	# img = hotel.image
-	# 	# img = str(img)
-	# 	# img1 = img.split('_')
-	# 	# temp = img1[0]
-	# 	# img = temp[1:]
-	# 	# if len(img1) != 1:
-	# 	# 	img = img + '.jpg'
-	# 	# print img
-	# 	# hotel.image = img
-	# 	print hotel.image.url
-	# 	hotel_list.append(hotel)
 
 	for restaurant in restaurants:
 		url = restaurant.name
@@ -157,23 +146,46 @@ def dashboard(request):
 			img = img + '.jpg' 
 		# print img
 		restaurant.image = img[1:]
-		print restaurant.image
+		# print restaurant.image
 		restaurant_list.append(restaurant)
+
+		# print restaurant_list
+
+	for hotel in hotels:
+		url = hotel.name
+		url = str(hotel.name)
+		hotel.url = url.replace(" ","")
+		img = hotel.image
+		img = str(img)
+		img1 = img.split('_')
+		img = img1[0]
+		img = img[1:]
+		if len(img1) != 1:
+			img = img + '.jpg' 
+		# print img
+		hotel.image = img[1:]
+		# print restaurant.image
+		hotel_list.append(hotel)
 
 		rest_one = []
 		rest_two = []
+		rest_three = []
 		hotel_one = []
 		hotel_two = []
 		
-		rest_one = restaurant_list[:3]
+		rest_one = restaurant_list[:4]
+		rest_two = restaurant_list[5:9]
+		rest_three = restaurant_list[10:]
 		# rest_two = restaurant_list[4:]
-		# hotel_one = hotel_list[:3]
-		# hotel_two = hotel_list[4:]
+		hotel_one = hotel_list[:4]
+		# hotel_two = hotel_list[]
 
 	context_list = {
 		'rest_one': rest_one,
+		'rest_two': rest_two,
+		'rest_three':rest_three,
 		# 'rest_two': rest_two,
-		# 'hotel_one': hotel_one,
+		'hotel_one': hotel_one,
 		# 'hotel_two': hotel_two,
 		'user':user[0],
 		# 'hotels': hotels,
@@ -259,15 +271,17 @@ def product_detail(request,name):
 				if hotel_tag in tag:
 					related_places.append(hotel)
 
-		detail = Rate_Review.objects.all()
-		for rate_review in detail:
-			names = str(rate_review.item_name)
-			names= names.replace(" ","")
-			if names in name:
-				rate_review_object = rate_review
-
-	rate_review_object = 'a'
-	if rate_review_object is not 'a':
+	detail = Rate_Review.objects.all()
+	rate_review_object = []
+	for rate_review in detail:
+		names = str(rate_review.item_name)
+		names= names.replace(" ","")
+		if names in name:
+			rate_review_object.append(rate_review)
+	print "hello"
+	for rate_review in rate_review_object:
+		print rate_review.review
+	if rate_review_object:
 		context_list={
 			'place' : place,
 			'category' : category,
@@ -299,11 +313,24 @@ def add_review(request):
 	new_review.user = users
 	print place,new_review.review,name
 	rate_review = Rate_Review.objects.filter(item_name=name)
+	img = place[0].image
+	img = str(img)
+	img1 = img.split('_')
+	img = img1[0]
+	img = img[1:]
+	if len(img1) != 1:
+		img = img + '.jpg' 
+		# print img
+		place[0].image = img[1:]
+	print place[0].image
+	tags = []
+	tags = str(place[0].cuisines).split(',')
 	context_list = {
+		'place':place[0],
 		'rate_review':rate_review,
-		'place':place,
+		'tags':tags,
 	}
-	return render_to_response('product_detail.html',context_list,RequestContext(request))
+	return render_to_response('review.html',context_list,RequestContext(request))
 
 # .lower() in python
 def search(request):
@@ -337,7 +364,7 @@ def search(request):
 
 
 
-	search_query = request.POST.get('search')
+	search_query = request.GET.get('search')
 
 	restaurant_list = Restaurant.objects.order_by('rating')
 	hotel_list = Hotel.objects.order_by('rating')

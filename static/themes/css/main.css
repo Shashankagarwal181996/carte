@@ -44,7 +44,9 @@ a:hover{
 }
 .right{
 	text-align:right !important;
+	float:right;
 }
+
 .myCarousel.carousel{
 	margin-bottom:0;
 }
@@ -891,3 +893,110 @@ input[type="file"]{
     cursor: pointer;
 }
 .custom-input-file:hover .uploadPhoto { display: block; }
+
+ .animated {
+    -webkit-transition: height 0.2s;
+    -moz-transition: height 0.2s;
+    transition: height 0.2s;
+}
+
+.stars
+{
+    margin: 20px 0;
+    font-size: 24px;
+    color: #d17581;
+}
+
+.rrw-aggregate {
+	width:80px;
+	float:right;
+	border-radius:.28571429rem;
+	color:#fff;
+	font-weight:700;
+	font-size:30px;
+	line-height:39px
+}
+.rrw-aggregate span {
+	font-size:22px;
+	opacity:.5
+}
+
+.level-5 {
+	background:#CDD614;
+	border-color:#CDD614!important
+}
+
+.icon-font-level-5:after {
+	color:#CDD614;
+	font-size:24px;
+	line-height:8px;
+	margin-top:2px;
+	margin-left:3px!important
+}
+
+.ads-res-snippet-rating.small_font {
+	font-size:10px!important;
+	padding:1px 4px
+}
+.ads-res-snippet-rating.res-softblocker {
+	min-width:28px
+}
+.ads-res-snippet-rating,.ads-res-snippet-rating-large {
+	text-align:center;
+	color:#fff;
+	padding:2px 5px;
+	height:22px;
+	cursor:default;
+	font-size:13pt;
+	letter-spacing:-.2px;
+	font-weight:500;
+	-moz-border-radius:0 3px;
+	-webkit-border-radius:0 3px;
+	border-radius:0 3px;
+	position:absolute;
+	top:0;
+	right:0
+}
+.ads-res-snippet-rating-large {
+	padding:4px 8px;
+	height:28px;
+	font-weight:600;
+	width:40px
+}
+
+.google-custom-marker-icon.level-5 .icon_container,.leaflet-marker-icon.level-5 .icon_container {
+	background:#edd614;
+	border-color:#edd614
+}
+.google-custom-marker-icon.level-5 .icon_arrow,.leaflet-marker-icon.level-5 .icon_arrow {
+	border-top-color:#edd614
+}
+.google-custom-marker-icon.level-5 .nonpage_marker,.leaflet-marker-icon.level-5 .nonpage_marker {
+	background:#edd614;
+	border-color:#edd614
+}
+
+.google-custom-marker-icon.level-6 .icon_container,.leaflet-marker-icon.level-6 .icon_container {
+	background:#9acd32;
+	border-color:#9acd32
+}
+.google-custom-marker-icon.level-6 .icon_arrow,.leaflet-marker-icon.level-6 .icon_arrow {
+	border-top-color:#9acd32
+}
+.google-custom-marker-icon.level-6 .nonpage_marker,.leaflet-marker-icon.level-6 .nonpage_marker {
+	background:#9acd32;
+	border-color:#9acd32
+}
+
+.icon-font-level-6:after {
+	color:#9ACD32;
+	font-size:24px;
+	line-height:8px;
+	margin-top:2px;
+	margin-left:3px!important
+}
+
+.level-6 {
+	background:#9ACD32;
+	border-color:#9ACD32!important
+}

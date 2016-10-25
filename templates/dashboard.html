@@ -2,7 +2,7 @@
 <html lang="en">
 {% load staticfiles %}
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+<title>CARTE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -32,9 +32,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-6 phone-w3l">
 			<ul>
 				<li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
-				<li><a href="myaccount.html">My Account  </a></li>
+				<li><a href="/profile/">My Account  </a></li>
 				<li style="padding-left: 10px"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></li>
-				<li><a href="login.html">Logout</a></li>
+				<li><a href="/logout/">Logout</a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
@@ -56,8 +56,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
 						<li class=" active"><a href="index.html" class="hyper "><span>Home</span></a></li>
-						<li><a href="about.html" class="hyper"><span>About</span></a></li>
-						<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li>
+						<!-- <li><a href="about.html" class="hyper"><span>About</span></a></li>
+						<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li> -->
 					</ul>
 				</div>
 			</nav>
@@ -79,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		
 		<div class="col-md-4 search-agileinfo" >
-			<form action="/search/" method="POST" >{% csrf_token %}
+			<form action="/search/" method="GET">
 				<input type="search" name="search" id="search" placeholder="Enter Search Query" required="">
 				<a href="#abc">
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
@@ -94,9 +94,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner-agile">
 	<div class="container">
 		<h2>WELCOME TO</h2>
-		<h3>FASHION <span>CLUB</span></h3>
-		<p>Suspendisse sed tellus id libero pretium interdum. Suspendisse potenti. Quisque consectetur elit sit amet vehicula tristique. </p>
-		<a href="about.html">Read More</a>
+		<h3>CARTE </h3>
+		<p>Find out the best cafes hotels and restaurants nearby.</p>
+		<!-- <a href="about.html">Read More</a> -->
 	</div>
 </div>
 <br> <br>
@@ -114,77 +114,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="myCarousel" class="myCarousel carousel slide">
 						<div class="carousel-inner">
 							<div class="active item">
-								<ul class="thumbnails">											
+								<ul class="thumbnails">	
+									{% for hotel in hotel_one %}										
 									<li class="col-md-3">
 										<div class="product-box">
 											<span class="sale_tag"></span>
-											<p><a href="product_detail.html"><img src="/static/themes/images/ladies/1.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-											<a href="products.html" class="category">Commodo consequat</a>
-											<p class="price">$17.25</p>
+										
+											<input type="hidden" id="name" name='name' value="{{hotel.name}}">
+
+											<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{hotel.image}}" alt="" />
+												
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{hotel.rating}}</div>
+											
+											</a></p>
+												
+											<a href="/detail/{{hotel.url}}" class="title">{{hotel.name}}</a><br/>
+										
 										</div>
 									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<span class="sale_tag"></span>
-											<p><a href="product_detail.html"><img src="themes/images/ladies/2.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$32.50</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/ladies/3.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Know exactly turned</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$14.20</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/ladies/4.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">You think fast</a><br/>
-											<a href="products.html" class="category">World once</a>
-											<p class="price">$31.45</p>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<div class="item">
-								<ul class="thumbnails">
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/ladies/5.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Know exactly</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$22.30</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/ladies/6.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-											<a href="products.html" class="category">Commodo consequat</a>
-											<p class="price">$40.25</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/ladies/7.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">You think water</a><br/>
-											<a href="products.html" class="category">World once</a>
-											<p class="price">$10.45</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/ladies/8.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$35.50</p>
-										</div>
-									</li>															
+									{% endfor %}
 								</ul>
 							</div>
 						</div>							
@@ -209,74 +157,56 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<li class="col-md-3">
 											<div class="product-box">
 												<span class="sale_tag"></span>
+        										
         										<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
-												<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt="" /></a></p>
+												
+												<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt="" />
+												
+												<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{restaurant.rating}}</div>
+												</a></p>
+												
 												<a href="/detail/{{restaurant.url}}" class="title">{{restaurant.name}}</a><br/>
 												<!-- <a href="products.html" class="category">Commodo consequat</a>
 												<p class="price">$25.50</p> -->
 											</div>
 										</li>
 									{% endfor %}
-									<!-- <li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$17.55</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware6.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Know exactly turned</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$25.30</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware5.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">You think fast</a><br/>
-											<a href="products.html" class="category">World once</a>
-											<p class="price">$25.60</p>
-										</div>
-									</li> -->
 								</ul>
 							</div>
 							<div class="item">
 								<ul class="thumbnails">
+									{% for restaurant in rest_two %}
 									<li class="col-md-3">
 										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware4.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Know exactly</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$45.50</p>
+											<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
+
+											<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt="" >
+											
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{restaurant.rating}}</div>
+											</a></p>
+											
+											<a href="/detail/{{restaurant.url}}" class="title">{{restaurant.name}}</a><br/>
 										</div>
 									</li>
+									{% endfor %}	
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">
+									{% for restaurant in rest_three %}
 									<li class="col-md-3">
 										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware3.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-											<a href="products.html" class="category">Commodo consequat</a>
-											<p class="price">$33.50</p>
+											<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
+
+											<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt="" >
+											
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{restaurant.rating}}</div>
+											</a></p>
+											
+											<a href="/detail/{{restaurant.url}}" class="title">{{restaurant.name}}</a><br/>
 										</div>
 									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware2.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">You think water</a><br/>
-											<a href="products.html" class="category">World once</a>
-											<p class="price">$45.30</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<p><a href="product_detail.html"><img src="themes/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
-											<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
-											<a href="products.html" class="category">Quis nostrud</a>
-											<p class="price">$25.20</p>
-										</div>
-									</li>				
+									{% endfor %}	
 								</ul>
 							</div>
 						</div>							
@@ -307,8 +237,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-3 footer-grids fgd4">
 			<h4>My Account</h4> 
 			<ul>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="register.html">Register</a></li>
+				<li><a href="/index/">Login</a></li>
+				<li><a href="/register/">Register</a></li>
 			</ul>
 		</div>
 	</div>

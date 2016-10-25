@@ -236,13 +236,13 @@ button.w3view-cart:focus{
 	min-height:480px;
 }
 .banner-agile h2{
-	font-size:35px;
+	font-size:55px;
 	text-align:left;
 	margin-top:18%;
 	color: #00e58b;
 }
 .banner-agile h3{
-	font-size:50px;
+	font-size:80px;
 	text-align:left;
 	margin:15px 0;
 	color:#fff;
@@ -253,10 +253,11 @@ button.w3view-cart:focus{
 }
 .banner-agile p{
 	width:49%;
-	font-size:14px;
+	font-size:18px;
 	line-height:28px;
 	text-align:left;
 	color: #c2cac7;
+	font-family: "Lucida Sans Unicode";
 }
 .banner-agile a{
 	background:#000;

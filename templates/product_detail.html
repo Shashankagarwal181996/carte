@@ -54,9 +54,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-6 phone-w3l">
 			<ul>
 				<li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
-				<li><a href="myaccount.html">My Account  </a></li>
+				<li><a href="/profile/">My Account  </a></li>
 				<li style="padding-left: 10px"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></li>
-				<li><a href="login.html">Logout</a></li>
+				<li><a href="/logout/">Logout</a></li>
 			</ul>
 		</div>
 
@@ -102,8 +102,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</script>
 
 		<div class="col-md-4 search-agileinfo" >
-			<form action="#" method="post" >
-				<input type="search" name="Search" placeholder="Enter Location" required="">
+			<form action="/search/" method="GET" >
+				<input type="search" name="search" id="search" placeholder="Enter Search query" required="">
 				<a id="hello"><button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>
 				</button>
@@ -131,6 +131,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<a href="{% static "themes/images/ladies/1.jpg" %}" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img id = "im1" alt="" src="/static/media/{{place.image}}" ></a>
 				</div>						
 			</div>
+			<div class="col-md-11">
+			<div class="col-l-4 tac left">
+                <div class="right">
+                    <div class="right rating-info rrw-container rrw-container-102960 " itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+                        <div class="res-rating pos-relative clearfix mb5">
+                            <div tabindex="0" aria-label="Rated" itemprop="ratingValue" data-res-id="102960" class="rating-for-102960 rating-div rrw-aggregate level-5">
+                                3.4<span>/5</span>             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
 			<div class="row">
 
 				<!-- navtabs are here -->
@@ -279,7 +292,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                      </li> -->
 	                    </ul> 
                 	</div>
-                	<div class="tab-pane" id="add_comment">
+                	<!-- <div class="tab-pane" id="add_comment">
                     	<form action="/add-review/" method="post" class="form-horizontal" id="commentForm" role="form">{% csrf_token %}
 	                        <div class="form-group">
 	                        	<div class="col-sm-11 col-md-11">
@@ -296,6 +309,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                            </div>
 	                        </div>            
                     	</form>
+                </div> -->
+                		<div class="tab-pane" id="add_comment">
+                	 <div class="container">
+						<div class="row" style="margin-top:10px;">
+							<div class="col-md-6">
+					    	<div class="well well-sm">
+					            <div class="text-right">
+					                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
+					            </div>
+					        
+					            <div class="row" id="post-review-box" style="display:none;">
+					                <div class="col-md-12">
+					                    <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
+					                        <input id="ratings-hidden" name="rating" type="hidden"> 
+					                        
+					                        <textarea class="form-control animated" cols="50" id="new-review" name="add_review" id="add_review" placeholder="Enter your review here..." rows="5"></textarea>
+					        				
+					        				<input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
+					                        
+					                        <div class="text-right">
+					                            <div class="stars starrr" data-rating="0"></div>
+					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+					                        </div>
+					                    </form>
+					                </div>
+					            </div>
+					        </div> 
+					         
+							</div>
+						</div>
+					</div>
                 </div>
 						<div class="tab-pane active" id="home">{{place.description}}</div>
 						<div class="tab-pane" id="openhrs">
@@ -384,7 +430,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<li class="col-md-3">
 										<div class="product-box">
 											<span class="sale_tag"></span>
-											<a href="/detail/{{place.url}}"><img alt="" src="/static/media/{{place.image}}"></a><br/>
+											<a href="/detail/{{place.url}}"><img alt="" src="/static/media/{{place.image}}">
+												<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-5">
+        										3.8
+      										</div>
+											</a><br/>
 											<a href="/detail/{{place.url}}" class="title">{{place.name}}</a><br/>
 											<!-- <a href="#" class="category">Suspendisse aliquet</a>
 											<p class="price">$341</p> -->
@@ -467,8 +517,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-3 footer-grids fgd4">
 			<h4>My Account</h4> 
 			<ul>
-				<li><a href="login.html">Login</a></li>
-				<li><a href="register.html">Register</a></li>
+				<li><a href="/index/">Login</a></li>
+				<li><a href="/register/">Register</a></li>
 			</ul>
 		</div>
 	</div>
