@@ -12,6 +12,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 
 from .models import *
 
+import datetime
+
 @ensure_csrf_cookie
 def index(request):
 	# user = User.objects.create_user(username="sh",email="shashankagarwal@gmail.com",password="shashank")
@@ -260,8 +262,6 @@ def product_detail(request,name):
 				hotel_tag = hotel_tag.lstrip()
 				if hotel_tag in tag:
 					related_places.append(hotel)
-	# print restaurant_list
-	# related_places = restaurant_list[:3]
 
 	detail = Rate_Review.objects.all()
 	rate_review_object = []
@@ -271,11 +271,11 @@ def product_detail(request,name):
 		if names in name:
 			rate_review_object.append(rate_review)
 	
-	print "hello"
-	
-	# for rate_review in rate_review_object:
-	# 	print rate_review.review
-	
+	date = datetime.date.today()
+
+	for restaurant in restaurants:
+		related_places.append(restaurant)
+
 	if rate_review_object:
 		context_list={
 			'place' : place,
@@ -283,13 +283,15 @@ def product_detail(request,name):
 			'tags': tags,
 			'related_places': related_places[:3],
 			'rate_review':rate_review_object,
+			'date':date,
 		}
 	else:
 		context_list={
 			'place' : place,
 			'category' : category,
 			'tags': tags,
-			'related_places': related_places[:3],
+			'related_places': related_places[3:6],
+			'date':date,
 			# 'rate_review':rate_review_object,
 		}
 	return render_to_response('product_detail.html',context_list,RequestContext(request))
