@@ -18,6 +18,9 @@ class Rate_Review(models.Model):
 	user = models.ManyToManyField(User,blank=True)
 	item_name = models.CharField(max_length=100)
 
+	def __str__(self):
+		return self.review
+
 class Restaurant(models.Model):
 	name = models.CharField(max_length=100)
 	email = models.EmailField(max_length=100,null=True)

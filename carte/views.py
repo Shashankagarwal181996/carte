@@ -112,24 +112,17 @@ def update_profile(request):
 		user.email = email
 		user.username = username
 		user.set_password(password)
-		print user
-		user.save()
+		# user.save()
 		return HttpResponseRedirect('/dashboard/')
 	else:
 		HttpResponse("Passwords do not match")
 
 def dashboard(request):
-	# user = request.user
 	userid = request.session['userid']
 	user = User.objects.filter(id=request.session['userid'])
-	# user = User.objects.filter(username=user)
 	print user[0]
 	hotels = Hotel.objects.order_by('rating')
 	restaurants = Restaurant.objects.order_by('rating')
-
-	# print hotels
-	# print restaurants
-
 	hotel_list = []
 	restaurant_list = []
 
@@ -144,12 +137,8 @@ def dashboard(request):
 		img = img[1:]
 		if len(img1) != 1:
 			img = img + '.jpg' 
-		# print img
 		restaurant.image = img[1:]
-		# print restaurant.image
 		restaurant_list.append(restaurant)
-
-		# print restaurant_list
 
 	for hotel in hotels:
 		url = hotel.name
@@ -162,9 +151,7 @@ def dashboard(request):
 		img = img[1:]
 		if len(img1) != 1:
 			img = img + '.jpg' 
-		# print img
 		hotel.image = img[1:]
-		# print restaurant.image
 		hotel_list.append(hotel)
 
 		rest_one = []
@@ -176,19 +163,14 @@ def dashboard(request):
 		rest_one = restaurant_list[:4]
 		rest_two = restaurant_list[4:8]
 		rest_three = restaurant_list[8:12]
-		# rest_two = restaurant_list[4:]
 		hotel_one = hotel_list[:4]
-		# hotel_two = hotel_list[]
 
 	context_list = {
 		'rest_one': rest_one,
 		'rest_two': rest_two,
 		'rest_three':rest_three,
-		# 'rest_two': rest_two,
 		'hotel_one': hotel_one,
-		# 'hotel_two': hotel_two,
 		'user':user[0],
-		# 'hotels': hotels,
 		'restaurants': restaurants, 
 	}
 	return render_to_response('dashboard.html',context_list,RequestContext(request))
@@ -222,7 +204,6 @@ def product_detail(request,name):
 		img = img[1:]
 		if len(img1) != 1:
 			img = img + '.jpg' 
-		# print img
 		restaurant.image = img[1:]
 
 		if name in names:
@@ -345,51 +326,23 @@ def add_review(request):
 	}
 	return render_to_response('review.html',context_list,RequestContext(request))
 
-# .lower() in python
+	
 def search(request):
-
-
-	# if search_query == "chilly food":
-	# 	restaurant = Restaurant.objects.order_by('rating')
-
-		# item_list = []
-		# for restaurant in restaurant:
-		# 	img = restaurant.image
-		# 	img = str(img)
-		# 	img1 = img.split('_')
-		# 	img = img1[0]
-		# 	img = img[1:]
-		# 	if len(img1) != 1:
-		# 		img = img + '.jpg' 
-		# 	print img
-		# 	restaurant.image = img
-		# 	restaurant_list.append(restaurant)
-		# 	name = str(restaurant.name)
-		# 	name = name.lower()
-		# 	if search_query.lower() in name:
-		# 		item_list.append(restaurant)
-			
-		# for hotel in hotel.objects.order_by('rating'):
-		# 	name = str(hotel.name)
-		# 	name = name.lower()
-		# 	if search_query.lower() in name:
-		# 		item_list.append(hotel)
-
-
-
 	search_query = request.GET.get('search')
-
 	restaurant_list = Restaurant.objects.order_by('rating')
 	hotel_list = Hotel.objects.order_by('rating')
 	search_query = str(search_query)
 	search_query = search_query.lower()
+	print search_query
 	item_list = []
 	flag=0
 	for restaurant in restaurant_list:
 		name = restaurant.name
 		name = str(name)
+		url = restaurant.name
+		url = str(restaurant.name)
+		restaurant.url = url.replace(" ","")
 		description = restaurant.description
-		# description = str(description)
 		cuisine = restaurant.cuisines
 		cuisine = str(cuisine)
 		cuisine = cuisine.split(',')
@@ -398,20 +351,24 @@ def search(request):
 		img = str(img)
 		img1 = img.split('_')
 		img = img1[0]
-		img = img[1:]
+		img = img[2:]
 		if len(img1) != 1:
 			img = img + '.jpg' 
 		print img
 		restaurant.image = img
-
+		name = name.lstrip()
 		if search_query in name.lower():
 			item_list.append(restaurant)
 			flag = 1
 		if search_query in description.lower():
 			item_list.append(restaurant)
 			flag = 1
+		if search_query in restaurant.city.lower():
+			item_list.append(restaurant)
+			flag=1
 		for cuisine in cuisine:
 			cuisine = cuisine.lstrip()
+			print cuisine.lower()
 			if search_query in cuisine.lower():
 				item_list.append(restaurant)
 				flag = 1
@@ -419,6 +376,9 @@ def search(request):
 		for hotel in hotel_list:
 			name = hotel.name
 			name = str(name)
+			url = restaurant.name
+			url = str(hotel.name)
+			hotel.url = url.replace(" ","")
 			description = hotel.description
 			# description = str(description)
 			hotel_tags = hotel.hotel_tags
@@ -438,12 +398,15 @@ def search(request):
 			if search_query in name.lower():
 				item_list.append(hotel)
 				flag = 2
-			elif search_query in description.lower():
+			if search_query in description.lower():
 				item_list.append(hotel)
 				flag = 2
-			# elif search_query in hotel_tags.lower():
-			# 	item_list.append(hotel)
-			# 	flag = 2
+			if search_query in hotel.city.lower():
+				item_list.append(hotel)
+			for hotel_tags in hotel_tags:
+				if search_query in hotel_tags.lower():
+					item_list.append(hotel)
+					flag = 2
 	print item_list
 	context_list = {
 		'places':item_list,		
