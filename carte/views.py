@@ -85,6 +85,7 @@ def profile(request):
 	last_name = user.last_name
 	email = user.email
 	username = user.username
+	print first_name,last_name,user.first_name
 	context_list = {
 		'first_name' : first_name,
 		'last_name' : last_name,
@@ -112,7 +113,7 @@ def update_profile(request):
 		user.email = email
 		user.username = username
 		user.set_password(password)
-		# user.save()
+		user.save()
 		return HttpResponseRedirect('/dashboard/')
 	else:
 		HttpResponse("Passwords do not match")
@@ -186,7 +187,6 @@ def product_detail(request,name):
 	related_places = []
 	restaurant_list = []
 	restaurants = Restaurant.objects.order_by('rating')
-	# print restaurants
 	for restaurant in restaurants:
 		names = str(restaurant.name)
 		names = names.replace(" ","")
@@ -214,15 +214,15 @@ def product_detail(request,name):
 			tags = cuisines.split(',')
 			break
 
-	# for tag in tags_all:
-	# 	tag = tag.lstrip()
-	# 	for restaurant_tag in tags:
-	# 		restaurant_tag = restaurant_tag.lstrip()
-	# 		if tag in restaurant_tag:
-	# 			related_places.append(restaurant)
+	for tag in tags_all:
+		tag = tag.lstrip()
+		for restaurant_tag in tags:
+			restaurant_tag = restaurant_tag.lstrip()
+			if tag in restaurant_tag:
+				related_places.append(restaurant)
 
-	# print "related places"
-	# print related_places
+	print "related places"
+	print related_places
 
 
 	if flag == 0:
@@ -254,12 +254,14 @@ def product_detail(request,name):
 				tags = hotel_features.split(',')
 				break
 
-		# for tag in tags_all:
-		# 	for hotel_tag in tags:
-		# 		if hotel_tag in tag:
-		# 			related_places.append(hotel)
-	print restaurant_list
-	related_places = restaurant_list[:3]
+		for tag in tags_all:
+			tag = tag.lstrip()
+			for hotel_tag in tags:
+				hotel_tag = hotel_tag.lstrip()
+				if hotel_tag in tag:
+					related_places.append(hotel)
+	# print restaurant_list
+	# related_places = restaurant_list[:3]
 
 	detail = Rate_Review.objects.all()
 	rate_review_object = []
@@ -271,15 +273,15 @@ def product_detail(request,name):
 	
 	print "hello"
 	
-	for rate_review in rate_review_object:
-		print rate_review.review
+	# for rate_review in rate_review_object:
+	# 	print rate_review.review
 	
 	if rate_review_object:
 		context_list={
 			'place' : place,
 			'category' : category,
 			'tags': tags,
-			'related_places': related_places,
+			'related_places': related_places[:3],
 			'rate_review':rate_review_object,
 		}
 	else:
@@ -287,7 +289,7 @@ def product_detail(request,name):
 			'place' : place,
 			'category' : category,
 			'tags': tags,
-			'related_places': related_places,
+			'related_places': related_places[:3],
 			# 'rate_review':rate_review_object,
 		}
 	return render_to_response('product_detail.html',context_list,RequestContext(request))
@@ -326,7 +328,7 @@ def add_review(request):
 	}
 	return render_to_response('review.html',context_list,RequestContext(request))
 
-	
+
 def search(request):
 	search_query = request.GET.get('search')
 	restaurant_list = Restaurant.objects.order_by('rating')
