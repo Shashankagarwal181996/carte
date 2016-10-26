@@ -184,6 +184,7 @@ def product_detail(request,name):
 	boolean = True
 	related_places = []
 	restaurant_list = []
+	tags_places = []
 	restaurants = Restaurant.objects.order_by('rating')
 	print name
 	restaurant_cuisine = []
@@ -209,6 +210,7 @@ def product_detail(request,name):
 			cuisines = restaurant.cuisines
 			restaurant_cuisine = cuisines.split(',')
 			for x in restaurant_cuisine:
+				tags_places.append(x)
 				x = str(x)
 				x = x.lstrip()
 		else:
@@ -240,6 +242,7 @@ def product_detail(request,name):
 				category = "HOTEL FEATURES"
 				hotel_features = str(hotel.hotel_tags)
 				tags = hotel_features.split(',')
+				tags_places = tags
 				for x in tags:
 					x = str(x)
 					x = x.lstrip()
@@ -266,12 +269,12 @@ def product_detail(request,name):
 
 	# for restaurant in restaurants:
 	# 	related_places.append(restaurant)
-
+	print tags_places
 	if rate_review_object:
 		context_list={
 			'place' : place,
 			'category' : category,
-			'tags': tags,
+			'tags':tags_places,
 			'related_places': related_places[:3],
 			'rate_review':rate_review_object,
 			'date':date,
@@ -279,8 +282,8 @@ def product_detail(request,name):
 	else:
 		context_list={
 			'place' : place,
+			'tags':tags_places,
 			'category' : category,
-			'tags': tags,
 			'related_places': related_places[:3],
 			'date':date,
 			# 'rate_review':rate_review_object,
