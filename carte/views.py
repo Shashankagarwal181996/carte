@@ -179,54 +179,56 @@ def dashboard(request):
 	return render_to_response('dashboard.html',context_list,RequestContext(request))
 
 def product_detail(request,name):
-	# name = request.GET.get('name')
 	name = name
-	# print name
 	flag=0
-	tags = []
-	tags_all = []
-	hotel_features = []
+	boolean = True
 	related_places = []
 	restaurant_list = []
 	restaurants = Restaurant.objects.order_by('rating')
+	print name
+	restaurant_cuisine = []
 	for restaurant in restaurants:
+		tags_all = []
 		names = str(restaurant.name)
 		names = names.replace(" ","")
 		restaurant_list.append(restaurant)
-		if name in names:
-			cuisine = None
-		else:
-			cuisine = str(restaurant.cuisines)
-			tags_all = cuisine.split(',')
-
-		img = restaurant.image
-		img = str(img)
-		img1 = img.split('_')
-		img = img1[0]
-		img = img[1:]
-		if len(img1) != 1:
-			img = img + '.jpg' 
-		restaurant.image = img[1:]
 
 		if name in names:
+			flag=1
+			# img = restaurant.image
+			# img = str(img)
+			# img1 = img.split('_')
+			# img = img1[0]
+			# img = img[1:]
+			# if len(img1) != 1:
+			# 	img = img + '.jpg' 
+			# restaurant.image = img[1:]
 			place = restaurant
 			flag=1
 			category = "CUISINES"
+			cuisines = restaurant.cuisines
+			restaurant_cuisine = cuisines.split(',')
+			for x in restaurant_cuisine:
+				x = str(x)
+				x = x.lstrip()
+		else:
 			cuisines = str(restaurant.cuisines)
-			tags = cuisines.split(',')
-			break
+			tags_all = cuisines.split(',')
+			for x in tags_all:
+				x = str(x)
+				x = x.lstrip()
 
-	for tag in tags_all:
-		tag = tag.lstrip()
-		for restaurant_tag in tags:
-			restaurant_tag = restaurant_tag.lstrip()
-			if tag in restaurant_tag:
+		for x in tags_all:
+			x = str(x)
+			x = x.lstrip()
+			if x in restaurant_cuisine:
 				related_places.append(restaurant)
+				break
 
-	print "related places"
+	# print "related places"
 	print related_places
-
-
+	tags = []
+	hotel_features = []
 	if flag == 0:
 		hotels = Hotel.objects.order_by('rating')
 		for hotel in hotels:
@@ -234,35 +236,24 @@ def product_detail(request,name):
 			names = names.replace(" ","")			
 			place = hotel
 			if name in names:
-				cuisine = None
-			else:
-				features = str(hotel.hotel_tags)
-				tags_all = features.split(',')
-
-			img = restaurant.image
-			img = str(img)
-			img1 = img.split('_')
-			img = img1[0]
-			img = img[1:]
-			if len(img1) != 1:
-				img = img + '.jpg' 
-			# print img
-			restaurant.image = img[1:]
-
-			if name in names:
 				flag=2
 				category = "HOTEL FEATURES"
 				hotel_features = str(hotel.hotel_tags)
 				tags = hotel_features.split(',')
-				break
-
-		for tag in tags_all:
-			tag = tag.lstrip()
-			for hotel_tag in tags:
-				hotel_tag = hotel_tag.lstrip()
-				if hotel_tag in tag:
+				for x in tags:
+					x = str(x)
+					x = x.lstrip()
+			else:
+				features = str(hotel.hotel_tags)
+				tags_all = features.split(',')
+				for x in tags_all:
+					x = str(x)
+					x = x.lstrip()
+			for x in tags_all:
+				if x in tags:
 					related_places.append(hotel)
-
+					break
+				
 	detail = Rate_Review.objects.all()
 	rate_review_object = []
 	for rate_review in detail:
@@ -273,8 +264,8 @@ def product_detail(request,name):
 	
 	date = datetime.date.today()
 
-	for restaurant in restaurants:
-		related_places.append(restaurant)
+	# for restaurant in restaurants:
+	# 	related_places.append(restaurant)
 
 	if rate_review_object:
 		context_list={
@@ -290,7 +281,7 @@ def product_detail(request,name):
 			'place' : place,
 			'category' : category,
 			'tags': tags,
-			'related_places': related_places[3:6],
+			'related_places': related_places[:3],
 			'date':date,
 			# 'rate_review':rate_review_object,
 		}
