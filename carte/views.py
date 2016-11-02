@@ -21,7 +21,7 @@ def index(request):
 		'a':a,
 	}
 	print "hello"
-	return render_to_response('index.html',context_list,RequestContext(request))
+	return render(request,'index.html',context_list)
 
 def signin(request):
 	print "before"
