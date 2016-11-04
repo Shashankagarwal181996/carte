@@ -85,17 +85,29 @@ def profile(request):
 	last_name = user.last_name
 	email = user.email
 	username = user.username
-	# print first_name,last_name,user.first_name
-	# profile = Profile.objects.filter(user=user)
-	# if profile:
-	# 	image = profile[0].image
-	# 	print image
+	user_profile = Profile.objects.filter(user=user)
+	user_profile = user_profile[0]
+	image = user_profile.image
+	# img = user_profile.image
+	# img = str(img)
+	# img1 = img.split('_')
+	# img = img1[0]
+	# img = img[1:]
+	# if len(img1) != 1:
+	# 	img = img + '.jpg' 
+	# print img[1:]
+	# user_profile.image = img[1:]
+	# print user_profile.image
+	# image = img[1:]
+	print image
+	
+
 	context_list = {
 		'first_name' : first_name,
 		'last_name' : last_name,
 		'email': email,
 		'username': username,
-		# 'image' : image,
+		'image' : image,
 	}
 	return render(request,'myaccount.html',context_list)
 
@@ -122,7 +134,24 @@ def update_profile(request):
 		user.set_password(password)
 		# user.image = image
 		user.save()
-		# Profile.objects.create(user=user,image=image)
+		user_profile = Profile.objects.filter(user=user)
+		if len(user_profile) == 0:
+			user_profile = Profile.objects.create(user=user,image=image)
+		else:
+			user_profile[0].image = image
+			user_profile = user_profile[0]
+		# print user_profile.image
+		img = user_profile.image
+		img = str(img)
+		img1 = img.split('_')
+		img = img1[0]
+		print img
+		# img = img[1:]
+		if len(img1) != 1:
+			img = img + '.jpg' 
+		# user_profile.image = img[1:]
+		print user_profile.image
+		user_profile.save()
 		return HttpResponseRedirect('/dashboard/')
 	else:
 		HttpResponse("Passwords do not match")
