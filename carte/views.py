@@ -48,7 +48,7 @@ def signin(request):
 
 def register(request):
 	context_list = {}
-	return render_to_response('signup.html',context_list,RequestContext(request))
+	return render(request,'signup.html',context_list)
 
 def signup(request):
 	if request.POST:
@@ -85,12 +85,17 @@ def profile(request):
 	last_name = user.last_name
 	email = user.email
 	username = user.username
-	print first_name,last_name,user.first_name
+	# print first_name,last_name,user.first_name
+	# profile = Profile.objects.filter(user=user)
+	# if profile:
+	# 	image = profile[0].image
+	# 	print image
 	context_list = {
 		'first_name' : first_name,
 		'last_name' : last_name,
 		'email': email,
 		'username': username,
+		# 'image' : image,
 	}
 	return render_to_response('myaccount.html',context_list,RequestContext(request))
 
@@ -102,18 +107,21 @@ def update_profile(request):
 	username = request.POST.get('username')
 	password = request.POST.get('password')
 	confirm_password = request.POST.get('confirm_password')
+	# image = request.FILES.get('profile_picture')
+	print username
 	userid = request.session['userid']
 	user = User.objects.get(id=request.session['userid'])
-	print user
-	print "I am in google HQ"
-	print user
+
 	if password == confirm_password:
 		user.first_name = first_name
 		user.last_name = last_name
 		user.email = email
 		user.username = username
+		print username
 		user.set_password(password)
+		# user.image = image
 		user.save()
+		# Profile.objects.create(user=user,image=image)
 		return HttpResponseRedirect('/dashboard/')
 	else:
 		HttpResponse("Passwords do not match")

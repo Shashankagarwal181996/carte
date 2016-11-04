@@ -6,11 +6,14 @@ from django.contrib.auth.models import User
 
 from carte.choices import *
 
-# class Profile(models.Model):
-# 	user = models.OnetoOneField('User',on_delete=models.CASCADE)
+class Profile(models.Model):
+	image = models.ImageField()
+	# user = models.ManyToManyField(User,blank=True)
+	# user = models.ForeignKey('User',on_delete=models.CASCADE)
 # 	phone_no = models.CharField(max_length=11)
 # # 	prefered_hotel = models.IntegerField(choices=HOTEL_CHOICES,default=1)
 # # 	prefered_restaurant = models.IntegerField(choices=RESTAURANT_CHOICES,default=1)
+
 
 class Rate_Review(models.Model):
 	review = models.TextField()
