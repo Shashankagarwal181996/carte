@@ -97,7 +97,7 @@ def profile(request):
 		'username': username,
 		# 'image' : image,
 	}
-	return render_to_response('myaccount.html',context_list,RequestContext(request))
+	return render(request,'myaccount.html',context_list)
 
 ## This function is fired when save changes are done on profile page
 def update_profile(request):
@@ -107,7 +107,8 @@ def update_profile(request):
 	username = request.POST.get('username')
 	password = request.POST.get('password')
 	confirm_password = request.POST.get('confirm_password')
-	# image = request.FILES.get('profile_picture')
+	image = request.FILES.get('profile_picture')
+	print image
 	print username
 	userid = request.session['userid']
 	user = User.objects.get(id=request.session['userid'])
@@ -182,7 +183,7 @@ def dashboard(request):
 		'user':user[0],
 		'restaurants': restaurants, 
 	}
-	return render_to_response('dashboard.html',context_list,RequestContext(request))
+	return render(request,'dashboard.html',context_list)
 
 def product_detail(request,name):
 	name = name
@@ -294,7 +295,7 @@ def product_detail(request,name):
 			'date':date,
 			# 'rate_review':rate_review_object,
 		}
-	return render_to_response('product_detail.html',context_list,RequestContext(request))
+	return render(request,'product_detail.html',context_list)
 
 def add_review(request):
 	review = request.POST.get('add_review')
@@ -328,7 +329,7 @@ def add_review(request):
 		'rate_review':rate_review,
 		'tags':tags,
 	}
-	return render_to_response('review.html',context_list,RequestContext(request))
+	return render(request,'review.html',context_list)
 
 
 def search(request):
@@ -415,7 +416,7 @@ def search(request):
 	context_list = {
 		'places':item_list,		
 	}
-	return render_to_response('search.html',context_list,RequestContext(request))
+	return render(request,'search.html',context_list)
 
 def logout_user(request):
     del request.session['userid']
