@@ -163,10 +163,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                    <ul class="media-list">
 	                    {% for rate_review in rate_review %}
 	                      <li class="media">
-	                        <!-- <a class="pull-left" href="#">
-	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+	                        <a class="pull-left" href="#">
+	                          <img class="media-object img-circle" src="/static/media/{{rate_review.user_profile.image}}" alt="profile">
 	                        </a>
- -->	                    <div class="media-body">
+	                    	<div class="media-body">
 	                          <div class="well well-lg">
 	                              <h4 class="media-heading text-uppercase reviews">{{rate_review.user.username}}</h4>
 	                              <ul class="media-date text-uppercase reviews list-inline">
@@ -181,11 +181,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2 comments</a> -->
 	                          </div>              
 	                        </div>
-	                     <!--    <div class="collapse" id="replyOne">
+	                        <!-- <div class="collapse" id="replyOne">
 	                            <ul class="media-list">
 	                                <li class="media media-replied">
 	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg" alt="profile">
+	                                      <img class="media-object img-circle" src="/static/media/{{image}}" alt="profile">
 	                                    </a>
 	                                    <div class="media-body">
 	                                      <div class="well well-lg">
@@ -225,29 +225,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                        </div> -->
 	                      </li>   
 	                      {% endfor %}       
+	               
 	                      <!-- <li class="media">
-	                        <a class="pull-left" href="#">
-	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
-	                        </a> -->
-	                        <!-- <div class="media-body">
-	                          <div class="well well-lg">
-	                              <h4 class="media-heading text-uppercase reviews">Nico</h4>
-	                              <ul class="media-date text-uppercase reviews list-inline">
-	                                <li class="dd">22</li>
-	                                <li class="mm">09</li>
-	                                <li class="aaaa">2014</li>
-	                              </ul>
-	                              <p class="media-comment">
-	                                I'm looking for that. Thanks!
-	                              </p>
-	                              <div class="embed-responsive embed-responsive-16by9">
-	                                  <iframe class="embed-responsive-item" src="//www.youtube.com/embed/80lNjkcp6gI" allowfullscreen></iframe>
-	                              </div>
-	                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                          </div>              
-	                        </div> -->
-	                      <!-- </li> -->
-	                    <!--   <li class="media">
 	                        <a class="pull-left" href="#">
 	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
 	                        </a>
@@ -265,8 +244,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
 	                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
 	                          </div>              
-	                        </div>
-	                        <div class="collapse" id="replyTwo">
+	                        </div> -->
+	                        <!-- <div class="collapse" id="replyTwo">
 	                            <ul class="media-list">
 	                                <li class="media media-replied">
 	                                    <a class="pull-left" href="#">
@@ -288,11 +267,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                                    </div>
 	                                </li>
 	                            </ul>  
-	                        </div>
-	                      </li> -->
+	                        </div> -->
+	                      </li>
 	                    </ul> 
                 	</div>
-                	<!-- <div class="tab-pane" id="add_comment">
+                	<div class="tab-pane" id="add_comment">
                     	<form action="/add-review/" method="post" class="form-horizontal" id="commentForm" role="form">{% csrf_token %}
 	                        <div class="form-group">
 	                        	<div class="col-sm-11 col-md-11">
@@ -309,7 +288,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                            </div>
 	                        </div>            
                     	</form>
-                </div> -->
+                </div>
                 		<div class="tab-pane" id="add_comment">
                 	 <div class="container">
 						<div class="row" style="margin-top:10px;">
@@ -448,7 +427,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</li>
 									{% endfor %}
 									<p>   </p>
-									<!-- <li class="col-md-3">
+									<li class="col-md-3">
 										<div class="product-box">
 											<span class="sale_tag"></span>												
 											<a href="product_detail.html"><img alt="" src="themes/images/ladies/5.jpg"></a><br/>
@@ -464,7 +443,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<a href="#" class="category">Erat gravida</a>
 											<p class="price">$28</p>
 										</div>
-									</li> -->												
+									</li>												
 								</ul>
 							</div>
 							<div class="item">
@@ -478,7 +457,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<p class="price">$341</p>
 										</div>
 									</li>       
-									<!-- <li class="col-md-3">
+									<li class="col-md-3">
 										<div class="product-box">												
 											<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
 											<a href="product_detail.html">Praesent tempor sem</a><br/>
@@ -494,7 +473,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<a href="#" class="category">Suspendisse aliquet</a>
 											<p class="price">$341</p>
 										</div>
-									</li> -->
+									</li>
 								</ul>
 							</div>
 						</div>

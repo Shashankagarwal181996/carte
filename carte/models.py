@@ -16,6 +16,7 @@ class Rate_Review(models.Model):
 	rating = models.FloatField()
 	user = models.ManyToManyField(User,blank=True)
 	item_name = models.CharField(max_length=100)
+	user_profile = models.ForeignKey(Profile,on_delete=models.CASCADE,default=1)
 
 	def __str__(self):
 		return self.review

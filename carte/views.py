@@ -302,7 +302,6 @@ def product_detail(request,name):
 			rate_review_object.append(rate_review)
 	
 	date = datetime.date.today()
-
 	# for restaurant in restaurants:
 	# 	related_places.append(restaurant)
 	print tags_places
@@ -338,7 +337,13 @@ def add_review(request):
 	users = User.objects.filter(id=request.session['userid'])
 	new_review = Rate_Review.objects.create(review=review,rating=rating,item_name=name)
 	new_review.save()
+	
 	new_review.user = users
+	user_profile = Profile.objects.filter(user=users)
+	user_profile = user_profile[0]
+	new_review.user_profile = user_profile
+	new_review.save()
+
 	print place,new_review.review,name
 	rate_review = Rate_Review.objects.filter(item_name=name)
 	img = place[0].image
