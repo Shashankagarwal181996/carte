@@ -261,6 +261,7 @@ def product_detail(request,name):
 			x = str(x)
 			x = x.lstrip()
 			if x in restaurant_cuisine:
+				restaurant.url = names
 				related_places.append(restaurant)
 				break
 
@@ -292,6 +293,7 @@ def product_detail(request,name):
 					x = x.lstrip()
 			for x in tags_all:
 				if x in tags:
+					hotel.url = names
 					related_places.append(hotel)
 					break
 				
