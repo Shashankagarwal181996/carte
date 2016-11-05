@@ -453,6 +453,7 @@ def search(request):
 					item_list.append(hotel)
 					flag = 2
 	print item_list
+	item_list = list(set(item_list))
 	context_list = {
 		'places':item_list,		
 	}
