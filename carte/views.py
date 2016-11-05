@@ -241,6 +241,7 @@ def product_detail(request,name):
 			# 	img = img + '.jpg' 
 			# restaurant.image = img[1:]
 			place = restaurant
+			restaurant.url = names
 			flag=1
 			category = "CUISINES"
 			cuisines = restaurant.cuisines
@@ -272,6 +273,7 @@ def product_detail(request,name):
 		for hotel in hotels:
 			names = str(hotel.name)
 			names = names.replace(" ","")			
+			hotel.url = names
 			place = hotel
 			if name in names:
 				flag=2
@@ -381,6 +383,7 @@ def search(request):
 		url = restaurant.name
 		url = str(restaurant.name)
 		restaurant.url = url.replace(" ","")
+		restaurant.save()
 		description = restaurant.description
 		cuisine = restaurant.cuisines
 		cuisine = str(cuisine)
@@ -418,6 +421,7 @@ def search(request):
 			url = restaurant.name
 			url = str(hotel.name)
 			hotel.url = url.replace(" ","")
+			hotel.save()
 			description = hotel.description
 			# description = str(description)
 			hotel_tags = hotel.hotel_tags
