@@ -196,10 +196,12 @@ def dashboard(request):
 		img = str(img)
 		img1 = img.split('_')
 		img = img1[0]
-		img = img[1:]
+		# img = img[1:]
+		# print img
 		if len(img1) != 1:
 			img = img + '.jpg' 
-		hotel.image = img[1:]
+		hotel.image = img
+		print hotel.image
 		hotel_list.append(hotel)
 
 		rest_one = []
@@ -212,12 +214,14 @@ def dashboard(request):
 		rest_two = restaurant_list[4:8]
 		rest_three = restaurant_list[8:12]
 		hotel_one = hotel_list[:4]
+		hotel_two = hotel_list[4:8]
 
 	context_list = {
 		'rest_one': rest_one,
 		'rest_two': rest_two,
 		'rest_three':rest_three,
 		'hotel_one': hotel_one,
+		'hotel_two': hotel_two,
 		'user':user[0],
 		'restaurants': restaurants, 
 	}
@@ -275,17 +279,19 @@ def product_detail(request,name):
 				break
 
 	# print "related places"
-	print related_places
+	# print related_places
 	tags = []
 	hotel_features = []
+	print "hotel"
 	if flag == 0:
 		hotels = Hotel.objects.order_by('rating')
 		for hotel in hotels:
 			names = str(hotel.name)
 			names = names.replace(" ","")			
-			hotel.url = names
-			place = hotel
+			
 			if name in names:
+				hotel.url = names
+				place = hotel
 				flag=2
 				category = "HOTEL FEATURES"
 				hotel_features = str(hotel.hotel_tags)
@@ -317,7 +323,7 @@ def product_detail(request,name):
 	date = datetime.date.today()
 	# for restaurant in restaurants:
 	# 	related_places.append(restaurant)
-	print tags_places
+	# print tags_places
 	if rate_review_object:
 		context_list={
 			'place' : place,

@@ -135,6 +135,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									{% endfor %}
 								</ul>
 							</div>
+							<div class="item">
+								<ul class="thumbnails">	
+									{% for hotel in hotel_two %}										
+									<li class="col-md-3">
+										<div class="product-box">
+											<span class="sale_tag"></span>
+										
+											<input type="hidden" id="name" name='name' value="{{hotel.name}}">
+
+											<p><a href="/detail/{{hotel.url}}"><img src="/static/media/{{hotel.image}}" alt="" height="250px"/>
+												
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{hotel.rating}}</div>
+											
+											</a></p>
+												
+											<a href="/detail/{{hotel.url}}" class="title">{{hotel.name}}</a><br/>
+										
+										</div>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
 						</div>							
 					</div>
 				</div>						
