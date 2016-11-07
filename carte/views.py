@@ -86,8 +86,9 @@ def profile(request):
 	email = user.email
 	username = user.username
 	user_profile = Profile.objects.filter(user=user)
-	user_profile = user_profile[0]
-	image = user_profile.image
+	if len(user_profile) != 0:
+		user_profile = user_profile[0]
+		image = user_profile.image
 	# img = user_profile.image
 	# img = str(img)
 	# img1 = img.split('_')
@@ -99,16 +100,23 @@ def profile(request):
 	# user_profile.image = img[1:]
 	# print user_profile.image
 	# image = img[1:]
-	print image
+		print image
 	
 
-	context_list = {
-		'first_name' : first_name,
-		'last_name' : last_name,
-		'email': email,
-		'username': username,
-		'image' : image,
-	}
+		context_list = {
+			'first_name' : first_name,
+			'last_name' : last_name,
+			'email': email,
+			'username': username,
+			'image' : image,
+		}
+	else:
+		context_list = {
+			'first_name' : first_name,
+			'last_name' : last_name,
+			'email': email,
+			'username': username,
+		}
 	return render(request,'myaccount.html',context_list)
 
 ## This function is fired when save changes are done on profile page
@@ -135,6 +143,7 @@ def update_profile(request):
 		# user.image = image
 		user.save()
 		user_profile = Profile.objects.filter(user=user)
+		print user_profile
 		if len(user_profile) == 0:
 			user_profile = Profile.objects.create(user=user,image=image)
 		else:
