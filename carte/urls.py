@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/',views.signin,name="signin"),
     url(r'^index/',views.index,name="index"),
+    # url(r'',views.index,name="index"),
     url(r'^register/',views.register,name="register"),
     url(r'^signup/',views.signup,name="signup"),
     url(r'^profile/',views.profile,name="profile"),
@@ -33,6 +34,23 @@ urlpatterns = [
     url(r'^add-review/',views.add_review,name="add_review"),
     url(r'^search/',views.search,name="search"),
     url(r'^logout/',views.logout_user,name="logout"),
+
+    # url('', include('social.apps.django_app.urls', namespace='social')),
+    
+    # url(r'^user/password/reset/$', 
+    #     'django.contrib.auth.views.password_reset', 
+    #     {'post_reset_redirect' : '/user/password/reset/done/'},
+    #     name="password_reset"),
+
+    # url(r'^user/password/reset/done/$',
+    #     'django.contrib.auth.views.password_reset_done'),
+    
+    # url(r'^user/password/reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 
+    #     'django.contrib.auth.views.password_reset_confirm', 
+    #     {'post_reset_redirect' : '/user/password/done/'}),
+    
+    # url(r'^user/password/done/$', 
+    #     'django.contrib.auth.views.password_reset_complete'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

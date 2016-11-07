@@ -15,6 +15,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# CLIENT_ID_GOOGLE = '952417233608-cm0tii0fos58qdkhrg4e912j4ol04d9m.apps.googleusercontent.com'
+# CLIENT_SECRET_GOOGLE = 'JHOHxhDsksQ6bwlGzgUHWJq-'
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '952417233608-cm0tii0fos58qdkhrg4e912j4ol04d9m.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JHOHxhDsksQ6bwlGzgUHWJq-'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -31,6 +36,14 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+if DEBUG:
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 1025
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
+    DEFAULT_FROM_EMAIL = 'shashankagarwal181996@gmail.com'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'carte',
+    # 'social.apps.django_app.default',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -72,6 +86,15 @@ TEMPLATES = [
         },
     },
 ]
+
+# AUTHENTICATION_BACKENDS = (
+#    'social.backends.facebook.FacebookOAuth2',
+#    'social.backends.google.GoogleOAuth2',
+#    'social.backends.twitter.TwitterOAuth',
+#    'django.contrib.auth.backends.ModelBackend',
+# )
+
+
 
 WSGI_APPLICATION = 'carte.wsgi.application'
 
