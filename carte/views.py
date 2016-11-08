@@ -514,3 +514,7 @@ def logout_user(request):
     context_instance = RequestContext(request)
     return HttpResponseRedirect('/index/')
  
+
+def contact(request):
+	context_list = {}
+	return render(request,'contact1.html',context_list)

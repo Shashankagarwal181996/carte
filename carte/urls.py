@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^signup/',views.signup,name="signup"),
     url(r'^profile/',views.profile,name="profile"),
     url(r'^update_profile/',views.update_profile,name="update_profile"),
+    url(r'^contact/',views.contact,name="contact"),
     url(r'^dashboard/',views.dashboard,name="dashboard"),
     url(r'^detail/(?P<name>[a-z,A-Z,0-9-,-,&]+)/',views.product_detail,name="detail"),
     url(r'^add-review/',views.add_review,name="add_review"),
