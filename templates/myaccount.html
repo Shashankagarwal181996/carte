@@ -23,43 +23,66 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="{% static "js/jquery-1.11.1.min.js" %}" ></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
+<script type="text/javascript">
+    	$("#submit").click(function(){
+    		var first_name = $("#first_name").val();
+	    	var last_name = $("#last_name").val();	    	
+    		var email = $("#email").val();
+	    	var username = $("#username").val();
+	    	var password = $("#password").val();
+	    	var confirm_password = $("#confirm_password").val();
+	    	$.ajax({
+	    		type:"POST",
+	    		url:'/login/',
+	    		data: {
+	    			'first_name': first_name,
+	    			'last_name': last_name,
+	    			'username': username,
+	    			'email': email,
+	    			'password': password,
+	    			'confirm_password': confirm_password,
+	    		}
+	    	});	
+	    });
+    	
+</script> 
 <style>
-    body  {
-        background-image: url("http://www.powerscourthotel.com/cmsGallery/imagerow/3470/resized/1296x682/rc_powerscourt_powerscourt_house_table_setting.jpg");
+	body  {
+		background-image: url("http://www.powerscourthotel.com/cmsGallery/imagerow/3470/resized/1296x682/rc_powerscourt_powerscourt_house_table_setting.jpg");
 
-        background-size: cover;}
+		background-size: cover;}
 
-    </style>
+	</style>
 </head>
 
 <body>
 
 <div class="header-top-w3layouts" style="background-color: #f8f8f8">
   <div class="container">
-    <div class="col-md-3 logo-w3">
-      <a href="/dashboard/"><h1>CARTE </h1></a>
-    </div>
+	<div class="col-md-3 logo-w3">
+	  <a href="/dashboard/"><h1>CARTE </h1></a>
+	</div>
 
-    <!-- <div class="col-md-6 phone-w3l">
-      <ul>
-        <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-        <li>+18045403380</li>
-      </ul>
-    </div> -->
+	<!-- <div class="col-md-6 phone-w3l">
+	  <ul>
+		<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
+		<li>+18045403380</li>
+	  </ul>
+	</div> -->
 
 
-    <!-- Profile and login section. -->
-    <div class="col-md-6 phone-w3l">
-      <ul>
-        <li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
-        <li><a href="/profile/">My Account  </a></li>
-        <li style="padding-left: 10px"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></li>
-        <li><a href="/logout/">Logout</a></li>
-      </ul>
-    </div>
+	<!-- Profile and login section. -->
+	<div class="col-md-6 phone-w3l">
+	  <ul>
+		<li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
+		<li><a href="/profile/">My Account  </a></li>
+		<li style="padding-left: 10px"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></li>
+		<li><a href="/logout/">Logout</a></li>
+	  </ul>
+	</div>
 
-    
-    <div class="clearfix"></div>
+	
+	<div class="clearfix"></div>
   </div>  
 </div>
 
@@ -67,76 +90,76 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
   <h1 class="page-header">Edit Profile</h1>
   <div class="row">
-    <!-- left column -->
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <form method="POST" action="/update_profile/" enctype="multipart/form-data">{% csrf_token %}
-        <div class="text-center">
-          <img src="/static/media/{{image}}" class="avatar img-circle img-thumbnail" alt="avatar">
-          <h6>Upload a different photo...</h6>
-          <input type="file" class="text-center center-block well well-sm" id="profile_picture" name="profile_picture">
-        </div>
-    </div>
-    <!-- edit form column -->
-    <div class="col-md-12 col-sm-6 col-xs-12 personal-info" >
-      <!-- <div class="alert alert-info alert-dismissable">
-        <a class="panel-close close" data-dismiss="alert">×</a> 
-        <i class="fa fa-coffee"></i>
-        This is an <strong>.alert</strong>. Use this to show important messages to the user.
-      </div> -->
-      <h3>Personal info</h3>
-                
-        <div class="form-group">
-          <label class="col-lg-3 control-label">First name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="{{first_name}}" id="first_name" name="first_name" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Last name:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="{{last_name}}" id="last_name" name="last_name" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Email:</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="{{email}}" id="email" name="email" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Username:</label>
-          <div class="col-md-8">
-            <input class="form-control" value="{{username}}" id="username" name="username" type="text">
-          </div>
-        </div>
-        <!-- <div class="form-group">
-          <label class="col-lg-3 control-label">Interests</label>
-          <div class="col-lg-8">
-            <input class="form-control" value="" type="text">
-          </div>
-        </div> -->
-        <div class="form-group">
-          <label class="col-md-3 control-label">Password:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="password" id="password" name="password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Confirm password:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="password" id="confirm_password" name="confirm_password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label"></label>
-          <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="submit">
-            <span></span>
-            <input class="btn btn-default" value="Cancel" type="reset">
-          </div>
-        </div>
-      </form>
-    </div>
+	<!-- left column -->
+	<div class="col-md-4 col-sm-6 col-xs-12">
+	  <form method="POST" action="/update_profile/" enctype="multipart/form-data">{% csrf_token %}
+		<div class="text-center">
+		  <img src="/static/media/{{image}}" class="avatar img-circle img-thumbnail" alt="avatar">
+		  <h6>Upload a different photo...</h6>
+		  <input type="file" class="text-center center-block well well-sm" id="profile_picture" name="profile_picture">
+		</div>
+	</div>
+	<!-- edit form column -->
+	<div class="col-md-12 col-sm-6 col-xs-12 personal-info" >
+	  <!-- <div class="alert alert-info alert-dismissable">
+		<a class="panel-close close" data-dismiss="alert">×</a> 
+		<i class="fa fa-coffee"></i>
+		This is an <strong>.alert</strong>. Use this to show important messages to the user.
+	  </div> -->
+	  <h3>Personal info</h3>
+		<h4>{{state}}</h4>
+		<div class="form-group">
+		  <label class="col-lg-3 control-label">First name:</label>
+		  <div class="col-lg-8">
+			<input class="form-control" value="{{first_name}}" id="first_name" name="first_name" type="text">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-lg-3 control-label">Last name:</label>
+		  <div class="col-lg-8">
+			<input class="form-control" value="{{last_name}}" id="last_name" name="last_name" type="text">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-lg-3 control-label">Email:</label>
+		  <div class="col-lg-8">
+			<input class="form-control" value="{{email}}" id="email" name="email" type="text">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-md-3 control-label">Username:</label>
+		  <div class="col-md-8">
+			<input class="form-control" value="{{username}}" id="username" name="username" type="text">
+		  </div>
+		</div>
+		<!-- <div class="form-group">
+		  <label class="col-lg-3 control-label">Interests</label>
+		  <div class="col-lg-8">
+			<input class="form-control" value="" type="text">
+		  </div>
+		</div> -->
+		<div class="form-group">
+		  <label class="col-md-3 control-label">Password:</label>
+		  <div class="col-md-8">
+			<input class="form-control" type="password" id="password" name="password">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-md-3 control-label">Confirm password:</label>
+		  <div class="col-md-8">
+			<input class="form-control" type="password" id="confirm_password" name="confirm_password">
+		  </div>
+		</div>
+		<div class="form-group">
+		  <label class="col-md-3 control-label"></label>
+		  <div class="col-md-8">
+			<input class="btn btn-primary" value="Save Changes" id="submit" name="submit" type="submit">
+			<span></span>
+			<input class="btn btn-default" value="Cancel" type="reset">
+		  </div>
+		</div>
+	</div>
+	</form>
   </div>
 </div>
 </body>

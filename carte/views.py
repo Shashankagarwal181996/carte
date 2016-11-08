@@ -34,6 +34,7 @@ def signin(request):
 		# username = user.username
 		if user is not None:
 			user = authenticate(username = user[0].username,password=password)
+			print user
 			if user is not None:
 				if user.is_active:
 					login(request,user)
@@ -42,7 +43,13 @@ def signin(request):
 				else:
 					return HttpResponseRedirect('/index/')
 			else:
-				return HttpResponseRedirect('/index/')
+				# return HttpResponseRedirect('/index/')
+				state = "Password is incorrect."
+				print state
+				context_list = {
+					'state': state,
+				}
+				return render(request,'index.html',context_list)
 		else:
 			return HttpResponseRedirect('/index/')
 
@@ -73,7 +80,12 @@ def signup(request):
 			user.is_active = True
 			return HttpResponseRedirect('/dashboard/')
 		else:
-			return HttpResponse('Passwords do not match')
+			state = "Passwords do not match."
+			print state
+			context_list = {
+				'state': state,
+			}
+			return render(request,'signup.html',context_list)
 
 ## This function is fired when update profile page is loaded 
 def profile(request):
@@ -163,7 +175,29 @@ def update_profile(request):
 		user_profile.save()
 		return HttpResponseRedirect('/dashboard/')
 	else:
-		HttpResponse("Passwords do not match")
+		state = "Passwords do not match."
+		print state
+		user_profile = Profile.objects.filter(user=user)
+		if len(user_profile) != 0:
+			user_profile = user_profile[0]
+			image = user_profile.image
+			context_list = {
+				'state': state,
+				'first_name' : first_name,
+				'last_name' : last_name,
+				'email': email,
+				'username': username,
+				'image': image,
+			}
+		else:
+			context_list = {
+				'state': state,
+				'first_name' : first_name,
+				'last_name' : last_name,
+				'email': email,
+				'username': username,
+			}
+		return render(request,'myaccount.html',context_list)
 
 def dashboard(request):
 	userid = request.session['userid']

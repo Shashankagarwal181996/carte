@@ -82,6 +82,7 @@ body  {
 		<div class="main-agileits vij">
 				<div class="form-w3agile">
 					<h3>Login</h3>
+					<h4>{{state}}</h4>
 					<form action="/login/" method="POST">{% csrf_token %}
 						<div class="key">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -94,7 +95,7 @@ body  {
 							<div class="clearfix"></div>
 						</div>
 						<!-- <input type="submit" value="Login"> -->
-						<button type="submit" class="inputButton">Login</button>
+						<button type="submit"id="submit" class="inputButton">Login</button>
 					</form>
 					<a href="#" class="forg-left"> Forgot Password </a>
 					<a href="/register/" class="forg-right"> Register </a>
@@ -127,7 +128,22 @@ body  {
         		}
         	}
         });
-    </script>  
+    </script> 
+    <script type="text/javascript">
+    	$("#submit").click(function(){
+    		var email = $("#email").val();
+	    	var password = $("#password").val();
+	    	$.ajax({
+	    		type:"POST",
+	    		url:'/login/',
+	    		data: {
+	    			'email': email,
+	    			'password': password,
+	    		}
+	    	});	
+	    });
+    	
+    </script> 
 	<!-- //cart-js -->  
 </body>
 </html>

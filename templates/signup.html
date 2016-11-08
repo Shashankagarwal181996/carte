@@ -26,6 +26,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
+<script type="text/javascript">
+    	$("#submit").click(function(){
+    		var first_name = $("#first_name").val();
+	    	var last_name = $("#last_name").val();	    	
+    		var email = $("#email").val();
+	    	var username = $("#username").val();
+	    	var password = $("#password").val();
+	    	var confirm_password = $("#confirm_password").val();
+	    	$.ajax({
+	    		type:"POST",
+	    		url:'/login/',
+	    		data: {
+	    			'first_name': first_name,
+	    			'last_name': last_name,
+	    			'username': username,
+	    			'email': email,
+	    			'password': password,
+	    			'confirm_password': confirm_password,
+	    		}
+	    	});	
+	    });
+    	
+</script> 
+
 
 <style>
 .hef{
@@ -93,6 +117,7 @@ body  {
 		<div class="main-agileits vij" style="">
 				<div class="form-w3agile">
 					<h3>Register</h3>
+					<h4>{{state}}</h4>
 					<form action="/signup/" method="POST">{% csrf_token %}
 						<div class="key">
 							<i class="fa fa-user" aria-hidden="true"></i>
@@ -125,7 +150,7 @@ body  {
 							<input type="password" name="confirm_password" id="confirm_password" required="" placeholder="Confirm Password">
 							<div class="clearfix"></div>
 						</div>
-						<input type="submit" value="Register">
+						<input type="submit" id="submit" name="submit" value="Register">
 					</form>
 				</div>
 					<a class="btn btn-block btn-social btn-facebook">
