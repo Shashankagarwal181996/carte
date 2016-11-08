@@ -31,6 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static "themes/js/jquery.scrolltotop.js" %}"></script>
 <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/star.js" %}"></script>
 <script src="{% static "themes/js/item.js" %}"></script>
 </head>
 	
@@ -117,7 +118,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container">
 		<h2>WELCOME TO</h2>
 		<h3>{{place.name}}</h3>
-		<p>Find out thebest cafes hotels and restaurants nearby.</p>
+		<p>Find out the best cafes hotels and restaurants nearby.</p>
 		<!-- <a href="about.html">Read More</a> -->
 	</div>
 </div>
@@ -322,23 +323,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					            <div class="row" id="post-review-box" style="display:none;">
 					                <div class="col-md-12">
 					                    <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
-					                        <input id="ratings-hidden" name="rating" type="hidden"> 
+					                        <!-- <input id="ratings-hidden" name="rating" type="hidden"> 
 					                        
 					                        <textarea class="form-control animated" cols="10" id="new-review" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
 
 					                        <br>
-					                        <br>
+					                        <br> -->
 
-					                        <textarea class="form-control animated" cols="50" id="new-review" name="add_review" id="add_review" placeholder="Enter your review here..." rows="5"></textarea>
-					        				
-					        				<input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
-					                        
-
+					                        <input id="ratings-hidden" name="rating" type="hidden"> 
+					                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+											<br>					        
 					                        <div class="text-right">
+
 					                            <!-- <div class="stars starrr" data-rating="0"></div> -->
+					                            <!-- <div class="col-md-9"></div>
+					                             <div class="col-md-2">
+					                             <textarea class="form-control animated" cols="15" id="new-review" name="comment" placeholder="" rows="1"></textarea>
+					                             </div> -->
+			
+					                            <div class="row lead">
+        											<div id="stars" class="stars starrr"></div>
+        											You gave a rating of <span id="count">0</span> star(s)
+												</div>
+												<br><br><br>
+												<div class="col-md-12">
 					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
 					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
 					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+					                          	</div>
 					                        </div>
 					                    </form>
 					                </div>
