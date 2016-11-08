@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.conf.urls.static import static
 from carte import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -34,6 +34,9 @@ urlpatterns = [
     url(r'^add-review/',views.add_review,name="add_review"),
     url(r'^search/',views.search,name="search"),
     url(r'^logout/',views.logout_user,name="logout"),
+
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url('', include('django.contrib.auth.urls', namespace='auth')),
 
     # url('', include('social.apps.django_app.urls', namespace='social')),
     

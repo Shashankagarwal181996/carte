@@ -18,6 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all" />
 <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" type="text/css" media="all" />
 <link rel="stylesheet" href="{% static "themes/css/item.css" %}">
+
 <!--// css -->
 <!-- font -->
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
@@ -32,6 +33,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
 <script src="{% static "themes/js/item.js" %}"></script>
+<script src="{% static "js/star.js" %}"></script>
+
 </head>
 	
 
@@ -292,7 +295,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="tab-pane" id="add_comment">
                 	 <div class="container">
 						<div class="row" style="margin-top:10px;">
-							<div class="col-md-6">
+							<div class="col-md-7">
 					    	<div class="well well-sm">
 					            <div class="text-right">
 					                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
@@ -300,7 +303,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					        
 					            <div class="row" id="post-review-box" style="display:none;">
 					                <div class="col-md-12">
-					                    <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
+					                    <!-- <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
 					                        <input id="ratings-hidden" name="rating" type="hidden"> 
 					                        
 					                        <textarea class="form-control animated" cols="10" id="new-review" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
@@ -314,10 +317,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					                        
 
 					                        <div class="text-right">
-					                            <!-- <div class="stars starrr" data-rating="0"></div> -->
+					     
 					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
 					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
 					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+					                        </div>
+					                    </form> -->
+					                     <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
+					                        <!-- <input id="ratings-hidden" name="rating" type="hidden"> 
+					                        
+					                        <textarea class="form-control animated" cols="10" id="new-review" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
+					                        <br>
+					                        <br> -->
+
+					                        <input id="ratings-hidden" name="rating" type="hidden"> 
+					                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+											<br>					        
+					                        <div class="text-right">
+
+					                            <!-- <div class="stars starrr" data-rating="0"></div> -->
+					                            <!-- <div class="col-md-9"></div>
+					                             <div class="col-md-2">
+					                             <textarea class="form-control animated" cols="15" id="new-review" name="comment" placeholder="" rows="1"></textarea>
+					                             </div> -->
+			
+					                            <div class="row lead">
+        											<div id="stars" class="stars starrr"></div>
+        											You gave a rating of <span id="count">0</span> star(s)
+												</div>
+												<br><br><br>
+												<div class="col-md-12">
+					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+					                          	</div>
 					                        </div>
 					                    </form>
 					                </div>

@@ -382,6 +382,7 @@ def add_review(request):
 	review = request.POST.get('add_review')
 	rating = request.POST.get('add_rating')
 	name = request.POST.get('product_name')
+	print rating
 	# rating = request.POST.get('add_rating')
 	place = Restaurant.objects.filter(name=name)
 	if not place:

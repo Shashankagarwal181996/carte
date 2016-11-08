@@ -18,8 +18,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # CLIENT_ID_GOOGLE = '952417233608-cm0tii0fos58qdkhrg4e912j4ol04d9m.apps.googleusercontent.com'
 # CLIENT_SECRET_GOOGLE = 'JHOHxhDsksQ6bwlGzgUHWJq-'
 
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '952417233608-cm0tii0fos58qdkhrg4e912j4ol04d9m.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JHOHxhDsksQ6bwlGzgUHWJq-'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '952417233608-cm0tii0fos58qdkhrg4e912j4ol04d9m.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'JHOHxhDsksQ6bwlGzgUHWJq-'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'carte',
-    # 'social.apps.django_app.default',
+    'social.apps.django_app.default',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -87,12 +87,12 @@ TEMPLATES = [
     },
 ]
 
-# AUTHENTICATION_BACKENDS = (
-#    'social.backends.facebook.FacebookOAuth2',
-#    'social.backends.google.GoogleOAuth2',
-#    'social.backends.twitter.TwitterOAuth',
-#    'django.contrib.auth.backends.ModelBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
 
 
 
