@@ -275,7 +275,7 @@ button.w3view-cart:focus{
 
 /*--banner bottom--*/
 .banner-bootom-w3-agileits,.top-products,.fandt,.top-brands,.newsletter,.footer,.content,.contact,.about,.team,.main-grid-border,.faq,.products,.collpse.tabs,.login,.check-out,.payment{
-	padding:50px 0;
+	padding:-10px 0;
 }
 .top-products h3,.features h3,.top-brands h3,.contact h3,.about h3,.team h3,h3.agileits-icons-title,.faq h3,.products h3,.login h3,.check-out h3,.payment h3{
 	font-size:40px;

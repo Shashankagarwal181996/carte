@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+	<title>Carte </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- css -->
+	<link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all" />
+	<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" type="text/css" media="all" />
+
+	<!-- index.css -->
+	<link rel="stylesheet" type="text/css" href="{% static "index.css" %}">
+	<!--// css -->
+	<!-- font -->
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+	<!-- //font -->
+	<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+	<script src="{% static "js/bootstrap.js" %}"></script>
+
+	<style>
+		.banner-agile{
+			background:url("https://i.ytimg.com/vi/S7JcGThpR4E/maxresdefault.jpg")no-repeat 0px 0px;
+			background-size:cover;
+			min-height:580px;
+		}
+	</style>
+</head>
+
+<body style="background-size: cover;">
+	<div class="header-top-w3layouts">
+		<div class="container">
+			<div class="col-md-3 logo-w3">
+      			<img src="{% static "images/logo.png" %}">
+				<a href="/dashboard/"><h1>CARTE </h1></a>
+			</div>
+
+			<!-- <div class="col-md-6 phone-w3l">
+				<ul>
+					<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
+					<li>+18045403380</li>
+				</ul>
+			</div> -->
+
+
+			<!-- Profile and login section. -->
+			<div class="col-md-6 phone-w3l">
+				<ul>
+					<li><span class="glyphicon glyphicon-user" aria-hidden="true"></span></li>
+					<li><a href="/profile/">My Account  </a></li>
+					<li style="padding-left: 10px"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></li>
+					<li><a href="/logout/">Logout</a></li>
+				</ul>
+			</div>
+
+			
+			<div class="clearfix"></div>
+		</div>	
+	</div>
+
+	<div class="header-bottom-w3ls">
+		<div class="container">
+			<div class="col-md-7 navigation-agileits">
+				<nav class="navbar navbar-default">
+					<!-- <div class="navbar-header nav_2">
+						<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>  -->
+					<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+						<ul class="nav navbar-nav ">
+							<li class=" active"><a href="/dashboard/" class="hyper "><span>Home</span></a></li>	
+<!-- 							<li><a href="about.html" class="hyper"><span>About</span></a></li>
+							<li><a href="contact.html" class="hyper"><span>Contact Us</span></a></li> -->
+						</ul>
+					</div>
+				</nav>
+			</div>
+					<script>
+						$(document).ready(function(){
+							$(".dropdown").hover(            
+								function() {
+									$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+									$(this).toggleClass('open');        
+								},
+								function() {
+									$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+									$(this).toggleClass('open');       
+								}
+							);
+						});
+					</script>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="banner-agile">
+		<div class="container">
+			<h2>OOPS </h2>
+			<!-- <h3>ERROR <span>404</span></h3> -->
+			<p>Sorry ! No results found </p>
+			<a href="/dashboard/">Back to Home</a>
+		</div>
+	</div>
+
+</body>
+</html>

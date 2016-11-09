@@ -511,6 +511,9 @@ def search(request):
 					flag = 2
 	print item_list
 	item_list = list(set(item_list))
+	if len(item_list) == 0:
+		context_list={}
+		return render(request,'404.html',context_list)
 	context_list = {
 		'places':item_list,		
 	}
