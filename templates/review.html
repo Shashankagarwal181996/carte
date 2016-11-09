@@ -278,22 +278,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                    </ul> 
                 	</div>
                 	<div class="tab-pane" id="add_comment">
-                    	<form action="/add-review/" method="post" class="form-horizontal" id="commentForm" role="form">{% csrf_token %}
-	                        <div class="form-group">
-	                        	<div class="col-sm-11 col-md-11">
-	                            <label for="email" class="control-label"><strong>Comment</strong></label>
-	                            </div>
-	                            <div class="col-sm-11 col-md-11">
-	                              <textarea class="form-control" name="add_review" id="add_review" rows="5"></textarea>
-	                              <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
-	                            </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <div class="col-sm-offset-7 col-md-offset-7 col-sm-4 col-md-4">                    
-	                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
-	                            </div>
-	                        </div>            
-                    	</form>
+                    	<form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
+					                        <!-- <input id="ratings-hidden" name="rating" type="hidden">  -->
+					                        <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
+					                        <textarea class="form-control animated" cols="10" id="add_rating" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
+					                        <br>
+					                        <br>
+
+					                        <input id="ratings-hidden" name="rating" type="hidden"> 
+					                        <textarea class="form-control animated" cols="50" id="add_review" name="add_review" placeholder="Enter your review here..." rows="5"></textarea>
+											<br>					        
+					                        <div class="text-right">
+
+					                            <!-- <div class="stars starrr" data-rating="0"></div> -->
+					                            <!-- <div class="col-md-9"></div>
+					                             <div class="col-md-2">
+					                             <textarea class="form-control animated" cols="15" id="new-review" name="comment" placeholder="" rows="1"></textarea>
+					                             </div> -->
+			
+					                            <!-- div class="row lead">
+        											<div id="stars" class="stars starrr"></div>
+        											You gave a rating of <span id="count">0</span> star(s)
+												</div> -->
+												<br><br><br>
+												<div class="col-md-12">
+					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+					                          	</div>
+					                        </div>
+					                    </form>
                 </div>
 						<div class="tab-pane active" id="home">{{place.description}}</div>
 						<div class="tab-pane" id="openhrs">
@@ -409,7 +423,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</li> -->												
 								</ul>
 							</div>
-							<div class="item">
+							<!-- <div class="item">
 								<ul class="thumbnails listing-products">
 									<li class="col-md-3">
 										<div class="product-box">
@@ -420,7 +434,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<p class="price">$341</p>
 										</div>
 									</li>       
-									<!-- <li class="col-md-3">
+									<li class="col-md-3">
 										<div class="product-box">												
 											<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
 											<a href="product_detail.html">Praesent tempor sem</a><br/>
@@ -436,9 +450,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<a href="#" class="category">Suspendisse aliquet</a>
 											<p class="price">$341</p>
 										</div>
-									</li> -->
+									</li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

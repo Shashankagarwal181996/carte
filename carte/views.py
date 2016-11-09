@@ -382,11 +382,14 @@ def add_review(request):
 	review = request.POST.get('add_review')
 	rating = request.POST.get('add_rating')
 	name = request.POST.get('product_name')
+	print review,rating,name
 	print rating
 	# rating = request.POST.get('add_rating')
 	place = Restaurant.objects.filter(name=name)
+	flag=0
 	if not place:
 		place = Hotel.objects.filter(name=name)
+		flag=1
 	userid = request.session['userid']
 	users = User.objects.filter(id=request.session['userid'])
 	new_review = Rate_Review.objects.create(review=review,rating=rating,item_name=name)
@@ -394,8 +397,9 @@ def add_review(request):
 	
 	new_review.user = users
 	user_profile = Profile.objects.filter(user=users)
-	user_profile = user_profile[0]
-	new_review.user_profile = user_profile
+	if user_profile:
+		user_profile = user_profile[0]
+		new_review.user_profile = user_profile
 	new_review.save()
 
 	print place,new_review.review,name
@@ -411,7 +415,10 @@ def add_review(request):
 		place[0].image = img[1:]
 	print place[0].image
 	tags = []
-	tags = str(place[0].cuisines).split(',')
+	if flag==0:
+		tags = str(place[0].cuisines).split(',')
+	else:
+		tags = str(place[0].hotel_tags).split(',')
 	context_list = {
 		'place':place[0],
 		'rate_review':rate_review,

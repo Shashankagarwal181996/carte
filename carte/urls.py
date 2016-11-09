@@ -35,8 +35,8 @@ urlpatterns = [
     url(r'^search/',views.search,name="search"),
     url(r'^logout/',views.logout_user,name="logout"),
 
-    url('', include('social.apps.django_app.urls', namespace='social')),
-    url('', include('django.contrib.auth.urls', namespace='auth')),
+    # url('', include('social.apps.django_app.urls', namespace='social')),
+    # url('', include('django.contrib.auth.urls', namespace='auth')),
 
     # url('', include('social.apps.django_app.urls', namespace='social')),
     

@@ -324,14 +324,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					                        </div>
 					                    </form> -->
 					                     <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
-					                        <!-- <input id="ratings-hidden" name="rating" type="hidden"> 
-					                        
-					                        <textarea class="form-control animated" cols="10" id="new-review" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
+					                        <!-- <input id="ratings-hidden" name="rating" type="hidden">  -->
+					                        <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
+					                        <textarea class="form-control animated" cols="10" id="add_rating" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
 					                        <br>
-					                        <br> -->
+					                        <br>
 
 					                        <input id="ratings-hidden" name="rating" type="hidden"> 
-					                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+					                        <textarea class="form-control animated" cols="50" id="add_review" name="add_review" placeholder="Enter your review here..." rows="5"></textarea>
 											<br>					        
 					                        <div class="text-right">
 
@@ -341,10 +341,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					                             <textarea class="form-control animated" cols="15" id="new-review" name="comment" placeholder="" rows="1"></textarea>
 					                             </div> -->
 			
-					                            <div class="row lead">
+					                            <!-- div class="row lead">
         											<div id="stars" class="stars starrr"></div>
         											You gave a rating of <span id="count">0</span> star(s)
-												</div>
+												</div> -->
 												<br><br><br>
 												<div class="col-md-12">
 					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
