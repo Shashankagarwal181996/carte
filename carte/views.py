@@ -361,7 +361,55 @@ def product_detail(request,name):
 	# 	related_places.append(restaurant)
 	# print tags_places
 
+	# mat = []
+	# user = User.objects.filter(id=request.session['userid'])
+	# rate_review = Rate_Review.objects.filter(user=user)
+	# rate_review_all = Rate_Review.objects.all()
+	# print rate_review
+	# count = 0
+	# temp = []
+	# temp.append("user")
+	# restaurant = Restaurant.objects.all()
+	# for restaurant in restaurant:
+	# 	temp.append(restaurant.name)
+	# mat.append(temp)
+	# for rate_review in rate_review:
+	# 	temp = []
+	# 	temp.append()
+	# 	temp.append(rate_review)
 
+	temp= []
+	counter = 0
+	# x = User.objects.filter(username='hs')
+	# rate_review = Rate_Review.objects.filter(user=x)
+	# print rate_review[0].user
+	
+	# restaurants = Restaurant.objects.all()
+	# for x in User.objects.all():
+	# 	# print x.username
+	# 	rate_review = Rate_Review.objects.filter(user=x)
+	# 	if rate_review:
+	# 		rate_review = rate_review[0]
+	# 	# if len(rate_review)!=0 :
+	# 		# print rate_review.rating
+	# 		counter = counter+1
+	# 		# for y in rate_review:
+	# 		res = []
+	# 		res.append(x)
+	# 		res.append(rate_review.item_name)
+	# 		res.append(rate_review.rating)
+	# 		print res
+	# 		temp.append(res)
+	# print temp
+		# if rate_review.item_name is not None:
+		# 	counter = counter+1
+		# 	for y in rate_review:
+		# 		res = []
+		# 		res.append(x)
+		# 		res.append(rate_review.item_name)
+		# 		res.append(rate_review.rating)
+		# 		temp.append(res)
+		# 	print temp
 	# print("Collaborative Filtering")
 
 	# mat = []
@@ -431,10 +479,6 @@ def product_detail(request,name):
 	# predic += (val / tot)
 	# print(predic)
 
-
-
-
-
 	if rate_review_object:
 		context_list={
 			'place' : place,
@@ -500,10 +544,90 @@ def add_review(request):
 		tags = str(place[0].cuisines).split(',')
 	else:
 		tags = str(place[0].hotel_tags).split(',')
+
+	restaurants = Restaurant.objects.order_by('rating')
+	print name
+	restaurant_cuisine = []
+	for restaurant in restaurants:
+		tags_all = []
+		names = str(restaurant.name)
+		names = names.replace(" ","")
+		restaurant_list.append(restaurant)
+
+		if name in names:
+			flag=1
+			# img = restaurant.image
+			# img = str(img)
+			# img1 = img.split('_')
+			# img = img1[0]
+			# img = img[1:]
+			# if len(img1) != 1:
+			# 	img = img + '.jpg' 
+			# restaurant.image = img[1:]
+			place = restaurant
+			restaurant.url = names
+			flag=1
+			category = "CUISINES"
+			cuisines = restaurant.cuisines
+			restaurant_cuisine = cuisines.split(',')
+			for x in restaurant_cuisine:
+				tags_places.append(x)
+				x = str(x)
+				x = x.lstrip()
+		else:
+			cuisines = str(restaurant.cuisines)
+			tags_all = cuisines.split(',')
+			for x in tags_all:
+				x = str(x)
+				x = x.lstrip()
+
+		for x in tags_all:
+			x = str(x)
+			x = x.lstrip()
+			if x in restaurant_cuisine:
+				restaurant.url = names
+				related_places.append(restaurant)
+				break
+
+	# print "related places"
+	# print related_places
+	tags = []
+	hotel_features = []
+	print "hotel"
+	if flag == 0:
+		hotels = Hotel.objects.order_by('rating')
+		for hotel in hotels:
+			names = str(hotel.name)
+			names = names.replace(" ","")			
+			
+			if name in names:
+				hotel.url = names
+				place = hotel
+				flag=2
+				category = "HOTEL FEATURES"
+				hotel_features = str(hotel.hotel_tags)
+				tags = hotel_features.split(',')
+				tags_places = tags
+				for x in tags:
+					x = str(x)
+					x = x.lstrip()
+			else:
+				features = str(hotel.hotel_tags)
+				tags_all = features.split(',')
+				for x in tags_all:
+					x = str(x)
+					x = x.lstrip()
+			for x in tags_all:
+				if x in tags:
+					hotel.url = names
+					related_places.append(hotel)
+					break
+
 	context_list = {
 		'place':place[0],
 		'rate_review':rate_review,
 		'tags':tags,
+		'related_places': related_places,
 	}
 	return render(request,'review.html',context_list)
 

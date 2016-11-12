@@ -18,7 +18,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all" />
 <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" type="text/css" media="all" />
 <link rel="stylesheet" href="{% static "themes/css/item.css" %}">
-
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+ -->
+    <!-- Optional theme --><!-- 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ -->
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ -->
 <!--// css -->
 <!-- font -->
 <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
@@ -26,23 +34,65 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <link href="{% static "themes/css/bootstrappage.css" %}" rel="stylesheet"/>
 
-<script src="{% static "themes/js/jquery-1.7.2.min.js" %}"></script>
+<!-- <script src="{% static "themes/js/jquery-1.7.2.min.js" %}"></script> -->
 <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>				
 <script src="{% static "themes/js/superfish.js" %}"></script>	
 <script src="{% static "themes/js/jquery.scrolltotop.js" %}"></script>
-<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+<!-- <script src="{% static "js/jquery-1.11.1.min.js" %}"><s/script> -->
 <script src="{% static "js/bootstrap.js" %}"></script>
 <script src="{% static "themes/js/item.js" %}"></script>
 <script src="{% static "js/star.js" %}"></script>
 <script type="text/javascript" src="{% static "js/bootstrap.min.js"%}"></script>
 <!-- <script src="{% static "js/countries.js" %}"></script> -->
-
+<style >
+	.footer {
+    background: #33373D none repeat scroll 0 0;
+    border-top: 0px solid #fcab0e;
+    margin: 0;
+    padding: 20px 0;
+}
+.footer_dv {
+    width: 100%;
+}
+.footer_dv h4{
+    color: #fcab0e;
+    font-family: roboto;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+.footer_dv ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.footer_dv ul li:first-child {
+    border-top: medium none;
+    box-shadow: none;
+}
+.footer_dv ul li {
+    border-top: 1px solid #000;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2);
+    color: #f1f2f2;
+    padding: 5px 0;
+}
+.footer_dv p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 15px;
+    text-align: justify;
+}
+</style>
 
 <style>
 		.banner-agile{
 			background:url("http://hdwallpaperbackgrounds.net/wp-content/uploads/2015/08/Beach-Hotel-HD-Screensavers-Wallpapers.jpg")no-repeat 0px 0px;
 			background-size:cover;
 			min-height:580px;
+		}
+		textarea{
+			resize:none;
 		}
 </style>
 <style>
@@ -102,7 +152,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 
-<body>		
+<body>
+
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-3 logo-w3">
@@ -245,8 +296,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                          <img class="media-object img-circle" src="/static/media/{{rate_review.user_profile.image}}" alt="profile">
 	                        </a>
 	                    	<div class="media-body">
-	                          <div class="well well-lg">
-	                              <h4 class="media-heading text-uppercase reviews">{{rate_review.user.username}}</h4>
+	                          <div class="well well-lg" style="border-top-left-radius: 2em;">
+	                              <h4 class="media-heading text-uppercase reviews text-left">hisdniv</h4>
 	                              <ul class="media-date text-uppercase reviews list-inline">
 	                                <!-- <li class="dd">{{date}}</li> -->
 	                                <!-- <li class="mm">09</li>
@@ -255,118 +306,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                              <p class="media-comment">
 	                                {{rate_review.review}}
 	                              </p>
-	                              <!-- <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2 comments</a> -->
 	                          </div>              
 	                        </div>
-	                        <!-- <div class="collapse" id="replyOne">
-	                            <ul class="media-list">
-	                                <li class="media media-replied">
-	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="/static/media/{{image}}" alt="profile">
-	                                    </a>
-	                                    <div class="media-body">
-	                                      <div class="well well-lg">
-	                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> The Hipster</h4>
-	                                          <ul class="media-date text-uppercase reviews list-inline">
-	                                            <li class="dd">22</li>
-	                                            <li class="mm">09</li>
-	                                            <li class="aaaa">2014</li>
-	                                          </ul>
-	                                          <p class="media-comment">
-	                                            Nice job Maria.
-	                                          </p>
-	                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                                      </div>              
-	                                    </div>
-	                                </li>
-	                                 <li class="media media-replied" id="replied">
-	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="https://pbs.twimg.com/profile_images/442656111636668417/Q_9oP8iZ.jpeg" alt="profile">
-	                                    </a>
-	                                    <div class="media-body">
-	                                      <div class="well well-lg">
-	                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Mary</h4>
-	                                          <ul class="media-date text-uppercase reviews list-inline">
-	                                            <li class="dd">22</li>
-	                                            <li class="mm">09</li>
-	                                            <li class="aaaa">2014</li>
-	                                          </ul>
-	                                          <p class="media-comment">
-	                                            Thank you Guys!
-	                                          </p>
-	                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                                      </div>              
-	                                    </div>
-	                                </li> 
-	                            </ul>  
-	                        </div> -->
-	                      </li>   
+	                     </li>   
 	                      {% endfor %}       
-	               
-	                      <!-- <li class="media">
-	                        <a class="pull-left" href="#">
-	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-	                        </a>
-	                        <div class="media-body">
-	                          <div class="well well-lg">
-	                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
-	                              <ul class="media-date text-uppercase reviews list-inline">
-	                                <li class="dd">22</li>
-	                                <li class="mm">09</li>
-	                                <li class="aaaa">2014</li>
-	                              </ul>
-	                              <p class="media-comment">
-	                                Yehhhh... Thanks for sharing.
-	                              </p>
-	                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
-	                          </div>              
-	                        </div> -->
-	                        <!-- <div class="collapse" id="replyTwo">
-	                            <ul class="media-list">
-	                                <li class="media media-replied">
-	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jackiesaik/128.jpg" alt="profile">
-	                                    </a>
-	                                    <div class="media-body">
-	                                      <div class="well well-lg">
-	                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Lizz</h4>
-	                                          <ul class="media-date text-uppercase reviews list-inline">
-	                                            <li class="dd">22</li>
-	                                            <li class="mm">09</li>
-	                                            <li class="aaaa">2014</li>
-	                                          </ul>
-	                                          <p class="media-comment">
-	                                            Classy!
-	                                          </p>
-	                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                                      </div>              
-	                                    </div>
-	                                </li>
-	                            </ul>  
-	                        </div> -->
 	                      </li>
 	                    </ul> 
                 	</div>
-                	<!-- <div class="tab-pane" id="add_comment">
-                    	<form action="/add-review/" method="post" class="form-horizontal" id="commentForm" role="form">{% csrf_token %}
-	                        <div class="form-group">
-	                        	<div class="col-sm-11 col-md-11">
-	                            <label for="email" class="control-label"><strong>Comment</strong></label>
-	                            </div>
-	                            <div class="col-sm-11 col-md-11">
-	                              <textarea class="form-control" name="add_review" id="add_review" rows="5"></textarea>
-	                              <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
-	                            </div>
-	                        </div>
-	                        <div class="form-group">
-	                            <div class="col-sm-offset-7 col-md-offset-7 col-sm-4 col-md-4">                    
-	                                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
-	                            </div>
-	                        </div>            
-                    	</form>
-                </div> -->
+                	
                 <div class="tab-pane" id="add_comment">
                 	 <div class="container">
 						<div class="row" style="margin-top:10px;">
@@ -486,42 +433,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</table>
 						</div>
 						<div class="tab-pane" id="maps">
-							<!-- <div class="container"> -->
-							<!-- <form action="" method="post"> -->
-							<input id="origin-input" type="text" class="controls" placeholder="Enter an origin location">
-							<input id="destination-input" class="controls" type="text"
-						        placeholder="Enter a destination location">
-						    <div id="mode-selector" class="controls">
-							    <input type="radio" name="type" id="changemode-walking" checked="checked">
-							    <label for="changemode-walking">Walking</label>
+    						<input id="origin-input" type="text" placeholder="Enter an origin location">
+    						<input id="destination-input" type="text" placeholder="Enter a destination location">
+    						
+						    <div id="map" style="width:500px; height: 300px;"></div>
 
-							    <input type="radio" name="type" id="changemode-transit">
-							    <label for="changemode-transit">Transit</label>
-
-							    <input type="radio" name="type" id="changemode-driving">
-							    <label for="changemode-driving">Driving</label>
-						    </div>
-
-							<input id="origin-input" class="controls" type="text"
-        					placeholder="Enter an origin location">
-
-						    <input id="destination-input" class="controls" type="text"
-						        placeholder="Enter a destination location">
-
-						    <div id="mode-selector" class="controls">
-							    <input type="radio" name="type" id="changemode-walking" checked="checked">
-							    <label for="changemode-walking">Walking</label>
-
-							    <input type="radio" name="type" id="changemode-transit">
-							    <label for="changemode-transit">Transit</label>
-
-							    <input type="radio" name="type" id="changemode-driving">
-							    <label for="changemode-driving">Driving</label>
-						    </div>
-						    <!-- </form> -->
-						    <div id="map"></div>
-						    <!-- </div> -->
-					<script>
+						<script>
 					      // This example requires the Places library. Include the libraries=places
 					      // parameter when you first load the API. For example:
 					      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
@@ -555,15 +472,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					        // Sets a listener on a radio button to change the filter type on Places
 					        // Autocomplete.
-					        function setupClickListener(id, mode) {
-					          var radioButton = document.getElementById(id);
-					          radioButton.addEventListener('click', function() {
-					            travel_mode = mode;
-					          });
-					        }
-					        setupClickListener('changemode-walking', 'WALKING');
-					        setupClickListener('changemode-transit', 'TRANSIT');
-					        setupClickListener('changemode-driving', 'DRIVING');
+					        // function setupClickListener(id, mode) {
+					        //   var radioButton = document.getElementById(id);
+					        //   radioButton.addEventListener('click', function() {
+					        //     travel_mode = mode;
+					        //   });
+					        // }
+					        // setupClickListener('changemode-walking', 'WALKING');
+					        // setupClickListener('changemode-transit', 'TRANSIT');
+					        // setupClickListener('changemode-driving', 'DRIVING');
 
 					        function expandViewportToFitPlace(map, place) {
 					          if (place.geometry.viewport) {
@@ -623,10 +540,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					        }
 					      }
 					    </script>
-					    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDB-PU3DlWyzd9wgX3jdu4Z7IXs1yKoEr4&libraries=places&callback=initMap"
-					        async defer></script>
+						<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDB-PU3DlWyzd9wgX3jdu4Z7IXs1yKoEr4&libraries=places&callback=initMap" async defer></script> -->
 						</div>
-						<div class="tab-pane" id="reviews">gsdfgsdgadfgsdgafg</div>
+						
 					</div>				
 				</div>	
 				<!-- Comment Section -->
@@ -675,56 +591,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 									</li>
 									{% endfor %}
-									<p>   </p>
-									<!-- <li class="col-md-3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="themes/images/ladies/5.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-											<a href="#" class="category">Phasellus consequat</a>
-											<p class="price">$341</p>
-										</div>
-									</li>       
-									<li class="col-md-3">
-										<div class="product-box">												
-											<a href="product_detail.html"><img alt="" src="themes/images/ladies/4.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Praesent tempor sem</a><br/>
-											<a href="#" class="category">Erat gravida</a>
-											<p class="price">$28</p>
-										</div>
-									</li>		 -->										
+									<p>   </p>										
 								</ul>
 							</div>
-							<!-- <div class="item">
-								<ul class="thumbnails listing-products">
-									<li class="col-md-3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="themes/images/ladies/1.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Fusce id molestie massa</a><br/>
-											<a href="#" class="category">Phasellus consequat</a>
-											<p class="price">$341</p>
-										</div>
-									</li>       
-									<li class="col-md-3">
-										<div class="product-box">												
-											<a href="product_detail.html"><img alt="" src="themes/images/ladies/2.jpg"></a><br/>
-											<a href="product_detail.html">Praesent tempor sem</a><br/>
-											<a href="#" class="category">Erat gravida</a>
-											<p class="price">$28</p>
-										</div>
-									</li>
-									<li class="col-md-3">
-										<div class="product-box">
-											<span class="sale_tag"></span>												
-											<a href="product_detail.html"><img alt="" src="themes/images/ladies/3.jpg"></a><br/>
-											<a href="product_detail.html" class="title">Wuam ultrices rutrum</a><br/>
-											<a href="#" class="category">Suspendisse aliquet</a>
-											<p class="price">$341</p>
-										</div>
-									</li>
-								</ul>
-							</div> -->
 						</div>
 					</div>
 				</div>
@@ -732,32 +601,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>		
 
 	<br><br>
-<!-- <div class="footer">
-	<div class="container">
-	<div class="jumbotron">
-		<div class="col-md-3 footer-grids fgd1">
-		<h4>Information</h4> 
-			<ul>
-				<li><a href="contact.html">Contact Us</a></li>
-				<li><a href="faq.html">FAQ's</a></li>
-			</ul>
-		</div>
-		<div class="col-md-3 footer-grids fgd2">
-			
-		</div>
-		<div class="col-md-3 footer-grids fgd3">
-			
-		</div>
-		<div class="col-md-3 footer-grids fgd4">
-			<h4>My Account</h4> 
-			<ul>
-				<li><a href="/index/">Login</a></li>
-				<li><a href="/register/">Register</a></li>
-			</ul>
-		</div>
-	</div>
-	</div>	
-</div> -->	
+
 <script src="themes/js/common.js"></script>
 <script>
 	$(function () {
@@ -765,7 +609,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$('#myTab a').click(function (e) {
 			e.preventDefault();
 			$(this).tab('show');
-		})
+			$.ajax({
+				url : 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDB-PU3DlWyzd9wgX3jdu4Z7IXs1yKoEr4&libraries=places&callback=initMap',
+				async : false,
+				dataType : "script"
+				});
+		});
+		
 	})
 	$(document).ready(function() {
 		$('.thumbnail').fancybox({
@@ -777,6 +627,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             interval: 2500
         });								
 	});
+
 </script>
 <script type="text/javascript">
 $(document).on('click','.glyphicon-star',function(){
@@ -794,5 +645,35 @@ $(document).on('click','.glyphicon-star',function(){
 	});
 });	 
 </script>
-    </body>
+
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDB-PU3DlWyzd9wgX3jdu4Z7IXs1yKoEr4&libraries=places&callback=initMap" async defer></script>
+ -->    
+<section class="footer">
+    <div class="container">
+    	<div class="row">
+        	<div class="col-lg-4  col-md-4 col-sm-4">
+            	<div class="footer_dv logo-w3">
+
+					<a href="/dashboard/"><h4>CARTE </h4></a>
+					<p>Explore curated lists of top restaurants,<br>hotels, cafes, pubs, and bars in India,<br> based on trends</p><br>
+				</div>
+            </div>
+            <div class="col-lg-4  col-md-4 col-sm-4">
+            	<div class="footer_dv">
+                	<a href="/about/"><h4>about us</h4></a>
+                	<p>Meet our Team</p><br>
+      				</div>
+            </div>
+            <div class="col-lg-4  col-md-4 col-sm-4">
+            	<div class="footer_dv">
+                	<a href="/contact/"><h4>Contact us</h4></a>
+                	<p>We look forward to hearing from you!</p>
+      				<p><i class="fa fa-phone"></i> Phone (India) : +91 9460 413 805</p>
+      				<p><i class="fa fa-envelope"></i> E-mail : carte@gmail.com</p><br>
+      				</div>
+            </div>
+        </div>
+    </div>
+</section>
+ </body>
 </html>

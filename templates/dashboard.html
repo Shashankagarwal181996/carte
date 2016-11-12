@@ -23,6 +23,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static "js/bootstrap.js" %}"></script>
 <!-- <script src="{% static "js/countries.js" %}"></script> -->
 
+<style >
+	.footer {
+    background: #33373D none repeat scroll 0 0;
+    border-top: 0px solid #fcab0e;
+    margin: 0;
+    padding: 20px 0;
+}
+.footer_dv {
+    width: 100%;
+}
+.footer_dv h4{
+    color: #fcab0e;
+    font-family: roboto;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+.footer_dv ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.footer_dv ul li:first-child {
+    border-top: medium none;
+    box-shadow: none;
+}
+.footer_dv ul li {
+    border-top: 1px solid #000;
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2);
+    color: #f1f2f2;
+    padding: 5px 0;
+}
+.footer_dv p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0 0 15px;
+    text-align: justify;
+}
+</style>
 </head>
 
 <body>
@@ -313,6 +353,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         	}
         });
     </script> 
+<section class="footer">
+    <div class="container">
+    	<div class="row">
+        	<div class="col-lg-4  col-md-4 col-sm-4">
+            	<div class="footer_dv logo-w3">
 
+					<a href="/dashboard/"><h4>CARTE </h4></a>
+					<p>Explore curated lists of top restaurants,<br>hotels, cafes, pubs, and bars in India,<br> based on trends</p><br>
+				</div>
+            </div>
+            <div class="col-lg-4  col-md-4 col-sm-4">
+            	<div class="footer_dv">
+                	<a href="/about/"><h4>about us</h4></a>
+                	<p>Meet our Team</p><br>
+      				</div>
+            </div>
+            <div class="col-lg-4  col-md-4 col-sm-4">
+            	<div class="footer_dv">
+                	<a href="/contact/"><h4>Contact us</h4></a>
+                	<p>We look forward to hearing from you!</p>
+      				<p><i class="fa fa-phone"></i> Phone (India) : +91 9460 413 805</p>
+      				<p><i class="fa fa-envelope"></i> E-mail : carte@gmail.com</p><br>
+      				</div>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
