@@ -490,13 +490,14 @@ def search(request):
 			hotel_tags = hotel_tags.split(',')
 
 			img = hotel.image
+			print img
 			img = str(img)
 			img1 = img.split('_')
 			img = img1[0]
-			img = img[1:]
+			# img = img[1:]
+			# print img
 			if len(img1) != 1:
 				img = img + '.jpg' 
-			print img
 			hotel.image = img
 
 			if search_query in name.lower():
