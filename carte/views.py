@@ -384,6 +384,8 @@ def add_review(request):
 	name = request.POST.get('product_name')
 	rating_count = request.POST.get('rating_count')
 	rating = rating_count
+	if rating is None:
+		rating = 4
 	print review,rating,name
 	print rating
 	# rating = request.POST.get('add_rating')
