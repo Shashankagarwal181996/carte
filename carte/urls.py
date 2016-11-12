@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^add-review/',views.add_review,name="add_review"),
     url(r'^search/',views.search,name="search"),
     url(r'^logout/',views.logout_user,name="logout"),
+    url(r'^contact-us/',views.contact_us,name="contact_us"),
 
     # url('', include('social.apps.django_app.urls', namespace='social')),
     # url('', include('django.contrib.auth.urls', namespace='auth')),

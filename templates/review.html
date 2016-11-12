@@ -32,6 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
 <script src="{% static "themes/js/item.js" %}"></script>
+<script src="{% static "js/countries.js" %}"></script>
+
 </head>
 	
 
@@ -100,7 +102,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					);
 				});
 			</script>
+		<!-- countries list -->
+			<div align ="center" class="col-md-3"  style="padding-top: 5px;">
 
+	            <select id="country" name ="country"  style="height: 42px; width: 280px;"></select>
+
+				<script language="javascript" >
+					populateCountries("country", "state");
+					populateCountries("country2");
+				</script>
+
+	        </div>
 		<div class="col-md-4 search-agileinfo" >
 			<form action="/search/" method="GET" >
 				<input type="search" name="search" id="search" placeholder="Enter Search query" required="">
@@ -126,9 +138,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-9">
 			<div class="row">
 				<div class="col-md-11">
-					<a href="{% static "themes/images/ladies/1.jpg" %}" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img id = "im1" alt="" src="/static/media/{{place.image}}" ></a>
+					<a href="" class="thumbnail" data-fancybox-group="group1" title="Description 1"><img id = "im1" alt="" src="/static/media/{{place.image}}" ></a>
 				</div>						
 			</div>
+			<div class="col-md-11">
+				<div class="col-l-4 tac left">
+	                <div class="right">
+	                    <div class="right rating-info rrw-container rrw-container-102960 " itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+	                        <div class="res-rating pos-relative clearfix mb5">
+	                            <div tabindex="0" aria-label="Rated" itemprop="ratingValue" data-res-id="102960" class="rating-for-102960 rating-div rrw-aggregate level-5">
+	                                {{place.rating}}<span>/5</span>             
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>
 			<div class="row">
 
 				<!-- navtabs are here -->
@@ -148,142 +173,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                    <ul class="media-list">
 	                    {% for rate_review in rate_review %}
 	                      <li class="media">
-	                        <!-- <a class="pull-left" href="#">
-	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
-	                        </a>
- -->	                    <div class="media-body">
+	                        <a class="pull-left" href="#">
+	                          <img class="media-object img-circle" src="/static/media/{{rate_review.user_profile.image}}" alt="profile">
+	                        </a>	                    <div class="media-body">
 	                          <div class="well well-lg">
-	                              <h4 class="media-heading text-uppercase reviews">{{rate_review.user.username}}</h4>
-	                              <!-- <ul class="media-date text-uppercase reviews list-inline">
-	                                <li class="dd">22</li>
-	                                <li class="mm">09</li>
-	                                <li class="aaaa">2014</li>
-	                              </ul> -->
+	                              <h4 class="media-heading text-uppercase reviews">{{rate_review.user.username}}</h4>	                              
 	                              <p class="media-comment">
 	                                {{rate_review.review}}
-	                              </p>
-	                              <!-- <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span> 2 comments</a> -->
+	                              </p>	                              
 	                          </div>              
 	                        </div>
-	                     <!--    <div class="collapse" id="replyOne">
-	                            <ul class="media-list">
-	                                <li class="media media-replied">
-	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg" alt="profile">
-	                                    </a>
-	                                    <div class="media-body">
-	                                      <div class="well well-lg">
-	                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> The Hipster</h4>
-	                                          <ul class="media-date text-uppercase reviews list-inline">
-	                                            <li class="dd">22</li>
-	                                            <li class="mm">09</li>
-	                                            <li class="aaaa">2014</li>
-	                                          </ul>
-	                                          <p class="media-comment">
-	                                            Nice job Maria.
-	                                          </p>
-	                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                                      </div>              
-	                                    </div>
-	                                </li>
-	                                 <li class="media media-replied" id="replied">
-	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="https://pbs.twimg.com/profile_images/442656111636668417/Q_9oP8iZ.jpeg" alt="profile">
-	                                    </a>
-	                                    <div class="media-body">
-	                                      <div class="well well-lg">
-	                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Mary</h4>
-	                                          <ul class="media-date text-uppercase reviews list-inline">
-	                                            <li class="dd">22</li>
-	                                            <li class="mm">09</li>
-	                                            <li class="aaaa">2014</li>
-	                                          </ul>
-	                                          <p class="media-comment">
-	                                            Thank you Guys!
-	                                          </p>
-	                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                                      </div>              
-	                                    </div>
-	                                </li> 
-	                            </ul>  
-	                        </div> -->
+	                 
 	                      </li>   
 	                      {% endfor %}       
-	                      <!-- <li class="media">
-	                        <a class="pull-left" href="#">
-	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kurafire/128.jpg" alt="profile">
-	                        </a> -->
-	                        <!-- <div class="media-body">
-	                          <div class="well well-lg">
-	                              <h4 class="media-heading text-uppercase reviews">Nico</h4>
-	                              <ul class="media-date text-uppercase reviews list-inline">
-	                                <li class="dd">22</li>
-	                                <li class="mm">09</li>
-	                                <li class="aaaa">2014</li>
-	                              </ul>
-	                              <p class="media-comment">
-	                                I'm looking for that. Thanks!
-	                              </p>
-	                              <div class="embed-responsive embed-responsive-16by9">
-	                                  <iframe class="embed-responsive-item" src="//www.youtube.com/embed/80lNjkcp6gI" allowfullscreen></iframe>
-	                              </div>
-	                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                          </div>              
-	                        </div> -->
-	                      <!-- </li> -->
-	                    <!--   <li class="media">
-	                        <a class="pull-left" href="#">
-	                          <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/lady_katherine/128.jpg" alt="profile">
-	                        </a>
-	                        <div class="media-body">
-	                          <div class="well well-lg">
-	                              <h4 class="media-heading text-uppercase reviews">Kriztine</h4>
-	                              <ul class="media-date text-uppercase reviews list-inline">
-	                                <li class="dd">22</li>
-	                                <li class="mm">09</li>
-	                                <li class="aaaa">2014</li>
-	                              </ul>
-	                              <p class="media-comment">
-	                                Yehhhh... Thanks for sharing.
-	                              </p>
-	                              <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                              <a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#replyTwo"><span class="glyphicon glyphicon-comment"></span> 1 comment</a>
-	                          </div>              
-	                        </div>
-	                        <div class="collapse" id="replyTwo">
-	                            <ul class="media-list">
-	                                <li class="media media-replied">
-	                                    <a class="pull-left" href="#">
-	                                      <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/jackiesaik/128.jpg" alt="profile">
-	                                    </a>
-	                                    <div class="media-body">
-	                                      <div class="well well-lg">
-	                                          <h4 class="media-heading text-uppercase reviews"><span class="glyphicon glyphicon-share-alt"></span> Lizz</h4>
-	                                          <ul class="media-date text-uppercase reviews list-inline">
-	                                            <li class="dd">22</li>
-	                                            <li class="mm">09</li>
-	                                            <li class="aaaa">2014</li>
-	                                          </ul>
-	                                          <p class="media-comment">
-	                                            Classy!
-	                                          </p>
-	                                          <a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span> Reply</a>
-	                                      </div>              
-	                                    </div>
-	                                </li>
-	                            </ul>  
-	                        </div>
-	                      </li> -->
 	                    </ul> 
                 	</div>
                 	<div class="tab-pane" id="add_comment">
                     	<form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
 					                        <!-- <input id="ratings-hidden" name="rating" type="hidden">  -->
 					                        <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
-					                        <textarea class="form-control animated" cols="10" id="add_rating" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
+					                        <!-- <textarea class="form-control animated" cols="10" id="add_rating" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>
 					                        <br>
-					                        <br>
+					                        <br> -->
 
 					                        <input id="ratings-hidden" name="rating" type="hidden"> 
 					                        <textarea class="form-control animated" cols="50" id="add_review" name="add_review" placeholder="Enter your review here..." rows="5"></textarea>
@@ -296,11 +207,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					                             <textarea class="form-control animated" cols="15" id="new-review" name="comment" placeholder="" rows="1"></textarea>
 					                             </div> -->
 			
-					                            <!-- div class="row lead">
+					                            <div class="row lead">
         											<div id="stars" class="stars starrr"></div>
         											You gave a rating of <span id="count">0</span> star(s)
-												</div> -->
-												<br><br><br>
+												</div> 
+												<br><br>
 												<div class="col-md-12">
 					                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
 					                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
@@ -505,6 +416,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             interval: 2500
         });								
 	});
+</script>
+<script type="text/javascript">
+$(document).on('click','.glyphicon-star',function(){
+
+	var rating = $('#count').html();
+	// alert(rating);
+	$.ajax({
+		type:'POST',
+		url:'/add-review/',
+		data:{'add_rating':3}
+		// success:function(data)
+		// {
+		// 	alert(data);
+		// }
+	});
+});	 
 </script>
     </body>
 </html>

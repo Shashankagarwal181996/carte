@@ -382,6 +382,8 @@ def add_review(request):
 	review = request.POST.get('add_review')
 	rating = request.POST.get('add_rating')
 	name = request.POST.get('product_name')
+	rating_count = request.POST.get('rating_count')
+	rating = rating_count
 	print review,rating,name
 	print rating
 	# rating = request.POST.get('add_rating')
@@ -525,3 +527,6 @@ def logout_user(request):
     context_instance = RequestContext(request)
     return HttpResponseRedirect('/index/')
  
+def contact_us(request):
+	context_list={}
+	return render(request,'contact.html',context_list)

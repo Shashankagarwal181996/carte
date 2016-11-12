@@ -106,10 +106,28 @@ $( document ).ready(function() {
       
   $('#stars').on('starrr:change', function(e, value){
     $('#count').html(value);
+    $('#rating_count').val(value);
+    // var rating = value;
+    // console.log(rating);
+    // $.ajax({
+    //   type:'GET',
+    //   url:'/add-review/',
+    //   data:{
+    //     'add_rating':rating,
+    //   }
+    // });
   });
   
   $('#stars-existing').on('starrr:change', function(e, value){
     $('#count-existing').html(value);
+    // var rating = $('#count-existing').val();
+    // $.ajax({
+    //   type:'POST',
+    //   url: '/add-review/',
+    //   data:{
+    //     'add_rating':rating,
+    //   }
+    // })
   });
 });     
 // $( document ).ready(function() {
