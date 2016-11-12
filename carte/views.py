@@ -13,6 +13,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from .models import *
 
 import datetime
+import math
+
 
 # @ensure_csrf_cookie
 def index(request):
@@ -358,6 +360,81 @@ def product_detail(request,name):
 	# for restaurant in restaurants:
 	# 	related_places.append(restaurant)
 	# print tags_places
+
+
+	# print("Collaborative Filtering")
+
+	# mat = []
+	# mat.append([4,-10,-10,5,1,-10,-10])
+	# mat.append([5,5,4,-10,-10,-10,-10])
+	# mat.append([-10,-10,-10,2,4,5,-10])
+	# mat.append([-10,3,-10,-10,-10,-10,3])
+
+	# #subtracting the average of each user from respective ratings
+	# avgs=[]
+
+	# for i in range(len(mat)):
+	#     av = 0.0
+	#     tot = 0
+	#     for j in mat[i]:
+	#         if j != -10:
+	#             av = av + j
+	#             tot += 1            
+	#     av = av / tot
+	#     avgs.append(av)
+	#     for j in range(len(mat[i])):
+	#         if mat[i][j] != -10:
+	#             mat[i][j] = mat[i][j] - av
+
+
+	# #all root of square sum
+	# root_sqs=[]
+	# for i in mat:
+	#     sqs = 0
+	#     for j in i:
+	#         if j != -10:
+	#             sqs = sqs + j*j
+	#     root_sqs.append(math.sqrt(sqs))
+
+	# #cosine relation of activ user with every other user
+	# activ = 0
+	# all_similr=[]
+
+	# for i in range(len(mat)):
+	#     val = 0
+	#     if activ == i:
+	#         continue
+	#     for j in range(len(mat[i])):
+	#         if mat[i][j] != -10 and mat[activ][j] != -10:
+	#             val = val + mat[i][j]*mat[activ][j]
+
+	#     if(root_sqs[i] != 0):       
+	#         val = val / (root_sqs[activ]*root_sqs[i])
+	#         all_similr.append([val, i])
+	            
+	# all_similr.sort()
+	# all_similr.reverse() #now it has all relations in decending order
+	# print(all_similr)
+
+	# predic = avgs[activ]
+	# item = 1
+	# val = 0
+	# tot = 0
+
+	# for i in all_similr:
+	#     usr = i[1]
+	#     if mat[usr][item] != -10:
+	#         val += mat[usr][item]*i[0]
+	#         print(usr)
+	#     tot += i[0]
+
+	# predic += (val / tot)
+	# print(predic)
+
+
+
+
+
 	if rate_review_object:
 		context_list={
 			'place' : place,
@@ -533,3 +610,7 @@ def logout_user(request):
 def contact_us(request):
 	context_list={}
 	return render(request,'contact.html',context_list)
+
+def about_us(request):
+	context_list = {}
+	return render(request,'about.html',context_list)
