@@ -355,7 +355,7 @@ def product_detail(request,name):
 		names= names.replace(" ","")
 		if names in name:
 			rate_review_object.append(rate_review)
-	
+	rate_review_object.reverse()
 	date = datetime.date.today()
 	# for restaurant in restaurants:
 	# 	related_places.append(restaurant)
@@ -383,7 +383,6 @@ def product_detail(request,name):
 	# x = User.objects.filter(username='hs')
 	# rate_review = Rate_Review.objects.filter(user=x)
 	# print rate_review[0].user
-	
 	# restaurants = Restaurant.objects.all()
 	# for x in User.objects.all():
 	# 	# print x.username
@@ -548,6 +547,8 @@ def add_review(request):
 	restaurants = Restaurant.objects.order_by('rating')
 	print name
 	restaurant_cuisine = []
+	restaurant_list=[]
+	related_places = []
 	for restaurant in restaurants:
 		tags_all = []
 		names = str(restaurant.name)
@@ -622,7 +623,9 @@ def add_review(request):
 					hotel.url = names
 					related_places.append(hotel)
 					break
-
+	# rate_review.reverse()
+	list(rate_review).reverse()
+	print rate_review
 	context_list = {
 		'place':place[0],
 		'rate_review':rate_review,
