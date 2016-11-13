@@ -135,7 +135,31 @@ def update_profile(request):
 	userid = request.session['userid']
 	user = User.objects.get(id=request.session['userid'])
 
-	if password == confirm_password:
+	if password == "":
+		
+		print "empty"
+		user_profile = Profile.objects.filter(user=user)
+		print user_profile
+		if len(user_profile) == 0:
+			user_profile = Profile.objects.create(user=user,image=image)
+		else:
+			user_profile[0].image = image
+			user_profile = user_profile[0]
+		# print user_profile.image
+		img = user_profile.image
+		img = str(img)
+		img1 = img.split('_')
+		img = img1[0]
+		print img
+		# img = img[1:]
+		if len(img1) != 1:
+			img = img + '.jpg' 
+		# user_profile.image = img[1:]
+		print user_profile.image
+		user_profile.save()
+		return HttpResponseRedirect('/dashboard/')
+
+	elif password == confirm_password:
 		user.first_name = first_name
 		user.last_name = last_name
 		user.email = email
