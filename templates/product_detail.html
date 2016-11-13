@@ -43,6 +43,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{% static "themes/js/item.js" %}"></script>
 <script src="{% static "js/star.js" %}"></script>
 <script type="text/javascript" src="{% static "js/bootstrap.min.js"%}"></script>
+
 <!-- <script src="{% static "js/countries.js" %}"></script> -->
 <style >
 	.footer {
@@ -278,13 +279,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- navtabs are here -->
 				<div class="col-md-11">
 					<ul class="nav nav-tabs" id="myTab">
-						<li class="active"><a href="#home">Description</a></li>
+						<li class="active"><a data-toggle="tab" href="#home">Description</a></li>
 						<!-- <li class=""><a href="#openhrs">Opening Hours</a></li>
 						<li class=""><a href="#menu">Menu</a></li>
 						<li class=""><a href="#reviews">Reviews</a></li> -->
-						<li class=""><a href="#maps">Maps</a></li>
-						<li class=""><a href="#comment">Reviews</a></li>
-						<li class=""><a href="#add_comment">Add a Review</a></li>
+						<li class="" id="map_google"><a data-toggle="tab" href="#maps">Maps</a></li>
+						<li class=""><a data-toggle="tab" href="#comment">Reviews</a></li>
+						<li class=""><a data-toggle="tab" href="#add_comment">Add a Review</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -604,19 +605,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script src="themes/js/common.js"></script>
 <script>
-	$(function () {
-		$('#myTab a:first').tab('show');
-		$('#myTab a').click(function (e) {
-			e.preventDefault();
-			$(this).tab('show');
-			$.ajax({
-				url : 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDB-PU3DlWyzd9wgX3jdu4Z7IXs1yKoEr4&libraries=places&callback=initMap',
-				async : false,
-				dataType : "script"
+var count = false;
+	$(document).on('click','#map_google',function(event){
+			if(count == false){
+				$.ajax({
+					url : 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDB-PU3DlWyzd9wgX3jdu4Z7IXs1yKoEr4&libraries=places&callback=initMap',
+					async : false,
+					dataType : "script"
 				});
-		});
-		
-	})
+				count = true;
+			}
+
+	});
 	$(document).ready(function() {
 		$('.thumbnail').fancybox({
 			openEffect  : 'none',
