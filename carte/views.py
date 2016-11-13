@@ -103,19 +103,7 @@ def profile(request):
 	if len(user_profile) != 0:
 		user_profile = user_profile[0]
 		image = user_profile.image
-	# img = user_profile.image
-	# img = str(img)
-	# img1 = img.split('_')
-	# img = img1[0]
-	# img = img[1:]
-	# if len(img1) != 1:
-	# 	img = img + '.jpg' 
-	# print img[1:]
-	# user_profile.image = img[1:]
-	# print user_profile.image
-	# image = img[1:]
 		print image
-	
 
 		context_list = {
 			'first_name' : first_name,
@@ -246,6 +234,9 @@ def dashboard(request):
 		hotel_one = []
 		hotel_two = []
 		
+		restaurant_list.reverse()
+		hotel_list.reverse()
+
 		rest_one = restaurant_list[:4]
 		rest_two = restaurant_list[4:8]
 		rest_three = restaurant_list[8:12]
