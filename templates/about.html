@@ -22,8 +22,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
-<style >
-	.footer {
+
+	<style>
+		.banner-agile{
+			background:url("http://images.indianexpress.com/2016/01/orange-county-kabini-orangecounty-in.jpg?w=820?w=728")no-repeat 0px 0px;
+			background-size:cover;
+			min-height:515px;
+		}
+
+		.footer {
     background: #33373D none repeat scroll 0 0;
     border-top: 0px solid #fcab0e;
     margin: 0;
@@ -61,13 +68,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     margin: 0 0 15px;
     text-align: justify;
 }
-</style>
+	</style>
 </head>
 
 <body>
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-3 logo-w3">
+			<img src="{% static "images/logo5.png" %}">
 			<a href="/dashboard/"><h1>CARTE </h1></a>
 		</div>
 		<div class="col-md-6 phone-w3l">
@@ -81,6 +89,68 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="clearfix"></div>
 	</div>	
 </div>
+
+<div class="header-bottom-w3ls">
+	<div class="container">
+		<div class="col-md-7 navigation-agileits">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header nav_2">
+					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div> 
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav ">
+						<li class=" active"><a href="/dashboard/" class="hyper "><span>Home</span></a></li>
+						<li><a href="/about-us/" class="hyper"><span>About</span></a></li>
+						<li><a href="/contact-us/" class="hyper"><span>Contact Us</span></a></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+								<script>
+				$(document).ready(function(){
+					$(".dropdown").hover(            
+						function() {
+							$('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+							$(this).toggleClass('open');        
+						},
+						function() {
+							$('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+							$(this).toggleClass('open');       
+						}
+					);
+				});
+				</script>
+
+					<!-- countries list -->
+			<!-- <div align ="center" class="col-md-3"  style="padding-top: 5px;">
+
+	            <select id="country" name ="country"  style="height: 42px; width: 280px;"></select>
+
+				<script language="javascript" >
+					populateCountries("country", "state");
+					populateCountries("country2");
+				</script>
+
+	        </div> -->
+		<div class="col-md-4 search-agileinfo" >
+			<form action="/search/" method="GET">
+				<input type="search" name="search" id="search" placeholder="Enter Search Query" required="">
+				<a href="#abc">
+				<button type="submit" class="btn btn-default search" aria-label="Left Align">
+						<i class="fa fa-search" aria-hidden="true"> </i> 
+				</button>
+				</a>
+			</form>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
 <div class="banner-agile">
 	<div class="container">
 		<h2>OUR MISSION IS TO ENSURE</h2>
@@ -88,9 +158,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p>We are a team of dedicated engineers and managers who work to make your life easy. </p>
 	</div>
 </div>
+<br>
 <div class="banner-bootom-w3-agileits">
 	<div class="container">
 		<h1>We do this by</h1>
+		<hr>
 		<p>
 		Helping people discover great places around them.
 		Our team gathers information from every restaurant on a regular basis to ensure our data is fresh. Our vast community of food lovers share their reviews and photos, so you have all that you need to make an informed choice.
@@ -107,98 +179,112 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</p>
 		</div>
 		</div>
+		<br>
 		<div class="team" id="team">
 			<div class="container">
 				<h3> Our Team</h3>
+				<hr>
+
 		<div class="team-grids">
-			<div class="col-md-4 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/10427677_696023447185642_7502114183653236509_n.jpg?oh=92f7500354c1556bb2f67c86b64b2a0e&oe=588BA6A2" class="img-responsive" alt=" " />
-						<figcaption class="overlay">
-							<div class="social-icon">
-								<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-								<a href="https://www.facebook.com/shashank.agarwal.9081?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-								<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+				<div class="col-md-12">
+					<div class="col-md-4 team-grid">
+						<div class="team-img">
+							<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/10427677_696023447185642_7502114183653236509_n.jpg?oh=92f7500354c1556bb2f67c86b64b2a0e&oe=588BA6A2" class="img-responsive" alt=" " />
+								<figcaption class="overlay">
+									<div class="social-icon">
+										<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+										<a href="https://www.facebook.com/shashank.agarwal.9081?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+										<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+									</div>
+								</figcaption>
 							</div>
-						</figcaption>
+							<h4>Shashank Agarwal</h4>
+							<h5>Product Owner</h5>
 					</div>
-					<h4>Shashank Agarwal</h4>
-					<h5>Product Owner</h5>
-			</div>
-			<div class="col-md-4 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-1/p160x160/11924221_1196198443730461_9104123788684666180_n.jpg?oh=c931ff2d93ba8dd2b10b2408c6564715&oe=588B52EE" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/shashank.gupta.752487?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+					<div class="col-md-4 team-grid">
+						<div class="team-img">
+							<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-1/p160x160/11924221_1196198443730461_9104123788684666180_n.jpg?oh=c931ff2d93ba8dd2b10b2408c6564715&oe=588B52EE" class="img-responsive" alt=" " />
+							<figcaption class="overlay">
+								<div class="social-icon">
+									<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://www.facebook.com/shashank.gupta.752487?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+								</div>
+							</figcaption>
 						</div>
-					</figcaption>
-				</div>
-				<h4>Shashank Gupta</h4>
-				<h5>Database Expert</h5>
-			</div>
-			<div class="col-md-4 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/14962542_10205732118861962_1772979843674116217_n.jpg?oh=3d6b78e1ba4a3628624ebb6b830b445a&oe=58CA86DD" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/sanaa.wadood?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<h4>Shashank Gupta</h4>
+						<h5>Database Expert</h5>
+					</div>
+					<div class="col-md-4 team-grid">
+						<div class="team-img">
+							<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/13051704_1701512763435348_8779673845269441118_n.jpg?oh=c5e6a66efe40eb65a42e62c8f63a27ce&oe=58C0D4EE" class="img-responsive" alt=" " />
+							<figcaption class="overlay">
+								<div class="social-icon">
+									<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://www.facebook.com/shubham190496?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+								</div>
+							</figcaption>
 						</div>
-					</figcaption>
+						<h4>Shubham Gupta</h4>
+						<h5>Lead Developer</h5>
+					</div>
 				</div>
-				<h4>Sanaa Wadood</h4>
-				<h5>Site Reliability Engineer</h5>
-			</div>
-			<div class="col-md-4 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/12369153_1666092796993300_5075970971775906519_n.jpg?oh=58d30ccfb24ca0dd3e7845d4ac4d8869&oe=58C0D7E0" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/yashokirti.soni"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+				<div class="clearfix"></div>
+			</div>	
+			<hr>
+			<div class="team-grids">
+				<div class="col-md-12">
+					<div class="col-md-4 team-grid">
+						<div class="team-img">
+							<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/14962542_10205732118861962_1772979843674116217_n.jpg?oh=3d6b78e1ba4a3628624ebb6b830b445a&oe=58CA86DD" class="img-responsive" alt=" " />
+							<figcaption class="overlay">
+								<div class="social-icon">
+									<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://www.facebook.com/sanaa.wadood?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+								</div>
+							</figcaption>
 						</div>
-					</figcaption>
-				</div>
-				<h4>Yashokirti Soni</h4>
-				<h5>Lead Developer</h5>
-			</div>
-			<div class="col-md-4 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/11207335_489077021270458_4828670066312792578_n.jpg?oh=8500a4885d76947e684d97df336eda15&oe=58C8EA79" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/profile.php?id=100005044936058&fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<h4>Sanaa Wadood</h4>
+						<h5>Product Designer</h5>
+					</div>
+					<div class="col-md-4 team-grid">
+						<div class="team-img">
+							<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/12369153_1666092796993300_5075970971775906519_n.jpg?oh=58d30ccfb24ca0dd3e7845d4ac4d8869&oe=58C0D7E0" class="img-responsive" alt=" " />
+							<figcaption class="overlay">
+								<div class="social-icon">
+									<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://www.facebook.com/yashokirti.soni"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+								</div>
+							</figcaption>
 						</div>
-					</figcaption>
-				</div>
-				<h4>Vijay Sharma</h4>
-				<h5>Lead Designer</h5>
-			</div>
-			<div class="col-md-4 team-grid">
-				<div class="team-img">
-					<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/13051704_1701512763435348_8779673845269441118_n.jpg?oh=c5e6a66efe40eb65a42e62c8f63a27ce&oe=58C0D4EE" class="img-responsive" alt=" " />
-					<figcaption class="overlay">
-						<div class="social-icon">
-							<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-							<a href="https://www.facebook.com/shubham190496?fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-							<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+						<h4>Yashokirti Soni</h4>
+						<h5>Site Reliablity Engineer</h5>
+						
+					</div>
+					<div class="col-md-4 team-grid">
+						<div class="team-img">
+							<img src="https://scontent.fdel1-1.fna.fbcdn.net/v/t1.0-9/11207335_489077021270458_4828670066312792578_n.jpg?oh=8500a4885d76947e684d97df336eda15&oe=58C8EA79" class="img-responsive" alt=" " />
+							<figcaption class="overlay">
+								<div class="social-icon">
+									<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+									<a href="https://www.facebook.com/profile.php?id=100005044936058&fref=ts"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+									<a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+								</div>
+							</figcaption>
 						</div>
-					</figcaption>
+						<h4>Vijay Sharma</h4>
+						<h5>Lead Designer</h5>
+					</div>
 				</div>
-				<h4>Shubham Gupta</h4>
-				<h5>Designer</h5>
-			</div>
 			<div class="clearfix"></div>
-		</div>
+			</div>
+
 	</div>
 </div>
+<br><br>
 
 			</div></a>
 		</div>
@@ -232,6 +318,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         	}
         });
     </script> 
+
     <section class="footer">
     <div class="container">
     	<div class="row">
@@ -258,6 +345,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
-</section> 
+</section>
+ 
 </body>
 </html>
