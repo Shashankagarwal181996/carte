@@ -228,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	                    </ul> 
                 	</div>
                 	<div class="tab-pane" id="add_comment">
-                    	<form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
+                    	<form accept-charset="UTF-8" action="/add-review/{{place.url}}/" method="post">{% csrf_token %}
 					                        <!-- <input id="ratings-hidden" name="rating" type="hidden">  -->
 					                        <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
 					                        <!-- <textarea class="form-control animated" cols="10" id="add_rating" name="add_rating" id="add_rating" placeholder="Enter your ratings here..." rows="5"></textarea>

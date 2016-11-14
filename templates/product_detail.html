@@ -347,9 +347,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					                            <button class="btn btn-success btn-lg" type="submit">Save</button>
 					                        </div>
 					                    </form> -->
-					                     <form accept-charset="UTF-8" action="/add-review/" method="post">{% csrf_token %}
+					                     <form accept-charset="UTF-8" action="/add-review/{{place.url}}/" method="post">{% csrf_token %}
 					                        <!-- <input id="ratings-hidden" name="rating" type="hidden">  -->
 					                        <input type="hidden" id="product_name" name='product_name' value="{{place.name}}">
+					                        <input type="hidden" id="product_url" name='product_url' value="{{place.url}}">
+					                        
 					                        <!-- <textarea class="form-control animated" cols="10" id="add_rating" name="add_rating" id="add_rating" placeholder="Enter your ratings here(out of 5)..." rows="5" required></textarea>
 					                        <br>
 					                        <br> -->
@@ -637,6 +639,7 @@ var count = false;
 $(document).on('click','.glyphicon-star',function(){
 
 	var rating = $('#count').html();
+	var url = $('#product_url').val();
 	// alert(rating);
 	$.ajax({
 		type:'POST',

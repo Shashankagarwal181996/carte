@@ -692,7 +692,8 @@ def product_detail(request,name):
 		}
 	return render(request,'product_detail.html',context_list)
 
-def add_review(request):
+def add_review(request,name):
+	related_name=name
 	review = request.POST.get('add_review')
 	rating = request.POST.get('add_rating')
 	name = request.POST.get('product_name')
@@ -703,10 +704,10 @@ def add_review(request):
 	print review,rating,name
 	print rating
 	# rating = request.POST.get('add_rating')
-	place = Restaurant.objects.filter(name=name)
+	pplace = Restaurant.objects.filter(name=name)
 	flag=0
-	if not place:
-		place = Hotel.objects.filter(name=name)
+	if not pplace:
+		pplace = Hotel.objects.filter(name=name)
 		flag=1
 	userid = request.session['userid']
 	users = User.objects.filter(id=request.session['userid'])
@@ -720,9 +721,9 @@ def add_review(request):
 		new_review.user_profile = user_profile
 	new_review.save()
 
-	print place,new_review.review,name
+	print pplace,new_review.review,name
 	rate_review = Rate_Review.objects.filter(item_name=name)
-	img = place[0].image
+	img = pplace[0].image
 	img = str(img)
 	img1 = img.split('_')
 	img = img1[0]
@@ -730,35 +731,31 @@ def add_review(request):
 	if len(img1) != 1:
 		img = img + '.jpg' 
 		# print img
-		place[0].image = img[1:]
-	print place[0].image
+		pplace[0].image = img[1:]
+	print pplace[0].image
 	tags = []
 	if flag==0:
-		tags = str(place[0].cuisines).split(',')
+		tags = str(pplace[0].cuisines).split(',')
 	else:
-		tags = str(place[0].hotel_tags).split(',')
+		tags = str(pplace[0].hotel_tags).split(',')
 
 	restaurants = Restaurant.objects.order_by('rating')
 	print name
 	restaurant_cuisine = []
 	restaurant_list=[]
 	related_places = []
+	tags_places = []
+	name = name.replace(" ","")
 	for restaurant in restaurants:
 		tags_all = []
 		names = str(restaurant.name)
 		names = names.replace(" ","")
 		restaurant_list.append(restaurant)
-
+		print name
+		print names
 		if name in names:
 			flag=1
-			# img = restaurant.image
-			# img = str(img)
-			# img1 = img.split('_')
-			# img = img1[0]
-			# img = img[1:]
-			# if len(img1) != 1:
-			# 	img = img + '.jpg' 
-			# restaurant.image = img[1:]
+			
 			place = restaurant
 			restaurant.url = names
 			flag=1
@@ -783,9 +780,6 @@ def add_review(request):
 				restaurant.url = names
 				related_places.append(restaurant)
 				break
-
-	# print "related places"
-	# print related_places
 	tags = []
 	hotel_features = []
 	print "hotel"
@@ -819,9 +813,10 @@ def add_review(request):
 					break
 	# rate_review.reverse()
 	list(rate_review).reverse()
-	print rate_review
+	# print rate_review
+	print related_places
 	context_list = {
-		'place':place[0],
+		'place':pplace[0],
 		'rate_review':rate_review,
 		'tags':tags,
 		'related_places': related_places,
