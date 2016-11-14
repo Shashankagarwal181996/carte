@@ -267,6 +267,290 @@ def dashboard(request):
 		hotel_one = hotel_list[:4]
 		hotel_two = hotel_list[4:8]
 
+
+	# """ Code for recommendations on dashboard."""
+	import math
+
+	print("User-User based Collaborative Filtering")
+	userid = request.session['userid']
+	user = User.objects.filter(id=request.session['userid'])
+	users = User.objects.all()
+	# hotels = Hotel.objects.all()
+	# restaurants = Restaurant.objects.all()
+	# rate_review = Rate_Review.objects.all()
+	# usrs = []
+	# htls = []
+	# rsts = []
+	# rvws = []
+	# for user in users:
+	# 	usrs.append(str(user.username))
+	# print usrs
+
+	# for hotel in hotels:
+	# 	htls.append(str(hotel.name))
+	# print htls
+	
+	# for restaurant in restaurants:
+	# 	rsts.append(str(restaurant.name))
+	# print rsts
+	
+	# x = Rate_Review.user.all()
+	# print x
+
+	# for user in users:
+	# 	temp = []
+	# 	x = Rate_Review.objects.filter(user=user)
+	# 	if len(x)!=0:
+	# 		temp.append(str(user.username))
+	# 		temp.append(str(x[0].item_name))
+	# 		temp.append(x[0].rating)
+	# 		print temp
+	# 		rvws.append(temp)
+	# print rvws
+	# # usrs = ["hihi", "haha", "hahi", "hahu"]
+	# # htls = ["titi","tata","lolo","nene"]
+	# # rsts = ["titi1","tata1","lolo1","nene1"]
+	# # rvws = [["hihi", "titi",4],
+	# #         ["hihi", "lolo",4.5],
+	# #         ["haha", "tata",2],
+	# #         ["haha", "lolo",3],
+	# #         ["hahi", "titi",4.5],
+	# #         ["hahi", "nene",3.5],
+	# #         ["hahu", "titi",1],
+	# #         ["hahu", "tata",4.5],
+	# #         ["hahu", "lolo",2],
+	# #         ["hahu", "nene",2],
+	# #         ["hihi", "titi1",4],
+	# #         ["hihi", "lolo1",4.5],
+	# #         ["haha", "tata1",2],
+	# #         ["haha", "lolo1",3],
+	# #         ["hahi", "titi1",4.5],
+	# #         ["hahi", "nene1",3.5],
+	# #         ["hahu", "titi1",1],
+	# #         ["hahu", "tata1",4.5],
+	# #         ["hahu", "lolo1",2],
+	# #         ["hahu", "nene1",2]]
+	# userid = request.session['userid']
+	# user = User.objects.filter(id=request.session['userid'])
+
+	# activ_usr = user[0].username #yaha dal de user ka naam
+	# usrs_ind = {}
+	# htls_ind = {}
+	# rsts_ind = {}
+	# for i in range(len(usrs)):
+	#     usrs_ind[usrs[i]] = i
+	# for i in range(len(htls)):
+	#     htls_ind[htls[i]] = i
+	# for i in range(len(rsts)):
+	#     rsts_ind[rsts[i]] = i
+
+	# activ = usrs_ind[activ_usr]
+
+	# ##HOTEL_PART############
+
+	# mat = [[-10]*len(htls) for _ in range(len(usrs))]
+
+	# for i in rvws:
+	#     if i[1] in htls:
+	#         mat[usrs_ind[i[0]]][htls_ind[i[1]]] = i[2]
+	# # print(mat)
+
+	# #subtracting the average of each user from respective ratings
+
+	# avgs=[]
+	# for i in range(len(mat)):
+	#     av = 0.0
+	#     tot = 0
+	#     for j in mat[i]:
+	#         if j != -10:
+	#             av = av + j
+	#             tot += 1
+	#     if(tot != 0):
+	#         av = av / tot
+	#         avgs.append(av)
+	#         for j in range(len(mat[i])):
+	#             if mat[i][j] != -10:
+	#                 mat[i][j] = mat[i][j] - av
+
+
+	# #all root of square sum
+	# root_sqs=[]
+	# for i in mat:
+	#     sqs = 0
+	#     for j in i:
+	#         if j != -10:
+	#             sqs = sqs + j*j
+	#     root_sqs.append(math.sqrt(sqs))
+
+	# #cosine relation of activ user with every other user
+	# all_similr=[]
+	# ans = []
+
+	# for i in range(len(mat)):
+	#     val = 0
+	#     if activ == i:
+	#         continue
+	#     for j in range(len(mat[i])):
+	#         if mat[i][j] != -10 and mat[activ][j] != -10:
+	#             val = val + mat[i][j]*mat[activ][j]
+
+	#     if(root_sqs[i] != 0 and val != 0 and root_sqs[activ] != 0):    
+	#         val = val / (root_sqs[activ]*root_sqs[i])
+	#         all_similr.append([val, i])
+
+	# if len(all_similr) != 0:
+	#     all_similr.sort()
+	#     all_similr.reverse() #now it has all relations in decending order
+	#     # print(all_similr)
+
+	#     for j in range(len(mat[activ])):
+	#         if mat[activ][j] != -10:#already there
+	#             continue
+	#         predic = avgs[activ]
+	#         item = j
+	#         tot = 0
+	#         val = 0
+	#         for i in all_similr:
+	#             usr = i[1]
+	#             if mat[usr][item] != -10:
+	#                 val += mat[usr][item]*i[0]
+	#                 #print(usr)
+	#             tot += i[0]
+
+	#         predic += (val / tot)
+	#         if predic >= 2.1:
+	#             ans.append(j)
+	#             # print(predic)
+
+	#     if len(ans) == 0:   #if no similar user rated this item then not possible or if users found but no item had sufficiently big predicted value
+	#         ans.append(0)
+	#         ans.append(1)
+	#         ans.append(2)
+	#         ans.append(3)
+	        
+	# else:       ##in case not possible if no similar users found
+	#     ans.append(0)
+	#     ans.append(1)
+	#     ans.append(2)
+	#     ans.append(3)
+	    
+	# print(ans)  ##here is final list of indexes############
+	# final_lst=[]
+	# for i in ans:
+	#     final_lst.append(htls[i])
+	# print(final_lst)
+
+	# final_hotel_list = []
+	# for hotel in final_lst:
+	# 	a = Hotel.objects.filter(name=hotel)
+	# 	final_hotel_list.append(a)
+
+	# ##RESTR_PART############
+
+	# mat = [[-10]*len(rsts) for _ in range(len(usrs))]
+
+	# for i in rvws:
+	#     if i[1] in rsts:
+	#         mat[usrs_ind[i[0]]][rsts_ind[i[1]]] = i[2]
+	# # print(mat)
+
+	# #subtracting the average of each user from respective ratings
+
+	# avgs=[]
+	# for i in range(len(mat)):
+	#     av = 0.0
+	#     tot = 0
+	#     for j in mat[i]:
+	#         if j != -10:
+	#             av = av + j
+	#             tot += 1
+	#     if(tot != 0):
+	#         av = av / tot
+	#         avgs.append(av)
+	#         for j in range(len(mat[i])):
+	#             if mat[i][j] != -10:
+	#                 mat[i][j] = mat[i][j] - av
+
+
+	# #all root of square sum
+	# root_sqs=[]
+	# for i in mat:
+	#     sqs = 0
+	#     for j in i:
+	#         if j != -10:
+	#             sqs = sqs + j*j
+	#     root_sqs.append(math.sqrt(sqs))
+
+	# #cosine relation of activ user with every other user
+	# all_similr=[]
+	# ans = []
+
+	# for i in range(len(mat)):
+	#     val = 0
+	#     if activ == i:
+	#         continue
+	#     for j in range(len(mat[i])):
+	#         if mat[i][j] != -10 and mat[activ][j] != -10:
+	#             val = val + mat[i][j]*mat[activ][j]
+
+	#     if(root_sqs[i] != 0 and val != 0 and root_sqs[activ] != 0):    
+	#         val = val / (root_sqs[activ]*root_sqs[i])
+	#         all_similr.append([val, i])
+
+	# if len(all_similr) != 0:
+	#     all_similr.sort()
+	#     all_similr.reverse() #now it has all relations in decending order
+	#     # print(all_similr)
+
+	#     for j in range(len(mat[activ])):
+	#         if mat[activ][j] != -10:#already there
+	#             continue
+	#         predic = avgs[activ]
+	#         item = j
+	#         tot = 0
+	#         val = 0
+	#         for i in all_similr:
+	#             usr = i[1]
+	#             if mat[usr][item] != -10:
+	#                 val += mat[usr][item]*i[0]
+	#                 #print(usr)
+	#             tot += i[0]
+
+	#         predic += (val / tot)
+	#         if predic >= 2.1:
+	#             ans.append(j)
+	#             # print(predic)
+
+	#     if len(ans) == 0:   #if no similar user rated this item then not possible or if users found but no item had sufficiently big predicted value
+	#         ans.append(0)
+	#         ans.append(1)
+	#         ans.append(2)
+	#         ans.append(3)
+	        
+	# else:       ##in case not possible if no similar users found
+	#     ans.append(0)
+	#     ans.append(1)
+	#     ans.append(2)
+	#     ans.append(3)
+	    
+	# print(ans)  ##here is final list of indexes############
+	# final_lst=[]
+	# for i in ans:
+	#     final_lst.append(rsts[i])
+	# print(final_lst)
+
+
+	# final_restaurant_list = []
+	# for restaurant in final_lst:
+	# 	a = Restaurant.objects.filter(name=restaurant)
+	# 	final_restaurant_list.append(a)
+
+	# userid = request.session['userid']
+	# user = User.objects.filter(id=request.session['userid'])
+
+	# print final_restaurant_list
+	# print final_hotel_list
+
 	context_list = {
 		'rest_one': rest_one,
 		'rest_two': rest_two,
@@ -328,9 +612,6 @@ def product_detail(request,name):
 				restaurant.url = names
 				related_places.append(restaurant)
 				break
-
-	# print "related places"
-	# print related_places
 	tags = []
 	hotel_features = []
 	print "hotel"
@@ -365,134 +646,30 @@ def product_detail(request,name):
 				
 	detail = Rate_Review.objects.all()
 	rate_review_object = []
+	review_list = []
 	for rate_review in detail:
+		temp = []
 		names = str(rate_review.item_name)
 		names= names.replace(" ","")
 		if names in name:
 			rate_review_object.append(rate_review)
+			temp.append(rate_review)
+			print "username for review"
+			usr =  rate_review.user.all()
+			temp.append(usr[0].username)
+		review_list.append(temp)
 	rate_review_object.reverse()
 	date = datetime.date.today()
-	# for restaurant in restaurants:
-	# 	related_places.append(restaurant)
-	# print tags_places
-
-	# mat = []
-	# user = User.objects.filter(id=request.session['userid'])
-	# rate_review = Rate_Review.objects.filter(user=user)
-	# rate_review_all = Rate_Review.objects.all()
-	# print rate_review
-	# count = 0
-	# temp = []
-	# temp.append("user")
-	# restaurant = Restaurant.objects.all()
-	# for restaurant in restaurant:
-	# 	temp.append(restaurant.name)
-	# mat.append(temp)
-	# for rate_review in rate_review:
-	# 	temp = []
-	# 	temp.append()
-	# 	temp.append(rate_review)
-
-	temp= []
-	counter = 0
-	# x = User.objects.filter(username='hs')
-	# rate_review = Rate_Review.objects.filter(user=x)
-	# print rate_review[0].user
-	# restaurants = Restaurant.objects.all()
-	# for x in User.objects.all():
-	# 	# print x.username
-	# 	rate_review = Rate_Review.objects.filter(user=x)
-	# 	if rate_review:
-	# 		rate_review = rate_review[0]
-	# 	# if len(rate_review)!=0 :
-	# 		# print rate_review.rating
-	# 		counter = counter+1
-	# 		# for y in rate_review:
-	# 		res = []
-	# 		res.append(x)
-	# 		res.append(rate_review.item_name)
-	# 		res.append(rate_review.rating)
-	# 		print res
-	# 		temp.append(res)
-	# print temp
-		# if rate_review.item_name is not None:
-		# 	counter = counter+1
-		# 	for y in rate_review:
-		# 		res = []
-		# 		res.append(x)
-		# 		res.append(rate_review.item_name)
-		# 		res.append(rate_review.rating)
-		# 		temp.append(res)
-		# 	print temp
-	# print("Collaborative Filtering")
-
-	# mat = []
-	# mat.append([4,-10,-10,5,1,-10,-10])
-	# mat.append([5,5,4,-10,-10,-10,-10])
-	# mat.append([-10,-10,-10,2,4,5,-10])
-	# mat.append([-10,3,-10,-10,-10,-10,3])
-
-	# #subtracting the average of each user from respective ratings
-	# avgs=[]
-
-	# for i in range(len(mat)):
-	#     av = 0.0
-	#     tot = 0
-	#     for j in mat[i]:
-	#         if j != -10:
-	#             av = av + j
-	#             tot += 1            
-	#     av = av / tot
-	#     avgs.append(av)
-	#     for j in range(len(mat[i])):
-	#         if mat[i][j] != -10:
-	#             mat[i][j] = mat[i][j] - av
-
-
-	# #all root of square sum
-	# root_sqs=[]
-	# for i in mat:
-	#     sqs = 0
-	#     for j in i:
-	#         if j != -10:
-	#             sqs = sqs + j*j
-	#     root_sqs.append(math.sqrt(sqs))
-
-	# #cosine relation of activ user with every other user
-	# activ = 0
-	# all_similr=[]
-
-	# for i in range(len(mat)):
-	#     val = 0
-	#     if activ == i:
-	#         continue
-	#     for j in range(len(mat[i])):
-	#         if mat[i][j] != -10 and mat[activ][j] != -10:
-	#             val = val + mat[i][j]*mat[activ][j]
-
-	#     if(root_sqs[i] != 0):       
-	#         val = val / (root_sqs[activ]*root_sqs[i])
-	#         all_similr.append([val, i])
-	            
-	# all_similr.sort()
-	# all_similr.reverse() #now it has all relations in decending order
-	# print(all_similr)
-
-	# predic = avgs[activ]
-	# item = 1
-	# val = 0
-	# tot = 0
-
-	# for i in all_similr:
-	#     usr = i[1]
-	#     if mat[usr][item] != -10:
-	#         val += mat[usr][item]*i[0]
-	#         print(usr)
-	#     tot += i[0]
-
-	# predic += (val / tot)
-	# print(predic)
-
+	if flag:
+		img = place.menu
+		img = str(img)
+		img1 = img.split('_')
+		img = img1[0]
+		img = img[1:]
+		if len(img1) != 1:
+			img = img + '.jpg' 
+		place.menu = img[1:]
+		print place.menu
 	if rate_review_object:
 		context_list={
 			'place' : place,
@@ -501,6 +678,7 @@ def product_detail(request,name):
 			'related_places': related_places[:3],
 			'rate_review':rate_review_object,
 			'date':date,
+			'flag':flag,
 		}
 	else:
 		context_list={
@@ -509,6 +687,7 @@ def product_detail(request,name):
 			'category' : category,
 			'related_places': related_places[:3],
 			'date':date,
+			'flag': flag,
 			# 'rate_review':rate_review_object,
 		}
 	return render(request,'product_detail.html',context_list)
@@ -652,87 +831,184 @@ def add_review(request):
 
 def search(request):
 	search_query = request.GET.get('search')
+	city = request.GET.get('country')
 	restaurant_list = Restaurant.objects.order_by('rating')
 	hotel_list = Hotel.objects.order_by('rating')
 	search_query = str(search_query)
 	search_query = search_query.lower()
+	print "search query"
 	print search_query
+	print "city"
+	print city
 	item_list = []
 	flag=0
-	for restaurant in restaurant_list:
-		name = restaurant.name
-		name = str(name)
-		url = restaurant.name
-		url = str(restaurant.name)
-		restaurant.url = url.replace(" ","")
-		restaurant.save()
-		description = restaurant.description
-		cuisine = restaurant.cuisines
-		cuisine = str(cuisine)
-		cuisine = cuisine.split(',')
-
-		img = restaurant.image
-		img = str(img)
-		img1 = img.split('_')
-		img = img1[0]
-		img = img[2:]
-		if len(img1) != 1:
-			img = img + '.jpg' 
-		print img
-		restaurant.image = img
-		name = name.lstrip()
-		if search_query in name.lower():
-			item_list.append(restaurant)
-			flag = 1
-		if search_query in description.lower():
-			item_list.append(restaurant)
-			flag = 1
-		if search_query in restaurant.city.lower():
-			item_list.append(restaurant)
-			flag=1
-		for cuisine in cuisine:
-			cuisine = cuisine.lstrip()
-			print cuisine.lower()
-			if search_query in cuisine.lower():
-				item_list.append(restaurant)
-				flag = 1
-	if flag == 0:
-		for hotel in hotel_list:
-			name = hotel.name
+	if city=="":
+		for restaurant in restaurant_list:
+			name = restaurant.name
 			name = str(name)
 			url = restaurant.name
-			url = str(hotel.name)
-			hotel.url = url.replace(" ","")
-			hotel.save()
-			description = hotel.description
-			# description = str(description)
-			hotel_tags = hotel.hotel_tags
-			hotel_tags = str(hotel_tags)
-			hotel_tags = hotel_tags.split(',')
+			url = str(restaurant.name)
+			restaurant.url = url.replace(" ","")
+			restaurant.save()
+			description = restaurant.description
+			cuisine = restaurant.cuisines
+			cuisine = str(cuisine)
+			cuisine = cuisine.split(',')
 
-			img = hotel.image
-			print img
+			img = restaurant.image
 			img = str(img)
 			img1 = img.split('_')
 			img = img1[0]
-			# img = img[1:]
-			# print img
+			img = img[2:]
 			if len(img1) != 1:
 				img = img + '.jpg' 
-			hotel.image = img
-
+			print img
+			restaurant.image = img
+			name = name.lstrip()
 			if search_query in name.lower():
-				item_list.append(hotel)
-				flag = 2
+				item_list.append(restaurant)
+				flag = 1
 			if search_query in description.lower():
-				item_list.append(hotel)
-				flag = 2
-			if search_query in hotel.city.lower():
-				item_list.append(hotel)
-			for hotel_tags in hotel_tags:
-				if search_query in hotel_tags.lower():
+				item_list.append(restaurant)
+				flag = 1
+			if search_query in restaurant.city.lower():
+				item_list.append(restaurant)
+				flag=1
+			for cuisine in cuisine:
+				cuisine = cuisine.lstrip()
+				print cuisine.lower()
+				if search_query in cuisine.lower():
+					item_list.append(restaurant)
+					flag = 1
+		if flag == 0:
+			for hotel in hotel_list:
+				name = hotel.name
+				name = str(name)
+				url = restaurant.name
+				url = str(hotel.name)
+				hotel.url = url.replace(" ","")
+				hotel.save()
+				description = hotel.description
+				# description = str(description)
+				hotel_tags = hotel.hotel_tags
+				hotel_tags = str(hotel_tags)
+				hotel_tags = hotel_tags.split(',')
+
+				img = hotel.image
+				print img
+				img = str(img)
+				img1 = img.split('_')
+				img = img1[0]
+				# img = img[1:]
+				# print img
+				if len(img1) != 1:
+					img = img + '.jpg' 
+				hotel.image = img
+
+				if search_query in name.lower():
 					item_list.append(hotel)
 					flag = 2
+				if search_query in description.lower():
+					item_list.append(hotel)
+					flag = 2
+				if search_query in hotel.city.lower():
+					item_list.append(hotel)
+				for hotel_tags in hotel_tags:
+					if search_query in hotel_tags.lower():
+						item_list.append(hotel)
+						flag = 2
+
+	elif search_query == "":
+		city = city.lower()
+		restaurants = Restaurant.objects.all()
+		for restaurant in restaurants:
+			if city == restaurant.city.lower():
+				item_list.append(restaurant)
+		hotels = Hotel.objects.all()
+		for hotel in hotels:
+			if hotel.city.lower() == city:
+				item_list.append(hotel)
+
+	else:
+		city = city.lower()
+		for restaurant in restaurant_list:
+			if city == restaurant.city.lower():
+				name = restaurant.name
+				name = str(name)
+				url = restaurant.name
+				url = str(restaurant.name)
+				restaurant.url = url.replace(" ","")
+				restaurant.save()
+				description = restaurant.description
+				cuisine = restaurant.cuisines
+				cuisine = str(cuisine)
+				cuisine = cuisine.split(',')
+
+				img = restaurant.image
+				img = str(img)
+				img1 = img.split('_')
+				img = img1[0]
+				img = img[2:]
+				if len(img1) != 1:
+					img = img + '.jpg' 
+				print img
+				restaurant.image = img
+				name = name.lstrip()
+				if search_query in name.lower():
+					item_list.append(restaurant)
+					flag = 1
+				if search_query in description.lower():
+					item_list.append(restaurant)
+					flag = 1
+				if search_query in restaurant.city.lower():
+					item_list.append(restaurant)
+					flag=1
+				for cuisine in cuisine:
+					cuisine = cuisine.lstrip()
+					print cuisine.lower()
+					if search_query in cuisine.lower():
+						item_list.append(restaurant)
+						flag = 1
+			if flag == 0:
+				for hotel in hotel_list:
+					if hotel.city.lower() == city:
+						name = hotel.name
+						name = str(name)
+						url = restaurant.name
+						url = str(hotel.name)
+						hotel.url = url.replace(" ","")
+						hotel.save()
+						description = hotel.description
+						# description = str(description)
+						hotel_tags = hotel.hotel_tags
+						hotel_tags = str(hotel_tags)
+						hotel_tags = hotel_tags.split(',')
+
+						img = hotel.image
+						print img
+						img = str(img)
+						img1 = img.split('_')
+						img = img1[0]
+						# img = img[1:]
+						# print img
+						if len(img1) != 1:
+							img = img + '.jpg' 
+						hotel.image = img
+
+						if search_query in name.lower():
+							item_list.append(hotel)
+							flag = 2
+						if search_query in description.lower():
+							item_list.append(hotel)
+							flag = 2
+						if search_query in hotel.city.lower():
+							item_list.append(hotel)
+						for hotel_tags in hotel_tags:
+							if search_query in hotel_tags.lower():
+								item_list.append(hotel)
+								flag = 2
+
+
 	print item_list
 	item_list = list(set(item_list))
 	if len(item_list) == 0:

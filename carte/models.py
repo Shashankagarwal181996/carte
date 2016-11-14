@@ -33,6 +33,7 @@ class Restaurant(models.Model):
 	description = models.TextField()
 	cuisines = models.TextField()
 	url = models.TextField()
+	menu = models.ImageField(default='/home/shashank/Downloads/kolkata/shrizmenu1.jpg')
 
 	def __str__(self):
 		return self.name

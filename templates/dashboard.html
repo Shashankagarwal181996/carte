@@ -21,7 +21,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
-<!-- <script src="{% static "js/countries.js" %}"></script> -->
+<script src="{% static "js/countries.js" %}"></script>
 
 <style >
 	.footer {
@@ -86,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="header-bottom-w3ls">
 	<div class="container">
-		<div class="col-md-7 navigation-agileits">
+		<div class="col-md-6 navigation-agileits">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header nav_2">
 					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
@@ -120,8 +120,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				});
 				</script>
 
-					<!-- countries list -->
-			<!-- <div align ="center" class="col-md-3"  style="padding-top: 5px;">
+					<!-- states list -->
+			<form action="/search/" method="GET">
+			<div align ="center" class="col-md-3"  style="padding-top: 5px;">
 
 	            <select id="country" name ="country"  style="height: 42px; width: 280px;"></select>
 
@@ -130,17 +131,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					populateCountries("country2");
 				</script>
 
-	        </div> -->
-		<div class="col-md-4 search-agileinfo" >
-			<form action="/search/" method="GET">
-				<input type="search" name="search" id="search" placeholder="Enter Search Query" required="">
-				<a href="#abc">
-				<button type="submit" class="btn btn-default search" aria-label="Left Align">
-						<i class="fa fa-search" aria-hidden="true"> </i> 
-				</button>
-				</a>
-			</form>
-		</div>
+	        </div>
+			<div class="col-md-3 search-agileinfo" >
+				
+					<input type="search" name="search" id="search" placeholder="Enter Search Query">
+					<a href="#abc">
+					<button type="submit" class="btn btn-default search" aria-label="Left Align">
+							<i class="fa fa-search" aria-hidden="true"> </i> 
+					</button>
+					</a>
+			</div>
+				</form>
+
 		<div class="clearfix"></div>
 	</div>
 </div>

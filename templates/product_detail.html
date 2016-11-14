@@ -281,9 +281,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="nav nav-tabs" id="myTab">
 						<li class="active"><a data-toggle="tab" href="#home">Description</a></li>
 						<!-- <li class=""><a href="#openhrs">Opening Hours</a></li>
-						<li class=""><a href="#menu">Menu</a></li>
+						
 						<li class=""><a href="#reviews">Reviews</a></li> -->
 						<li class="" id="map_google"><a data-toggle="tab" href="#maps">Maps</a></li>
+						<li class=""><a data-toggle="tab" href="#menu">Menu</a></li>
 						<li class=""><a data-toggle="tab" href="#comment">Reviews</a></li>
 						<li class=""><a data-toggle="tab" href="#add_comment">Add a Review</a></li>
 					</ul>
@@ -419,8 +420,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</table>
 
 						</div>
+						{% if flag %}
 						<div class="tab-pane" id="menu">
-							<table class="table table-striped shop_attributes">	
+							<!-- <table class="table table-striped shop_attributes">	
 								<tbody>
 									<tr class="">
 										<th>Size</th>
@@ -431,8 +433,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<td>Orange, Yellow</td>
 									</tr>
 								</tbody>
-							</table>
+							</table> -->
+							<img alt="" height="520px" width="50px" src="/static/media/{{place.menu}}">
 						</div>
+						{% endif %}
 						<div class="tab-pane" id="maps">
     						<input id="origin-input" type="text" placeholder="Enter an origin location">
     						<input id="destination-input" type="text" placeholder="Enter a destination location">
