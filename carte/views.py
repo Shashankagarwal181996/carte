@@ -842,7 +842,7 @@ def search(request):
 	print city
 	item_list = []
 	flag=0
-	if city=="":
+	if city=="-1":
 		for restaurant in restaurant_list:
 			name = restaurant.name
 			name = str(name)
