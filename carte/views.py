@@ -252,20 +252,29 @@ def dashboard(request):
 		print hotel.image
 		hotel_list.append(hotel)
 
-		rest_one = []
-		rest_two = []
-		rest_three = []
-		hotel_one = []
-		hotel_two = []
-		
-		restaurant_list.reverse()
-		hotel_list.reverse()
+	rest_one = []
+	rest_two = []
+	rest_three = []
+	rest_four = []
+	rest_five = []
 
-		rest_one = restaurant_list[:4]
-		rest_two = restaurant_list[4:8]
-		rest_three = restaurant_list[8:12]
-		hotel_one = hotel_list[:4]
-		hotel_two = hotel_list[4:8]
+	hotel_one = []
+	hotel_two = []
+	hotel_three = []
+	
+	restaurant_list.reverse()
+	hotel_list.reverse()
+	print restaurant_list
+	rest_one = restaurant_list[:4]
+	rest_two = restaurant_list[4:8]
+	rest_three = restaurant_list[8:12]
+	rest_four = restaurant_list[12:16]
+	rest_five = restaurant_list[16:20]
+	
+	hotel_one = hotel_list[:4]
+	hotel_two = hotel_list[4:8]
+	hotel_three = hotel_list[8:12]
+	hotel_four = hotel_list[12:16]
 
 
 	# """ Code for recommendations on dashboard."""
@@ -555,8 +564,12 @@ def dashboard(request):
 		'rest_one': rest_one,
 		'rest_two': rest_two,
 		'rest_three':rest_three,
+		'rest_four':rest_four,
+		'rest_five':rest_five,
 		'hotel_one': hotel_one,
 		'hotel_two': hotel_two,
+		'hotel_three': hotel_three,
+		'hotel_four': hotel_four,
 		'user':user[0],
 		'restaurants': restaurants, 
 	}

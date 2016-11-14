@@ -1,6 +1,6 @@
 
 // Countries
-var country_arr = new Array("Ahmedabad", "Kolkata", "Mumbai", "Jaipur");
+var country_arr = new Array("Ahmedabad", "Kolkata", "Mumbai", "Jaipur","Pune");
 
 function populateStates( countryElementId, stateElementId ){
 	

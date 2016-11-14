@@ -161,7 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="row">
 				<div class="col-md-12">
 					<h4 class="title">
-						<span class="pull-left"><span class="text"><span class="line">Feature <strong>Hotels</strong></span></span></span>
+						<span class="pull-left"><span class="text"><span class="line">Featured <strong>Hotels</strong></span></span></span>
 						<span class="pull-right">
 							<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
 						</span>
@@ -193,6 +193,50 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="item">
 								<ul class="thumbnails">	
 									{% for hotel in hotel_two %}										
+									<li class="col-md-3">
+										<div class="product-box">
+											<span class="sale_tag"></span>
+										
+											<input type="hidden" id="name" name='name' value="{{hotel.name}}">
+
+											<p><a href="/detail/{{hotel.url}}"><img src="/static/media/{{hotel.image}}" alt="" height="250px"/>
+												
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{hotel.rating}}</div>
+											
+											</a></p>
+												
+											<a href="/detail/{{hotel.url}}" class="title">{{hotel.name}}</a><br/>
+										
+										</div>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">	
+									{% for hotel in hotel_three %}										
+									<li class="col-md-3">
+										<div class="product-box">
+											<span class="sale_tag"></span>
+										
+											<input type="hidden" id="name" name='name' value="{{hotel.name}}">
+
+											<p><a href="/detail/{{hotel.url}}"><img src="/static/media/{{hotel.image}}" alt="" height="250px"/>
+												
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{hotel.rating}}</div>
+											
+											</a></p>
+												
+											<a href="/detail/{{hotel.url}}" class="title">{{hotel.name}}</a><br/>
+										
+										</div>
+									</li>
+									{% endfor %}
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">	
+									{% for hotel in hotel_four %}										
 									<li class="col-md-3">
 										<div class="product-box">
 											<span class="sale_tag"></span>
@@ -271,6 +315,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="item">
 								<ul class="thumbnails">
 									{% for restaurant in rest_three %}
+									<li class="col-md-3">
+										<div class="product-box">
+											<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
+
+											<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt=""height="250px" />
+											
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{restaurant.rating}}</div>
+											</a></p>
+											
+											<a href="/detail/{{restaurant.url}}" class="title">{{restaurant.name}}</a><br/>
+										</div>
+									</li>
+									{% endfor %}	
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">
+									{% for restaurant in rest_four %}
+									<li class="col-md-3">
+										<div class="product-box">
+											<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
+
+											<p><a href="/detail/{{restaurant.url}}"><img src="/static/media/{{restaurant.image}}" alt=""height="250px" />
+											
+											<div data-res-id="102904" class="ads-res-snippet-rating-large  rating-for-102904 level-6">{{restaurant.rating}}</div>
+											</a></p>
+											
+											<a href="/detail/{{restaurant.url}}" class="title">{{restaurant.name}}</a><br/>
+										</div>
+									</li>
+									{% endfor %}	
+								</ul>
+							</div>
+							<div class="item">
+								<ul class="thumbnails">
+									{% for restaurant in rest_five %}
 									<li class="col-md-3">
 										<div class="product-box">
 											<input type="hidden" id="name" name='name' value="{{restaurant.name}}">
