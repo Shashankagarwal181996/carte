@@ -18,6 +18,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="all" />
 <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}" type="text/css" media="all" />
 <link rel="stylesheet" href="{% static "themes/css/item.css" %}">
+<script src="{% static "js/countries.js" %}"></script>
+
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
  -->
     <!-- Optional theme --><!-- 
@@ -187,7 +189,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <div class="header-bottom-w3ls">
 	<div class="container">
-		<div class="col-md-7 navigation-agileits">
+		<div class="col-md-6 navigation-agileits">
 			<nav class="navbar navbar-default">
 				<div class="navbar-header nav_2">
 					<button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
@@ -231,15 +233,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</script>
 
 	        </div> -->
-		<div class="col-md-4 search-agileinfo" >
-			<form action="/search/" method="GET" >
-				<input type="search" name="search" id="search" placeholder="Enter Search query" required="">
-				<a id="hello"><button type="submit" class="btn btn-default search" aria-label="Left Align">
-					<i class="fa fa-search" aria-hidden="true"> </i>
-				</button>
-				</a>
-			</form>
-		</div>
+		<form action="/search/" method="GET">
+			<div align ="center" class="col-md-3"  style="padding-top: 5px;">
+
+	            <select id="country" name ="country"  style="height: 42px; width: 280px;"></select>
+
+				<script language="javascript" >
+					populateCountries("country", "state");
+					populateCountries("country2");
+				</script>
+
+	        </div>
+			<div class="col-md-3 search-agileinfo" >
+				
+					<input type="search" name="search" id="search" placeholder="Enter Search Query">
+					<a href="#abc">
+					<button type="submit" class="btn btn-default search" aria-label="Left Align">
+							<i class="fa fa-search" aria-hidden="true"> </i> 
+					</button>
+					</a>
+			</div>
+				</form>
 		<div class="clearfix"></div>
 	</div>
 </div>

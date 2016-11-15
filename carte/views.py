@@ -673,7 +673,7 @@ def product_detail(request,name):
 		review_list.append(temp)
 	rate_review_object.reverse()
 	date = datetime.date.today()
-	if flag:
+	if flag == 1:
 		img = place.menu
 		img = str(img)
 		img1 = img.split('_')
@@ -828,6 +828,7 @@ def add_review(request,name):
 	list(rate_review).reverse()
 	# print rate_review
 	print related_places
+	# related_places = list(set(related_places))
 	context_list = {
 		'place':pplace[0],
 		'rate_review':rate_review,
@@ -1031,7 +1032,7 @@ def logout_user(request):
     del request.session['userid']
     logout(request)
     context_instance = RequestContext(request)
-    return HttpResponseRedirect('/index/')
+    return HttpResponseRedirect('/')
  
 def contact_us(request):
 	context_list={}

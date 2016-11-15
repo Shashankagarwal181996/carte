@@ -21,6 +21,7 @@ from carte import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
+    url(r'^$', views.index,name="indexs"),
     url(r'^admin/', admin.site.urls),
     url(r'^login/',views.signin,name="signin"),
     url(r'^index/',views.index,name="index"),
