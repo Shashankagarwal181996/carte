@@ -26,6 +26,27 @@
 	text-align: center;
 	margin: 0 0 40px;
 }
+.vij{
+    opacity:1;
+    background-color: #FFFFFF;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #00e58b;
+  border-color: #4cae4c;
+}
+.btn-success:focus,
+.btn-success.focus {
+  color: #fff;
+  background-color: #000000;
+  border-color: #255625;
+}
+.btn-success:hover {
+  color: #fff;
+  background-color: #000000;   
+  border-color: #398439;
+}
 /*body  {
     background-image: url("http://www.vghks.gov.tw/erli/labanimal/style/images/art/bg1.jpg");
 
@@ -38,10 +59,7 @@ body  {
 
         background-size: cover;}
 
-.vij{
-    opacity:1;
-    background-color: #FFFFFF;
-}
+
 
 /*.crop{
 	width:250px;
@@ -81,7 +99,8 @@ body  {
 	
 		<div class="main-agileits vij">
 				<div class="form-w3agile">
-					<h3>Login</h3>
+					<h3 style="color: #00e58b;">Login</h3>
+					<!-- <h3>Login</h3> -->
 					<h4>{{state}}</h4>
 					<form action="/login/" method="POST">{% csrf_token %}
 						<div class="key">
@@ -95,7 +114,7 @@ body  {
 							<div class="clearfix"></div>
 						</div>
 						<input type="submit" value="Login">
-						<a href="/register/" class="forg-right"> Register </a>
+						<a href="/register/" class="btn btn-success" style="width: 117px; height: 40px; text-align: center;line-height:25px; border-radius: 0px;border-color: #00e58b; float: right;">Register </a>
 
 						<!-- <button type="submit"id="submit" class="inputButton">Login</button> -->
 					</form>
@@ -114,6 +133,7 @@ body  {
 				</div>
 			</div>
 		</div>
+		<br><br>
 	<script src="{% static "js/minicart.js" %}"></script>
 	<script>
         w3ls1.render();
